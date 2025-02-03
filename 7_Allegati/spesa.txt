@@ -1,0 +1,10 @@
+Temperatura, umidità e pressione: https://shop.m5stack.com/products/env-iii-unit-with-temperature-humidity-air-pressure-sensor-sht30-qmp6988
+Movimento (a infrarossi): https://shop.m5stack.com/products/pir-module
+Accellerometro: https://shop.m5stack.com/products/3-axis-digital-accelerometer-unit-adxl345
+Rfid: https://shop.m5stack.com/products/rfid-unit-2-ws1850s
+KeyBoard: https://shop.m5stack.com/products/cardkb-mini-keyboard-programmable-unit-v1-1-mega8a
+Clock: https://shop.m5stack.com/products/red-7-segment-digit-clock-unit
+NanoC6 Controller: https://shop.m5stack.com/products/m5stack-nanoc6-dev-kit
+1 to 3 Hub: https://shop.m5stack.com/products/mini-hub-module
+1 to 6 Hub: https://shop.m5stack.com/products/i-o-hub-1-to-6-expansion-unit-stm32f0
+ ✔ Core2: https://shop.m5stack.com/products/m5stack-core2-esp32-iot-development-kit?srsltid=AfmBOorOvMVkU8z5U9elgzv2qvQgeFfeVCaBLYwxHr-l4LPALtwEA3lw

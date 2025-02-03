@@ -1,0 +1,23 @@
+#Ignora .obsidian
+.obsidian/
+
+#Ignora file ~
+~*.docx
+
+#Ignora gli errori
+errors.log
+
+#Ignora i file di environment che contengono 
+.env
+*.env
+
+#Ignora file tmp
+~.tmp
+
+#Ignora db
+*.db
+
+*.key
+*.cert
+
+.DS_Store
