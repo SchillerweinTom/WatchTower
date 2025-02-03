@@ -1,0 +1,15 @@
+npm install -g @vue/cli
+npm create vue@latest
+npm install
+
+npm install -D tailwindcss@3 postcss autoprefixer
+npx tailwindcss init -p
+
+npm install shadcn-vue
+npx shadcn-vue@latest init
+
+npm run dev
+
+
+TO ADD COMPONENTS:
+npx shadcn-vue@latest add button
