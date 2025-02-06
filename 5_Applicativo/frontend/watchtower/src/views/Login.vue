@@ -43,13 +43,23 @@ import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { InformationCircleIcon } from "@heroicons/vue/24/outline";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip'
+import axios from "axios";
 
 const username = ref("");
 const password = ref("");
 const router = useRouter();
 
-const handleSubmit = () => {
-    //Handle Login
-    router.push("/");
+const handleSubmit = async () => {
+    try {
+        const response = await axios.post('http://localhost:3000/login', {
+            username: username.value,
+            password: password.value,
+        });
+
+        localStorage.setItem('token', response.data.token);
+        router.push('/');
+    } catch (error) {
+        alert('Login failed: ' + (error.response ? error.response.data.message : error.message));
+    }
 };
 </script>

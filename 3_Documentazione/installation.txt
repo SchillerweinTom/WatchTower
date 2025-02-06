@@ -1,3 +1,5 @@
+VUE:
+
 npm install -g @vue/cli
 npm create vue@latest
 npm install
@@ -13,3 +15,22 @@ npm run dev
 
 TO ADD COMPONENTS:
 npx shadcn-vue@latest add button
+
+
+NODE:
+
+npm init
+npm install express cors dotenv mysql2 @prisma/client ldapjs jsonwebtoken nodemon
+npx prisma init
+
+modifca .env
+modifca schema.prisma
+
+Eseguire migration:
+npx prisma migrate dev --name init
+
+
+
+DB:
+
+mysql

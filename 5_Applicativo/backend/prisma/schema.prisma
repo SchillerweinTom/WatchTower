@@ -1,0 +1,64 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model temperature {
+  id        Int      @id @default(autoincrement())
+  timestamp DateTime @default(now())
+  value     Float
+}
+model humidity {
+  id        Int      @id @default(autoincrement())
+  timestamp DateTime @default(now())
+  value     Float
+}
+model co2 {
+  id        Int      @id @default(autoincrement())
+  timestamp DateTime @default(now())
+  value     Float
+}
+model access {
+  id        Int      @id @default(autoincrement())
+  timestamp DateTime @default(now())
+  name     	String
+  motive    String
+}
+
+enum alertStatus {
+  ACTIVE
+  RESOLVED
+}
+enum alertType {
+  TEMPERATURE
+  HUMIDITY
+  CO2
+  ACCESS
+}
+
+model alert {
+  id        Int      @id @default(autoincrement())
+  timestamp DateTime @default(now())
+  user     	String
+  type		  alertType
+  value		  Float
+  value_limit Float
+  status	alertStatus
+}
+model alert_setting {
+  id        Int      @id @default(autoincrement())
+  user     	String
+  temp_limit Float
+  hum_limit Float
+  co2_limit Float
+}
