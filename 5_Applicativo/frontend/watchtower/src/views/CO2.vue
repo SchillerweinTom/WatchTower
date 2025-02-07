@@ -5,14 +5,14 @@
           <CardTitle>CO₂ Levels Over Time (ppm)</CardTitle>
         </CardHeader>
         <CardContent>
-          <LineChart :chartData="chartData" :options="chartOptions" />
+          <LineChart v-if="loaded" :chartData="chartData" :options="chartOptions" />
         </CardContent>
       </Card>
     </DashboardLayout>
   </template>
   
   <script setup>
-  import { ref } from "vue";
+  import { ref, onMounted } from "vue";
   import { LineChart } from "vue-chart-3";
   import {
     Chart as ChartJS,
@@ -27,7 +27,8 @@
   } from "chart.js";
   import DashboardLayout from "@/components/layout.vue";
   import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-  
+  import api from "@/router/axios";
+
   ChartJS.register(
     Title,
     Tooltip,
@@ -38,13 +39,13 @@
     LinearScale,
     LineController
   );
-  
+  const loaded = ref(false);
   const chartData = ref({
-    labels: ["00:00", "04:00", "08:00", "12:00", "16:00", "20:00", "23:59"],
+    labels: [],
     datasets: [
       {
         label: "CO₂ (ppm)",
-        data: [400, 420, 450, 500, 480, 430, 410],
+        data: [],
         borderColor: "#82ca9d",
         backgroundColor: "rgba(130, 202, 157, 0.2)",
         fill: false,
@@ -66,4 +67,21 @@
       },
     },
   });
+
+  const fetchCo2Data = async () => {
+  try {
+    const response = await api.get("/co2/g1");
+    const data = response.data;
+
+    chartData.value.labels = data.map(entry => entry.time);
+    chartData.value.datasets[0].data = data.map(entry => entry.value);
+    loaded.value = true;
+  } catch (error) {
+    console.error("Failed to fetch CO2 data:", error);
+  }
+};
+
+onMounted(() => {
+  fetchCo2Data();
+});
   </script>

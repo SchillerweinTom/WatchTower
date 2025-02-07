@@ -11,13 +11,14 @@
                             <Label for="username">Username</Label>
                             <TooltipProvider>
                                 <Tooltip>
-                                    <TooltipTrigger><InformationCircleIcon class="h-4 w-4 text-gray-400" /></TooltipTrigger>
+                                    <TooltipTrigger>
+                                        <InformationCircleIcon class="h-4 w-4 text-gray-400" />
+                                    </TooltipTrigger>
                                     <TooltipContent>
                                         <p>Login with school credentials</p>
                                     </TooltipContent>
                                 </Tooltip>
                             </TooltipProvider>
-                            
                         </div>
                         <Input id="username" type="text" placeholder="name.surname" v-model="username" required />
                     </div>
@@ -25,6 +26,13 @@
                         <Label for="password">Password</Label>
                         <Input id="password" type="password" placeholder="********" v-model="password" required />
                     </div>
+                    <Alert variant="destructive" v-if="loginFailed">
+                        <AlertCircle class="h-5 w-5" />
+                        <AlertTitle>Error</AlertTitle>
+                        <AlertDescription>
+                            {{ message }}
+                        </AlertDescription>
+                    </Alert>
                     <Button type="submit" class="w-full">
                         Log In
                     </Button>
@@ -43,23 +51,33 @@ import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { InformationCircleIcon } from "@heroicons/vue/24/outline";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip'
-import axios from "axios";
+import { Alert, AlertTitle, AlertDescription } from "@/components/ui/alert";
+import { AlertCircle } from 'lucide-vue-next';
+import api from "@/router/axios";
 
 const username = ref("");
 const password = ref("");
 const router = useRouter();
+const loginFailed = ref(false);
+const message = ref("Incorrect username or password!");
 
 const handleSubmit = async () => {
     try {
-        const response = await axios.post('http://localhost:3000/login', {
+        const response = await api.post("/login", {
             username: username.value,
             password: password.value,
         });
 
-        localStorage.setItem('token', response.data.token);
-        router.push('/');
+        if (response.data.token) {
+            localStorage.setItem('token', response.data.token);
+            loginFailed.value = false;
+            router.push('/');
+        }else{
+            message.value = response.data.message;
+            loginFailed.value = true;
+        }
     } catch (error) {
-        alert('Login failed: ' + (error.response ? error.response.data.message : error.message));
+        loginFailed.value = true;
     }
 };
 </script>

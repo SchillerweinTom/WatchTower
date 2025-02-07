@@ -57,8 +57,10 @@ model alert {
 }
 model alert_setting {
   id        Int      @id @default(autoincrement())
-  user     	String
-  temp_limit Float
-  hum_limit Float
-  co2_limit Float
+  user     	String   @unique
+  temp_limit_max Float
+  hum_limit_max Float
+  co2_limit_max Float
+  temp_limit_min Float
+  hum_limit_min Float
 }

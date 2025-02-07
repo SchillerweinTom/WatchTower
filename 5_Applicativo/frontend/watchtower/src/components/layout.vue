@@ -89,12 +89,12 @@
                                     <CloudIcon class="size-6 text-black-500" />
                                 </template>
                             </SidebarNavItem>
-                            <SidebarNavItem name="Access Control" href="/access">
+                            <SidebarNavItem name="Access Control" href="/access" v-if="user.role != 'allievo'">
                                 <template #icon>
                                     <LockClosedIcon class="size-6 text-black-500" />
                                 </template>
                             </SidebarNavItem>
-                            <SidebarNavItem name="Notifications" href="/notifications">
+                            <SidebarNavItem name="Notifications" href="/notifications" v-if="user.role != 'allievo'">
                                 <template #icon>
                                     <BellIcon class="size-6 text-black-500" />
                                 </template>
@@ -108,7 +108,7 @@
                                     </Avatar>
                                     <div>
                                         <p class="text-sm font-medium">{{ user.name }}</p>
-                                        <p class="text-xs text-gray-500">{{ user.email }}</p>
+                                        <p class="text-xs text-gray-500">{{ user.role }}</p>
                                     </div>
                                 </div>
                                 <Button variant="ghost" size="icon" @click="isLogoutDialogOpen = true">
@@ -156,10 +156,10 @@ const pathname = computed(() => route.path);
 const isLogoutDialogOpen = ref(false);
 const router = useRouter();
 
-const user = {
-    name: "John Doe",
-    email: "john@example.com"
-};
+const user = ref({
+    name: "Username",
+    role: "role"
+});
 
 onMounted(() => {
     const checkScreenSize = () => {
@@ -168,11 +168,16 @@ onMounted(() => {
     checkScreenSize();
     window.addEventListener("resize", checkScreenSize);
 
+    const token = localStorage.getItem("token");
+    const decoded = JSON.parse(atob(token.split(".")[1]));
+    user.value.name = decoded.username.split(".").map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(" ");
+    user.value.role = decoded.role;
+
     return () => window.removeEventListener("resize", checkScreenSize);
 });
 
 const handleLogout = () => {
-    //Logout
+    localStorage.removeItem("token");
     router.push({ path: '/login' })
 };
 

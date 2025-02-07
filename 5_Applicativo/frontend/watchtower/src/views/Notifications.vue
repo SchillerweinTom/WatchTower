@@ -3,8 +3,8 @@
         <Card class="w-full">
             <CardHeader>
                 <div class="flex justify-between">
-                    <CardTitle class="text-2xl font-bold">Notifications</CardTitle>
-                    <Button variant="outline" @click="goSettings" v-if="true"> <!-- Set if user is sistemista-->
+                    <CardTitle>Notifications</CardTitle>
+                    <Button variant="outline" @click="goSettings">
                         <Settings class="w-4 h-4" /> Settings
                     </Button>
                 </div>
