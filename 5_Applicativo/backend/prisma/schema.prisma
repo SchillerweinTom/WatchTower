@@ -33,6 +33,7 @@ model access {
   timestamp DateTime @default(now())
   name     	String
   motive    String
+  authorized Boolean
 }
 
 enum alertStatus {
@@ -52,7 +53,6 @@ model alert {
   user     	String
   type		  alertType
   value		  Float
-  value_limit Float
   status	alertStatus
 }
 model alert_setting {

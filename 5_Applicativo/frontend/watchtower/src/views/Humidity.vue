@@ -2,7 +2,19 @@
   <DashboardLayout>
     <Card class="w-full">
       <CardHeader>
-        <CardTitle>Humidity Over Time</CardTitle>
+        <div class="flex justify-between">
+          <CardTitle>Humidity Over Time</CardTitle>
+          <DropdownMenu>
+            <DropdownMenuTrigger as-child>
+              <Button variant="outline">{{ selectedLabel }}</Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent>
+              <DropdownMenuItem @click="changeChart('hour')">Last Hour</DropdownMenuItem>
+              <DropdownMenuItem @click="changeChart('day')">Last 24 Hours</DropdownMenuItem>
+              <DropdownMenuItem @click="changeChart('week')">Last 7 Days</DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
+        </div>
       </CardHeader>
       <CardContent>
         <LineChart v-if="loaded" :chartData="chartData" :options="chartOptions" />
@@ -12,8 +24,9 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from "vue";
+import { ref, onMounted, computed } from "vue";
 import { LineChart } from "vue-chart-3";
+import { Button } from "@/components/ui/button";
 import {
   Chart as ChartJS,
   Title,
@@ -26,6 +39,12 @@ import {
   LineController,
   Filler
 } from "chart.js";
+import {
+  DropdownMenu,
+  DropdownMenuTrigger,
+  DropdownMenuContent,
+  DropdownMenuItem
+} from "@/components/ui/dropdown-menu";
 import DashboardLayout from "@/components/layout.vue";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import api from "@/router/axios";
@@ -43,6 +62,8 @@ ChartJS.register(
 );
 
 const loaded = ref(false);
+const selectedChart = ref("hour");
+
 const chartData = ref({
   labels: [],
   datasets: [
@@ -71,20 +92,47 @@ const chartOptions = ref({
   },
 });
 
-const fetchHumidityData = async () => {
-  try {
-    const response = await api.get("/humidity/g1");
-    const data = response.data;
+const selectedLabel = computed(() => {
+    return {
+        hour: "Last Hour",
+        day: "Last 24 Hours",
+        week: "Last 7 Days",
+    }[selectedChart.value];
+});
 
-    chartData.value.labels = data.map(entry => entry.time);
-    chartData.value.datasets[0].data = data.map(entry => entry.value);
-    loaded.value = true;
-  } catch (error) {
-    console.error("Failed to fetch humidity data:", error);
-  }
+
+const fetchHumidityData = async (type) => {
+    try {
+        const endpoint = {
+            hour: "/humidity/lastHour",
+            day: "/humidity/lastDay",
+            week: "/humidity/lastWeek",
+        }[type];
+
+        const token = localStorage.getItem("token");
+
+        const response = await api.get(endpoint, {
+            headers: {
+                Authorization: token,
+            },
+        });
+        const data = response.data;
+
+        chartData.value.labels = data.map(entry => entry.time);
+        chartData.value.datasets[0].data = data.map(entry => entry.value);
+        loaded.value = true;
+    } catch (error) {
+        console.error(`Failed to fetch ${type} humidity data:`, error);
+    }
+};
+
+const changeChart = (type) => {
+    selectedChart.value = type;
+    loaded.value = false;
+    fetchHumidityData(type);
 };
 
 onMounted(() => {
-  fetchHumidityData();
+  fetchHumidityData(selectedChart.value);
 });
 </script>

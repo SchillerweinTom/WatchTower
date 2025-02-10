@@ -11,7 +11,7 @@
                         <DropdownMenuContent>
                             <DropdownMenuItem @click="changeChart('hour')">Last Hour</DropdownMenuItem>
                             <DropdownMenuItem @click="changeChart('day')">Last 24 Hours</DropdownMenuItem>
-                            <DropdownMenuItem @click="changeChart('week')">Last 7 Days Max</DropdownMenuItem>
+                            <DropdownMenuItem @click="changeChart('week')">Last 7 Days</DropdownMenuItem>
                         </DropdownMenuContent>
                     </DropdownMenu>
                 </div>
@@ -78,7 +78,7 @@ const selectedLabel = computed(() => {
     return {
         hour: "Last Hour",
         day: "Last 24 Hours",
-        week: "Last 7 Days Max",
+        week: "Last 7 Days",
     }[selectedChart.value];
 });
 
@@ -90,7 +90,13 @@ const fetchTemperatureData = async (type) => {
             week: "/temperature/lastWeek",
         }[type];
 
-        const response = await api.get(endpoint);
+        const token = localStorage.getItem("token");
+
+        const response = await api.get(endpoint, {
+            headers: {
+                Authorization: token,
+            },
+        });
         const data = response.data;
 
         chartData.value.labels = data.map(entry => entry.time);

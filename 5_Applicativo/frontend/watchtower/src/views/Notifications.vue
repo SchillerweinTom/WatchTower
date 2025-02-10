@@ -42,7 +42,7 @@
                 </Tabs>
             </CardContent>
         </Card>
-        
+
         <SettingsDialog v-if="showSettingDialog" @close="showSettingDialog = false" />
 
         <Dialog v-model:open="isDialogOpen">
@@ -50,25 +50,40 @@
                 <DialogHeader>
                     <DialogTitle>Notification Details</DialogTitle>
                     <DialogDescription>
-                        Full details of the selected notification. (some text)
+                        {{ selectedNotification.details }}
                     </DialogDescription>
                 </DialogHeader>
                 <div class="space-y-4">
                     <div class="flex items-center space-x-4">
                         <div class="rounded-full p-2" :class="getSeverityColor(selectedNotification?.severity)">
-                            <component :is="getIcon(selectedNotification?.type)" class="w-6 h-6" />
+                            <component :is="getIcon(selectedNotification.type)" class="w-6 h-6" />
                         </div>
                         <div>
-                            <p class="text-lg font-medium">{{ selectedNotification?.message }}</p>
-                            <p class="text-sm text-gray-500">{{ selectedNotification?.timestamp }}</p>
+                            <p class="text-lg font-medium">{{ selectedNotification.message }}</p>
+                            <p class="text-sm text-gray-500">{{ selectedNotification.timestamp }}</p>
                         </div>
+
                     </div>
-                    <Badge :class="getSeverityColor(selectedNotification?.severity)" variant="outline">
-                        {{ selectedNotification?.severity }}
+                    <Badge :class="getSeverityColor(selectedNotification.severity)" variant="outline">
+                        {{ selectedNotification.severity }}
                     </Badge>
                 </div>
                 <DialogFooter>
-                    <Button @click="isDialogOpen = false">Close</Button>
+                    <!--<Button @click="isDialogOpen = false">Close</Button>-->
+                    <Button @click="confirmResolve = true" variant="destructive">Resolved</Button>
+                </DialogFooter>
+            </DialogContent>
+        </Dialog>
+        <!-- Confirmation Dialog -->
+        <Dialog v-model:open="confirmResolve">
+            <DialogContent>
+                <DialogHeader>
+                    <DialogTitle>Confirm Resolution</DialogTitle>
+                    <DialogDescription>Are you sure you want to mark this notification as resolved?</DialogDescription>
+                </DialogHeader>
+                <DialogFooter>
+                    <Button @click="confirmResolve = false">Cancel</Button>
+                    <Button variant="destructive" @click="resolve(selectedNotification.id)">Confirm</Button>
                 </DialogFooter>
             </DialogContent>
         </Dialog>
@@ -76,7 +91,7 @@
 </template>
 
 <script setup>
-import { ref, computed } from "vue";
+import { ref, computed, onMounted } from "vue";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Badge } from "@/components/ui/badge";
@@ -84,28 +99,38 @@ import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, D
 import { Button } from "@/components/ui/button";
 import DashboardLayout from "@/components/layout.vue";
 import { Settings, Thermometer, Lock, Droplets, AlertTriangle } from "lucide-vue-next";
-import { useRouter } from "vue-router";
 import SettingsDialog from "@/components/settingDialog.vue";
+import api from "@/router/axios";
 
 const showSettingDialog = ref(false);
 
 const activeTab = ref("all");
 const isDialogOpen = ref(false);
 const selectedNotification = ref(null);
-const router = useRouter();
+const confirmResolve = ref(false);
 
-const mockNotifications = ref([
-    { id: 1, type: "temperature", message: "Server room temperature exceeds 30°C", timestamp: "2023-06-15 14:30", severity: "high" },
-    { id: 2, type: "access", message: "Unauthorized access attempt detected", timestamp: "2023-06-15 12:45", severity: "high" },
-    { id: 3, type: "humidity", message: "Humidity levels below 30%", timestamp: "2023-06-15 10:15", severity: "medium" },
-    { id: 4, type: "other", message: "UPS battery needs replacement", timestamp: "2023-06-14 09:00", severity: "low" },
-    { id: 5, type: "temperature", message: "Temperature normalized", timestamp: "2023-06-14 15:30", severity: "low" },
-]);
+const notifications = ref([]);
+
+const fetchNotifications = async () => {
+    try {
+        const token = localStorage.getItem("token");
+
+        const response = await api.get("/alerts", {
+            headers: {
+                Authorization: token,
+            },
+        });
+
+        notifications.value = response.data;
+    } catch (error) {
+        console.error("Error fetching notifications:", error);
+    }
+};
 
 const filteredNotifications = computed(() => {
     return activeTab.value === "all"
-        ? mockNotifications.value
-        : mockNotifications.value.filter((n) => n.type === activeTab.value);
+        ? notifications.value
+        : notifications.value.filter((n) => n.type === activeTab.value);
 });
 
 const openDialog = (notification) => {
@@ -133,4 +158,24 @@ const getSeverityColor = (severity) => {
 const goSettings = () => {
     showSettingDialog.value = true;
 };
+const resolve = async (id) => {
+    try {
+        const token = localStorage.getItem("token");
+
+        await api.put(`/alert-resolved/${id}`, {}, {
+            headers: {
+                Authorization: token,
+            },
+        });
+
+        confirmResolve.value = false; 
+        isDialogOpen.value = false;
+
+        fetchNotifications();
+
+    } catch (error) {
+        console.error("Error resolving alert:", error);
+    }
+};
+onMounted(fetchNotifications);
 </script>

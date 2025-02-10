@@ -11,7 +11,7 @@
             <div class="bg-white shadow-lg rounded-lg p-6">
                 <h2 class="text-xl font-bold mb-4">Recent Access</h2>
 
-                <Table>
+                <Table v-if="accessList.length">
                     <TableHeader>
                         <TableRow>
                             <TableHead>Name</TableHead>
@@ -35,36 +35,26 @@
                         </TableRow>
                     </TableBody>
                 </Table>
+                <p v-else>No access data</p>
             </div>
         </div>
     </DashboardLayout>
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { onMounted, ref } from "vue";
 import { Chart as ChartJS, BarController, BarElement, CategoryScale, LinearScale, Tooltip, Legend } from "chart.js";
 import { BarChart } from "vue-chart-3";
 import DashboardLayout from "@/components/layout.vue";
 import { Table, TableBody, TableHead, TableHeader, TableRow, TableCell } from "@/components/ui/table";
 import { Badge } from '@/components/ui/badge'
+import api from "@/router/axios";
 
 ChartJS.register(BarController, BarElement, CategoryScale, LinearScale, Tooltip, Legend);
 
-const chartData = ref({
-    labels: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
-    datasets: [
-        {
-            label: "Authorized",
-            data: [3, 7, 9, 2, 12, 0, 2],
-            backgroundColor: "#8884d8",
-        },
-        {
-            label: "Unauthorized",
-            data: [3, 0, 1, 2, 0, 1, 0],
-            backgroundColor: "#82ca9d",
-        },
-    ],
-});
+const accessList = ref([]);
+
+const chartData = ref([]);
 
 const chartOptions = ref({
     responsive: true,
@@ -77,11 +67,39 @@ const chartOptions = ref({
     },
 });
 
-const accessList = ref([
-    { id: 1, name: "John Doe", time: "2023-06-15 09:30", motive: "Regular maintenance", authorized: true },
-    { id: 2, name: "Jane Smith", time: "2023-06-15 11:45", motive: "Emergency repair", authorized: true },
-    { id: 3, name: "Unknown", time: "2023-06-15 14:20", motive: "Attempted access", authorized: false },
-    { id: 4, name: "Mike Johnson", time: "2023-06-15 16:00", motive: "Equipment installation", authorized: true },
-    { id: 5, name: "Sarah Brown", time: "2023-06-15 17:30", motive: "Regular check", authorized: true },
-]);
+
+const fetchAccessChart = async () => {
+    try {
+        const token = localStorage.getItem("token");
+
+        const response = await api.get("/access/chart", {
+            headers: {
+                Authorization: token,
+            },
+        });
+        chartData.value = response.data;
+    } catch (error) {
+        console.error("Error fetching chart data:", error);
+    }
+};
+
+const fetchAccessList = async () => {
+    try {
+        const token = localStorage.getItem("token");
+
+        const response = await api.get("/access/table", {
+            headers: {
+                Authorization: token,
+            },
+        });
+        accessList.value = response.data;
+    } catch (error) {
+        console.error("Error fetching recent access list:", error);
+    }
+};
+
+onMounted(() => {
+    fetchAccessChart();
+    fetchAccessList();
+});
 </script>

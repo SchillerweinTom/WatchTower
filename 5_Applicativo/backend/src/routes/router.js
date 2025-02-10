@@ -5,110 +5,109 @@ const prisma = new PrismaClient();
 const logger = require("../controllers/apiLogger");
 const jwt = require("jsonwebtoken");
 
-router.get("/", (req, res) => {
-  res.send("API attiva!");
+//TEMPERATURE, HUMIDITY, CO2
+
+router.get("/:type/lastHour", authenticateToken, async (req, res) => {
+  await getLastHourData(req.params.type, res);
 });
 
-//TEMPERATURE
+router.get("/:type/lastDay", authenticateToken, async (req, res) => {
+  await getLastDayData(req.params.type, res);
+});
 
-router.get("/temperature/lastHour", async (req, res) => {
+router.get("/:type/lastWeek", authenticateToken, async (req, res) => {
+  await getLastWeekData(req.params.type, res);
+});
+
+async function getLastHourData(type, res) {
   try {
-    const data = await prisma.temperature.findMany({
-      orderBy: {
-        timestamp: "desc",
-      },
+    const data = await prisma[type].findMany({
+      orderBy: { timestamp: "desc" },
       take: 12,
     });
 
     if (!data || data.length === 0) {
-      return res.status(404).json({ message: "No temperature data found" });
+      return res.status(404).json({ message: `No ${type} data found` });
     }
 
-    const formattedData = data.map(item => ({
+    const formattedData = data.map((item) => ({
       time: item.timestamp.toISOString().slice(11, 16),
       value: item.value,
     }));
-    logger.info(`API call to /temperature/lastHour`);
 
-    return res.json(formattedData);
+    logger.info(`API call to /${type}/lastHour`);
+    return res.json(formattedData.reverse());
   } catch (error) {
-    console.error("Error fetching last hour records:", error);
-    return res.status(500).json({ message: "Error fetching last hour records" });
+    logger.error(`Error fetching last hour ${type} records.`);
+    return res
+      .status(500)
+      .json({ message: `Error fetching last hour ${type} records.` });
   }
-});
+}
 
-router.get("/temperature/lastDay", async (req, res) => {
+async function getLastDayData(type, res) {
   try {
     const now = new Date();
     const twentyFourHoursAgo = new Date(now);
     twentyFourHoursAgo.setHours(now.getHours() - 24);
 
-    const data = await prisma.temperature.findMany({
-      where: {
-        timestamp: {
-          gte: twentyFourHoursAgo,
-        },
-      },
-      orderBy: {
-        timestamp: "asc",
-      },
+    const data = await prisma[type].findMany({
+      where: { timestamp: { gte: twentyFourHoursAgo } },
+      orderBy: { timestamp: "asc" },
     });
 
-    const hourlyData = [];
+    if (!data || data.length === 0) {
+      return res.status(404).json({ message: `No ${type} data found` });
+    }
 
-    for (let hourOffset = 0; hourOffset < 24; hourOffset++) {
+    const hourlyData = [];
+    for (let i = 0; i < 24; i++) {
       const hourTime = new Date(now);
-      hourTime.setHours(now.getHours() - hourOffset, 0, 0, 0);
+      hourTime.setHours(now.getHours() - i, 0, 0, 0);
       const hourLabel = `${String(hourTime.getHours()).padStart(2, "0")}:00`;
 
-      const dataForHour = data.filter(item => new Date(item.timestamp).getHours() === hourTime.getHours());
+      const dataForHour = data.filter(
+        (item) => new Date(item.timestamp).getHours() === hourTime.getHours()
+      );
 
-      if (dataForHour.length > 0) {
-        const latest = dataForHour[dataForHour.length - 1];
-        hourlyData.push({
-          time: hourLabel,
-          value: latest.value,
-        });
-      } else {
-        hourlyData.push({
-          time: hourLabel,
-          value: null,
-        });
-      }
+      hourlyData.push({
+        time: hourLabel,
+        value: dataForHour.length
+          ? dataForHour[dataForHour.length - 1].value
+          : null,
+      });
     }
-    logger.info(`API call to /temperature/lastDay`);
 
+    logger.info(`API call to /${type}/lastDay`);
     return res.json(hourlyData.reverse());
   } catch (error) {
-    console.error("Error fetching hourly temperature:", error);
-    return res.status(500).json({ message: "Error fetching hourly temperature" });
+    logger.error(`Error fetching last day ${type} records.`);
+    return res
+      .status(500)
+      .json({ message: `Error fetching last day ${type} records.` });
   }
-});
+}
 
-router.get("/temperature/lastWeek", async (req, res) => {
+async function getLastWeekData(type, res) {
   try {
     const now = new Date();
     const sevenDaysAgo = new Date();
     sevenDaysAgo.setDate(now.getDate() - 7);
 
-    const data = await prisma.temperature.findMany({
-      where: {
-        timestamp: {
-          gte: sevenDaysAgo,
-        },
-      },
-      orderBy: {
-        timestamp: "asc",
-      },
+    const data = await prisma[type].findMany({
+      where: { timestamp: { gte: sevenDaysAgo } },
+      orderBy: { timestamp: "asc" },
     });
 
-    const dailyData = {};
+    if (!data || data.length === 0) {
+      return res.status(404).json({ message: `No ${type} data found` });
+    }
 
+    const dailyData = {};
     data.forEach((entry) => {
       const date = new Date(entry.timestamp).toISOString().split("T")[0];
-
       if (!dailyData[date] || entry.value > dailyData[date]) {
-        dailyData[date] = entry.value; 
+        dailyData[date] = entry.value;
       }
     });
 
@@ -124,60 +123,152 @@ router.get("/temperature/lastWeek", async (req, res) => {
       });
     }
 
-    logger.info(`API call to /temperature/lastWeek`);
-
+    logger.info(`API call to /${type}/lastWeek`);
     return res.json(formattedData);
   } catch (error) {
-    console.error("Error fetching last week data:", error);
-    return res.status(500).json({ message: "Error fetching last week temperature data" });
+    logger.error(`Error fetching last week ${type} records.`);
+    return res
+      .status(500)
+      .json({ message: `Error fetching last week ${type} records.` });
+  }
+}
+
+//ACCESS
+
+router.get("/access/chart", authenticateToken, async (req, res) => {
+  try {
+    const oneWeekAgo = new Date();
+    oneWeekAgo.setDate(oneWeekAgo.getDate() - 7);
+
+    const accessEvents = await prisma.access.findMany({
+      where: { timestamp: { gte: oneWeekAgo } },
+      orderBy: { timestamp: "desc" },
+    });
+
+    const accessSummary = {};
+    for (let i = 6; i >= 0; i--) {
+      const date = new Date();
+      date.setDate(date.getDate() - i);
+      const dateStr = formatDate(date);
+      accessSummary[dateStr] = { authorized: 0, unauthorized: 0 };
+    }
+
+    accessEvents.forEach((event) => {
+      const dateStr = formatDate(event.timestamp);
+      if (accessSummary[dateStr]) {
+        if (event.authorized) {
+          accessSummary[dateStr].authorized++;
+        } else {
+          accessSummary[dateStr].unauthorized++;
+        }
+      }
+    });
+
+    const chartLabels = Object.keys(accessSummary);
+    const authorizedData = chartLabels.map(
+      (date) => accessSummary[date].authorized
+    );
+    const unauthorizedData = chartLabels.map(
+      (date) => accessSummary[date].unauthorized
+    );
+
+    logger.info("API call to /access/chart");
+
+    return res.json({
+      labels: chartLabels,
+      datasets: [
+        {
+          label: "Authorized",
+          data: authorizedData,
+          backgroundColor: "#28A745",
+        },
+        {
+          label: "Unauthorized",
+          data: unauthorizedData,
+          backgroundColor: "#F44336",
+        },
+      ],
+    });
+  } catch (error) {
+    logger.error("Error fetching access control chart data.");
+    res
+      .status(500)
+      .json({ message: "Error fetching access control chart data" });
   }
 });
 
+router.get("/access/table", authenticateToken, async (req, res) => {
+  try {
+    const accessEvents = await prisma.access.findMany({
+      orderBy: { timestamp: "desc" },
+      take: 10,
+    });
 
+    const formattedAccessList = accessEvents.map((event) => ({
+      id: event.id,
+      name: event.name,
+      time: `${formatDate(event.timestamp)} ${formatTime(event.timestamp)}`,
+      motive: event.motive,
+      authorized: event.authorized,
+    }));
 
-//HUMIDITY
+    logger.info("API call to /access/table");
 
-router.get("/humidity", async (req, res) => {
-  const data = await prisma.humidity.findMany();
-  res.json(data);
+    return res.json(formattedAccessList);
+  } catch (error) {
+    logger.error("Error fetching recent access events.");
+    res.status(500).json({ message: "Error fetching recent access events" });
+  }
 });
 
-router.get("/humidity/g1", async (req, res) => {
-  const data = [
-    { time: "00:00", value: 45 },
-    { time: "04:00", value: 41 },
-    { time: "08:00", value: 48 },
-    { time: "12:00", value: 50 },
-    { time: "16:00", value: 52 },
-    { time: "20:00", value: 48 },
-    { time: "23:59", value: 46 },
-  ];
-  res.json(data);
+//NOTIFICATIONS
+
+router.get("/alerts", authenticateToken, async (req, res) => {
+  try {
+    if (!isAuthorized(req)) {
+      return res.status(403).json({ message: "Unauthorized" });
+    }
+
+    const notifications = await prisma.alert.findMany({
+      where: { user: req.user.username, status: "ACTIVE" },
+      orderBy: { timestamp: "desc" },
+    });
+
+    const settings = await prisma.alert_setting.findUnique({
+      where: { user: req.user.username },
+    });
+
+    if (!settings) {
+      settings = {
+        temp_limit_max: 30,
+        temp_limit_min: 18,
+        hum_limit_max: 60,
+        hum_limit_min: 30,
+        co2_limit_max: 1000,
+      };
+    }
+
+    const formattedNotifications = notifications.map((notification) => {
+      const { severity, message, details } = getSeverityAndMessage(notification, settings);
+      return {
+        ...notification,
+        timestamp: `${formatDate(notification.timestamp)} ${formatTime(notification.timestamp)}`,
+        severity,
+        message,
+        type: notification.type.toLowerCase(),
+        details: details
+      };
+      
+    });
+
+    logger.info("API call to /alerts");
+
+    return res.json(formattedNotifications);
+  } catch (error) {
+    logger.error("Error fetching alerts.", error);
+    res.status(500).json({ message: "Error fetching alerts" });
+  }
 });
-
-
-//GAS (CO2)
-
-router.get("/co2", async (req, res) => {
-  const data = await prisma.humidity.findMany();
-  res.json(data);
-});
-
-router.get("/co2/g1", async (req, res) => {
-  const data = [
-    { time: "00:00", value: 400 },
-    { time: "04:00", value: 420 },
-    { time: "08:00", value: 450 },
-    { time: "12:00", value: 500 },
-    { time: "16:00", value: 480 },
-    { time: "20:00", value: 430 },
-    { time: "23:59", value: 410 },
-  ];
-  res.json(data);
-});
-
-
-//ALERTS
 
 router.post("/alert-settings", authenticateToken, async (req, res) => {
   try {
@@ -185,20 +276,33 @@ router.post("/alert-settings", authenticateToken, async (req, res) => {
       return res.status(403).json({ message: "Unauthorized" });
     }
 
-    const { user, co2_limit_max, hum_limit_max, hum_limit_min, temp_limit_max, temp_limit_min } = req.body;
+    const {
+      user,
+      co2_limit_max,
+      hum_limit_max,
+      hum_limit_min,
+      temp_limit_max,
+      temp_limit_min,
+    } = req.body;
 
     if (!user) {
       return res.json({ message: "LDAP user is required" });
     }
 
     if (temp_limit_min >= temp_limit_max) {
-      return res.json({ message: "Minimum temperature must be less than maximum temperature" });
+      return res.json({
+        message: "Minimum temperature must be less than maximum temperature",
+      });
     }
     if (hum_limit_min >= hum_limit_max) {
-      return res.json({ message: "Minimum humidity must be less than maximum humidity" });
+      return res.json({
+        message: "Minimum humidity must be less than maximum humidity",
+      });
     }
     if (co2_limit_max <= 0) {
-      return res.json({ message: "Maximum CO2 limit must be a positive number" });
+      return res.json({
+        message: "Maximum CO2 limit must be a positive number",
+      });
     }
 
     const MIN_TEMP = -50;
@@ -209,62 +313,243 @@ router.post("/alert-settings", authenticateToken, async (req, res) => {
     const MAX_CO2 = 5000;
 
     if (temp_limit_min < MIN_TEMP || temp_limit_min > MAX_TEMP) {
-      return res.json({ message: `Temperature minimum must be between ${MIN_TEMP} and ${MAX_TEMP}°C` });
+      return res.json({
+        message: `Temperature minimum must be between ${MIN_TEMP} and ${MAX_TEMP}°C`,
+      });
     }
     if (temp_limit_max < MIN_TEMP || temp_limit_max > MAX_TEMP) {
-      return res.json({ message: `Temperature maximum must be between ${MIN_TEMP} and ${MAX_TEMP}°C` });
+      return res.json({
+        message: `Temperature maximum must be between ${MIN_TEMP} and ${MAX_TEMP}°C`,
+      });
     }
     if (hum_limit_min < MIN_HUMIDITY || hum_limit_min > MAX_HUMIDITY) {
-      return res.json({ message: `Humidity minimum must be between ${MIN_HUMIDITY}% and ${MAX_HUMIDITY}%` });
+      return res.json({
+        message: `Humidity minimum must be between ${MIN_HUMIDITY}% and ${MAX_HUMIDITY}%`,
+      });
     }
     if (hum_limit_max < MIN_HUMIDITY || hum_limit_max > MAX_HUMIDITY) {
-      return res.json({ message: `Humidity maximum must be between ${MIN_HUMIDITY}% and ${MAX_HUMIDITY}%` });
+      return res.json({
+        message: `Humidity maximum must be between ${MIN_HUMIDITY}% and ${MAX_HUMIDITY}%`,
+      });
     }
     if (co2_limit_max < MIN_CO2 || co2_limit_max > MAX_CO2) {
-      return res.json({ message: `CO2 maximum must be between ${MIN_CO2} ppm and ${MAX_CO2} ppm` });
+      return res.json({
+        message: `CO2 maximum must be between ${MIN_CO2} ppm and ${MAX_CO2} ppm`,
+      });
     }
-    
+
     const newSetting = await prisma.alert_setting.upsert({
       where: { user },
-      update: { temp_limit_min, temp_limit_max, hum_limit_min, hum_limit_max, co2_limit_max },
-      create: { user, temp_limit_min, temp_limit_max, hum_limit_min, hum_limit_max, co2_limit_max },
+      update: {
+        temp_limit_min,
+        temp_limit_max,
+        hum_limit_min,
+        hum_limit_max,
+        co2_limit_max,
+      },
+      create: {
+        user,
+        temp_limit_min,
+        temp_limit_max,
+        hum_limit_min,
+        hum_limit_max,
+        co2_limit_max,
+      },
     });
 
     logger.info(`Alert settings saved for ${user}`);
 
-    return res.status(201).json({message: "Success"});
+    return res.status(201).json({ message: "Success" });
   } catch (error) {
     logger.error(`Error saving alert settings`);
-    console.error("Error saving alert settings:", error);
     return res.status(500).json({ message: "Error saving alert settings" });
   }
 });
 
 router.get("/alert-settings", authenticateToken, async (req, res) => {
   try {
+    if (!isAuthorized(req)) {
+      return res.status(403).json({ message: "Unauthorized" });
+    }
+
     const user = req.user.username;
-    if(user){
+    if (user) {
       const settings = await prisma.alert_setting.findUnique({
         where: { user },
       });
-  
+
       if (!settings) {
         return res.json({ message: "No settings found" });
       }
-  
+
+      logger.info(`API call to /alert-settings`);
+
       return res.json(settings);
     }
-    
   } catch (error) {
-    console.error("Error fetching alert settings:", error);
+    logger.error("Error fetching alert settings.");
     return res.status(500).json({ message: "Error fetching alert settings" });
+  }
+});
+
+router.put("/alert-resolved/:id", authenticateToken, async (req, res) => {
+  try {
+    if (!isAuthorized(req)) {
+      return res.status(403).json({ message: "Unauthorized" });
+    }
+    logger.info(`API call to /alert-resolved`);
+
+    const alertId = parseInt(req.params.id, 10);
+    if (isNaN(alertId)) {
+      return res.status(400).json({ message: "Invalid alert id" });
+    }
+
+    const updatedAlert = await prisma.alert.update({
+      where: { id: alertId },
+      data: { status: "RESOLVED" },
+    });
+
+    logger.info(`Alert id ${alertId} marked as RESOLVED`);
+
+    return res.json({ message: "Alert resolved successfully" });
+  } catch (error) {
+    logger.error("Error resolving an alert.");
+    return res.status(500).json({ message: "Error resolving an alert" });
+  }
+});
+
+// DASHBOARD
+
+router.get("/temperature", authenticateToken, async (req, res) => {
+  try {
+    const temperatureData = await prisma.temperature.findFirst({
+      orderBy: { timestamp: "desc" },
+    });
+
+    const previousTemperatureData = await prisma.temperature.findFirst({
+      where: { timestamp: { lt: temperatureData.timestamp } },
+      orderBy: { timestamp: "desc" },
+    });
+
+    const change = previousTemperatureData
+      ? temperatureData.value - previousTemperatureData.value
+      : 0;
+    const description = previousTemperatureData
+      ? `${change > 0 ? "+" : ""}${change.toFixed(1)}°C from last hour`
+      : "No previous data available";
+
+    logger.info(`API call to /temperature`);
+
+    return res.json({
+      value: temperatureData ? temperatureData.value : null,
+      change: change,
+      description: description,
+    });
+  } catch (error) {
+    logger.error("Error fetching temperature data.");
+    res.status(500).json({ message: "Error fetching temperature data" });
+  }
+});
+
+router.get("/humidity", authenticateToken, async (req, res) => {
+  try {
+    const humidityData = await prisma.humidity.findFirst({
+      orderBy: { timestamp: "desc" },
+    });
+
+    const previousHumidityData = await prisma.humidity.findFirst({
+      where: { timestamp: { lt: humidityData.timestamp } },
+      orderBy: { timestamp: "desc" },
+    });
+
+    const change = previousHumidityData
+      ? humidityData.value - previousHumidityData.value
+      : 0;
+
+    const description = previousHumidityData
+      ? `${change > 0 ? "+" : ""}${change.toFixed(1)}% from last hour`
+      : "No previous data available";
+
+    logger.info(`API call to /humidity`);
+
+    return res.json({
+      value: humidityData ? humidityData.value : null,
+      change: change,
+      description: description,
+    });
+  } catch (error) {
+    logger.error("Error fetching humidity data.");
+    res.status(500).json({ message: "Error fetching humidity data" });
+  }
+});
+
+router.get("/access-attempts", authenticateToken, async (req, res) => {
+  try {
+    const todayStart = new Date();
+    todayStart.setHours(0, 0, 0, 0);
+
+    const yesterdayStart = new Date();
+    yesterdayStart.setDate(yesterdayStart.getDate() - 1);
+    yesterdayStart.setHours(0, 0, 0, 0);
+
+    const accessAttemptsToday = await prisma.access.count({
+      where: { timestamp: { gte: todayStart } },
+    });
+
+    const accessAttemptsYesterday = await prisma.access.count({
+      where: { timestamp: { gte: yesterdayStart, lt: todayStart } },
+    });
+
+    const change = accessAttemptsToday - accessAttemptsYesterday;
+    const description =
+      change !== 0
+        ? `${change > 0 ? "+" : ""}${change} access attempts today`
+        : "No change in access attempts";
+
+    logger.info(`API call to /access-attempts`);
+
+    return res.json({
+      value: accessAttemptsToday + "",
+      description: description,
+    });
+  } catch (error) {
+    logger.error("Error fetching access attempts data.");
+    res.status(500).json({ message: "Error fetching access attempts data" });
+  }
+});
+
+router.get("/co2", authenticateToken, async (req, res) => {
+  try {
+    const co2Data = await prisma.co2.findFirst({
+      orderBy: { timestamp: "desc" },
+    });
+
+    const previousCo2Data = await prisma.co2.findFirst({
+      where: { timestamp: { lt: co2Data.timestamp } },
+      orderBy: { timestamp: "desc" },
+    });
+
+    const change = previousCo2Data ? co2Data.value - previousCo2Data.value : 0;
+    const description = previousCo2Data
+      ? `${change > 0 ? "+" : ""}${change.toFixed(1)} ppm from last hour`
+      : "No previous data available";
+
+    logger.info(`API call to /co2`);
+
+    return res.json({
+      value: co2Data ? co2Data.value : null,
+      change: change,
+      description: description,
+    });
+  } catch (error) {
+    logger.error("Error fetching CO2 data.");
+    res.status(500).json({ message: "Error fetching CO2 data" });
   }
 });
 
 // Middleware
 function authenticateToken(req, res, next) {
   const token = req.headers["authorization"];
-  
 
   if (!token) {
     return res.status(403).json({ message: "Access denied" });
@@ -279,8 +564,72 @@ function authenticateToken(req, res, next) {
   });
 }
 
+// Helpers
+
 const isAuthorized = (req) => {
-  return req.user && (req.user.role === "sistemista" || req.user.role === "docente");
+  return (
+    req.user && (req.user.role === "sistemista" || req.user.role === "docente")
+  );
+};
+
+const formatDate = (date) => {
+  return date.toISOString().split("T")[0].split("-").reverse().join(".");
+};
+
+const formatTime = (date) => {
+  return date.toISOString().slice(11, 16);
+};
+
+const getSeverityAndMessage = (notification, user) => {
+  const type = notification.type.toLowerCase();
+
+  if (type.includes("access")) {
+    return {
+      severity: "high",
+      message: "Unauthorized access attempt",
+      details: "Someone entered the server room but didn't authenticate himselves."
+    };
+  } else {
+    const value = notification.value;
+
+    if (type.includes("temperature") && value !== null) {
+      if (value > user.temp_limit_max * 1.1) {
+        return { severity: "high", message: `Temperature at ${value}°C`, details: "The temperature is significantly higher than expected." };
+      }else if (value < user.temp_limit_min * 0.9) {
+        return { severity: "high", message: `Temperature at ${value}°C`, details: "The temperature is significantly lower than expected." };
+      } else if (value < user.temp_limit_max && value > user.temp_limit_min) {
+        return { severity: "low", message: "Temperature normalized", details: "The temperature returned to normal conditions." };
+      }
+      if(value > user.temp_limit_max){
+        return { severity: "medium", message: `Temperature at ${value}°C`, details: "The temperature is slightly higher than expected." };
+      }else{
+        return { severity: "medium", message: `Temperature at ${value}°C`, details: "The temperature is slightly lower than expected." };
+      }
+    }
+    if (type.includes("humidity") && value !== null) {
+      if (value > user.hum_limit_max * 1.1) {
+        return { severity: "high", message: `Humidity at ${value}%`, details: "The humidity is significantly higher than expected." };
+      }else if (value < user.hum_limit_min * 0.9) {
+        return { severity: "high", message: `Humidity at ${value}%`, details: "The humidity is significantly lower than expected." };
+      } else if (value < user.hum_limit_max && value > user.hum_limit_min) {
+        return { severity: "low", message: "Humidity normalized", details: "The humidity returned to normal conditions."  };
+      }
+      if(value > user.hum_limit_max){
+        return { severity: "medium", message: `Humidity at ${value}%`, details: "The humidity is slightly higher than expected." };
+      }else{
+        return { severity: "medium", message: `Humidity at ${value}%`, details: "The humidity is slightly lower than expected." };
+      }
+    }
+    if (type.includes("co2") && value !== null) {
+      if (value > user.co2_limit_max * 1.1) {
+        return { severity: "high", message: `CO2 at ${value}ppm`, details: "The CO2 is significantly higher than expected." };
+      } else if (value < user.co2_limit_max && value > 0) {
+        return { severity: "low", message: "CO2 normalized", details: "The CO2 returned to normal conditions." };
+      }
+      return { severity: "medium", message: `CO2 at ${value}ppm`, details: "The CO2 is slightly higher than expected." };
+    }
+  }
+  return { severity: "medium", message: `Other Alert`, details: "No more information." };
 };
 
 module.exports = router;
