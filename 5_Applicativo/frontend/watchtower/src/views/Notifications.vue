@@ -50,7 +50,7 @@
                 <DialogHeader>
                     <DialogTitle>Notification Details</DialogTitle>
                     <DialogDescription>
-                        {{ selectedNotification.details }}
+                        {{ selectedNotification.description }}
                     </DialogDescription>
                 </DialogHeader>
                 <div class="space-y-4">

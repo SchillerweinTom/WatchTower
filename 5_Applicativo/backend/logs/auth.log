@@ -16,3 +16,6 @@
 2025-02-10T12:43:13.280Z [WARN]: Failed login attempt: s (Invalid credentials)
 2025-02-10T12:43:29.792Z [WARN]: Failed login attempt: sistemista1 (Invalid credentials)
 2025-02-10T12:43:44.869Z [INFO]: Login successful: sistemista1 (Role: sistemista)
+2025-02-11T07:36:02.740Z [INFO]: Login successful: sistemista1 (Role: sistemista)
+2025-02-11T09:57:38.026Z [INFO]: Login successful: sistemista1 (Role: sistemista)
+2025-02-11T14:07:39.368Z [INFO]: Login successful: sistemista1 (Role: sistemista)

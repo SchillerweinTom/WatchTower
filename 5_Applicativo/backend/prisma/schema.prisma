@@ -46,6 +46,11 @@ enum alertType {
   CO2
   ACCESS
 }
+enum alertSeverity {
+  LOW
+  MEDIUM
+  HIGH
+}
 
 model alert {
   id        Int      @id @default(autoincrement())
@@ -53,7 +58,10 @@ model alert {
   user     	String
   type		  alertType
   value		  Float
-  status	alertStatus
+  status	  alertStatus
+  severity  alertSeverity?
+  message   String?
+  description String?
 }
 model alert_setting {
   id        Int      @id @default(autoincrement())

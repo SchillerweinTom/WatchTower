@@ -353,3 +353,337 @@
 2025-02-10T15:18:36.305Z [INFO]: Alert id 2 marked as RESOLVED
 2025-02-10T15:18:36.310Z [INFO]: API call to /alerts
 2025-02-10T15:21:57.081Z [INFO]: API call to /alerts
+2025-02-11T07:36:06.929Z [ERROR]: Error fetching temperature data.
+2025-02-11T07:36:24.199Z [INFO]: API call to /temperature
+2025-02-11T07:36:24.208Z [INFO]: API call to /humidity
+2025-02-11T07:36:24.223Z [INFO]: API call to /access-attempts
+2025-02-11T07:36:24.231Z [INFO]: API call to /co2
+2025-02-11T07:50:28.532Z [INFO]: API call to /alerts
+2025-02-11T07:54:08.082Z [INFO]: API call to /alerts
+2025-02-11T07:54:55.182Z [INFO]: API call to /alerts
+2025-02-11T08:09:56.262Z [INFO]: API call to /alerts
+2025-02-11T08:28:10.827Z [ERROR]: Error fetching CO2 data.
+2025-02-11T08:28:34.065Z [INFO]: Temperature data saved successfully in /api/temperature
+2025-02-11T08:31:08.090Z [INFO]: Temperature data saved successfully in /api/temperature
+2025-02-11T08:31:39.135Z [ERROR]: Temperature value or timestamp not valid at /api/temperature
+2025-02-11T08:32:08.659Z [INFO]: API call to /temperature/lastHour
+2025-02-11T08:32:17.049Z [INFO]: API call to /temperature/lastDay
+2025-02-11T08:36:04.744Z [INFO]: API call to /temperature/lastWeek
+2025-02-11T08:36:19.334Z [INFO]: API call to /humidity/lastHour
+2025-02-11T08:36:19.653Z [INFO]: API call to /temperature/lastHour
+2025-02-11T09:57:38.051Z [INFO]: API call to /temperature
+2025-02-11T09:57:38.059Z [INFO]: API call to /humidity
+2025-02-11T09:57:38.068Z [INFO]: API call to /access-attempts
+2025-02-11T09:57:38.075Z [INFO]: API call to /co2
+2025-02-11T09:57:41.023Z [INFO]: API call to /alerts
+2025-02-11T09:57:56.068Z [INFO]: Temperature data saved successfully in /api/temperature
+2025-02-11T10:00:40.506Z [INFO]: Temperature data saved successfully in /api/temperature
+2025-02-11T10:01:02.903Z [INFO]: Temperature data saved successfully in /api/temperature
+2025-02-11T10:02:25.367Z [INFO]: Temperature data saved successfully in /api/temperature
+2025-02-11T10:03:46.468Z [INFO]: Temperature data saved successfully in /api/temperature
+2025-02-11T10:05:17.038Z [INFO]: Temperature data saved successfully in /api/temperature
+2025-02-11T10:06:43.360Z [INFO]: Temperature data saved successfully in /api/temperature
+2025-02-11T10:09:36.570Z [INFO]: Temperature data saved successfully in /api/temperature
+2025-02-11T10:14:08.307Z [INFO]: Temperature data saved successfully in /api/temperature
+2025-02-11T10:14:32.623Z [INFO]: Temperature data saved successfully in /api/temperature
+2025-02-11T10:19:57.304Z [INFO]: Temperature data saved successfully in /api/temperature
+2025-02-11T10:20:44.342Z [INFO]: Temperature data saved successfully in /api/temperature
+2025-02-11T10:22:19.750Z [INFO]: Temperature data saved successfully in /api/temperature
+2025-02-11T10:22:43.458Z [INFO]: Temperature data saved successfully in /api/temperature
+2025-02-11T10:25:55.966Z [INFO]: Temperature data saved successfully in /api/temperature
+2025-02-11T10:28:18.185Z [INFO]: Temperature data saved successfully in /api/temperature
+2025-02-11T10:28:45.689Z [INFO]: Temperature data saved successfully in /api/temperature
+2025-02-11T10:30:25.732Z [INFO]: Temperature data saved successfully in /api/temperature
+2025-02-11T10:33:08.545Z [INFO]: Temperature data saved successfully in /api/temperature
+2025-02-11T13:03:01.717Z [INFO]: Temperature data saved successfully in /api/temperature
+2025-02-11T13:10:57.512Z [INFO]: Temperature data saved successfully in /api/temperature
+2025-02-11T13:10:57.604Z [INFO]: Notification created for user sistemista1: Temperature at 100°C
+2025-02-11T13:10:57.792Z [ERROR]: Error sending email to tom.schillerwein@samtrevano.ch
+2025-02-11T13:10:57.804Z [INFO]: Notification created for user sistemista2: Temperature at 100°C
+2025-02-11T13:10:57.806Z [ERROR]: Error creating notifications: logger.warning is not a function
+2025-02-11T13:14:28.098Z [INFO]: Temperature data saved successfully in /api/temperature
+2025-02-11T13:14:28.194Z [INFO]: Notification created for user sistemista1: Temperature at 100°C
+2025-02-11T13:14:28.302Z [ERROR]: Error sending email to tom.schillerwein@samtrevano.ch
+2025-02-11T13:14:28.313Z [INFO]: Notification created for user sistemista2: Temperature at 100°C
+2025-02-11T13:14:28.315Z [WARN]: No email to send notification for user sistemista2: Temperature at 100°C
+2025-02-11T13:14:28.324Z [INFO]: Notification created for user docente1: Temperature at 100°C
+2025-02-11T13:14:28.325Z [WARN]: No email to send notification for user docente1: Temperature at 100°C
+2025-02-11T13:14:28.331Z [INFO]: Notification created for user docente2: Temperature at 100°C
+2025-02-11T13:14:28.332Z [WARN]: No email to send notification for user docente2: Temperature at 100°C
+2025-02-11T13:15:46.916Z [INFO]: Temperature data saved successfully in /api/temperature
+2025-02-11T13:15:47.001Z [INFO]: Notification created for user sistemista1: Temperature at 100°C
+2025-02-11T13:15:47.120Z [ERROR]: Error sending email to tom.schillerwein@samtrevano.ch
+2025-02-11T13:15:47.124Z [INFO]: Notification created for user sistemista2: Temperature at 100°C
+2025-02-11T13:15:47.124Z [WARN]: No email to send notification for user sistemista2: Temperature at 100°C
+2025-02-11T13:15:47.129Z [INFO]: Notification created for user docente1: Temperature at 100°C
+2025-02-11T13:15:47.130Z [WARN]: No email to send notification for user docente1: Temperature at 100°C
+2025-02-11T13:15:47.133Z [INFO]: Notification created for user docente2: Temperature at 100°C
+2025-02-11T13:15:47.134Z [WARN]: No email to send notification for user docente2: Temperature at 100°C
+2025-02-11T13:26:02.232Z [INFO]: Temperature data saved successfully in /api/temperature
+2025-02-11T13:26:02.321Z [INFO]: Notification created for user sistemista1: Temperature at 100°C
+2025-02-11T13:26:02.439Z [ERROR]: Error sending email to tom.schillerwein@samtrevano.ch
+2025-02-11T13:26:02.453Z [INFO]: Notification created for user sistemista2: Temperature at 100°C
+2025-02-11T13:26:02.454Z [WARN]: No email to send notification for user sistemista2: Temperature at 100°C
+2025-02-11T13:26:02.463Z [INFO]: Notification created for user docente1: Temperature at 100°C
+2025-02-11T13:26:02.464Z [WARN]: No email to send notification for user docente1: Temperature at 100°C
+2025-02-11T13:26:02.471Z [INFO]: Notification created for user docente2: Temperature at 100°C
+2025-02-11T13:26:02.471Z [WARN]: No email to send notification for user docente2: Temperature at 100°C
+2025-02-11T13:28:37.393Z [INFO]: Temperature data saved successfully in /api/temperature
+2025-02-11T13:28:37.481Z [INFO]: Notification created for user sistemista1: Temperature at 100°C
+2025-02-11T13:28:38.647Z [INFO]: Notification email sent to tom.schillerwein@samtrevano.ch
+2025-02-11T13:28:38.654Z [INFO]: Notification created for user sistemista2: Temperature at 100°C
+2025-02-11T13:28:38.655Z [WARN]: No email to send notification for user sistemista2: Temperature at 100°C
+2025-02-11T13:28:38.660Z [INFO]: Notification created for user docente1: Temperature at 100°C
+2025-02-11T13:28:38.660Z [WARN]: No email to send notification for user docente1: Temperature at 100°C
+2025-02-11T13:28:38.664Z [INFO]: Notification created for user docente2: Temperature at 100°C
+2025-02-11T13:28:38.664Z [WARN]: No email to send notification for user docente2: Temperature at 100°C
+2025-02-11T13:33:43.281Z [INFO]: Temperature data saved successfully in /api/temperature
+2025-02-11T13:33:43.372Z [INFO]: Notification created for user sistemista1: Temperature at 85°C
+2025-02-11T13:33:44.609Z [INFO]: Notification email sent to tom.schillerwein@samtrevano.ch
+2025-02-11T13:33:44.615Z [INFO]: Notification created for user sistemista2: Temperature at 85°C
+2025-02-11T13:33:44.616Z [WARN]: No email to send notification for user sistemista2: Temperature at 85°C
+2025-02-11T13:33:44.619Z [INFO]: Notification created for user docente1: Temperature at 85°C
+2025-02-11T13:33:44.619Z [WARN]: No email to send notification for user docente1: Temperature at 85°C
+2025-02-11T13:33:44.623Z [INFO]: Notification created for user docente2: Temperature at 85°C
+2025-02-11T13:33:44.623Z [WARN]: No email to send notification for user docente2: Temperature at 85°C
+2025-02-11T13:33:52.998Z [INFO]: API call to /alerts
+2025-02-11T14:07:26.333Z [INFO]: API call to /alerts
+2025-02-11T14:07:39.384Z [INFO]: API call to /temperature
+2025-02-11T14:07:39.392Z [INFO]: API call to /humidity
+2025-02-11T14:07:39.398Z [INFO]: API call to /access-attempts
+2025-02-11T14:07:39.406Z [INFO]: API call to /co2
+2025-02-11T14:07:42.057Z [INFO]: API call to /alerts
+2025-02-11T14:08:19.567Z [INFO]: Humidity data saved successfully in /api/humidity
+2025-02-11T14:08:19.644Z [INFO]: Notification created for user sistemista1: Humidity normalized
+2025-02-11T14:08:19.647Z [INFO]: Notification created for user sistemista2: Humidity normalized
+2025-02-11T14:08:19.652Z [INFO]: Notification created for user docente1: Humidity normalized
+2025-02-11T14:08:19.654Z [INFO]: Notification created for user docente2: Humidity normalized
+2025-02-11T14:08:23.035Z [INFO]: API call to /alerts
+2025-02-11T14:12:23.007Z [INFO]: Humidity data saved successfully in /api/humidity
+2025-02-11T14:12:23.096Z [INFO]: Notification created for user sistemista1: Humidity at 50%
+2025-02-11T14:12:26.168Z [INFO]: API call to /alerts
+2025-02-11T14:14:25.286Z [INFO]: CO2 data saved successfully in /api/co2
+2025-02-11T14:14:29.808Z [INFO]: CO2 data saved successfully in /api/co2
+2025-02-11T14:14:29.878Z [INFO]: Notification created for user sistemista1: CO2 at 1500ppm
+2025-02-11T14:14:31.107Z [INFO]: Notification email sent to tom.schillerwein@samtrevano.ch
+2025-02-11T14:14:31.113Z [INFO]: Notification created for user sistemista2: CO2 at 1500ppm
+2025-02-11T14:14:31.113Z [WARN]: No email to send notification for user sistemista2: CO2 at 1500ppm
+2025-02-11T14:14:31.116Z [INFO]: Notification created for user docente1: CO2 at 1500ppm
+2025-02-11T14:14:31.116Z [WARN]: No email to send notification for user docente1: CO2 at 1500ppm
+2025-02-11T14:14:31.119Z [INFO]: Notification created for user docente2: CO2 at 1500ppm
+2025-02-11T14:14:31.119Z [WARN]: No email to send notification for user docente2: CO2 at 1500ppm
+2025-02-11T14:14:32.018Z [INFO]: API call to /alerts
+2025-02-11T14:14:41.596Z [INFO]: API call to /alert-resolved
+2025-02-11T14:14:41.600Z [INFO]: Alert id 33 marked as RESOLVED
+2025-02-11T14:14:41.606Z [INFO]: API call to /alerts
+2025-02-11T14:14:52.396Z [INFO]: API call to /alert-resolved
+2025-02-11T14:14:52.401Z [INFO]: Alert id 32 marked as RESOLVED
+2025-02-11T14:14:52.407Z [INFO]: API call to /alerts
+2025-02-11T14:14:54.042Z [INFO]: API call to /alerts
+2025-02-11T14:16:10.601Z [INFO]: API call to /access/chart
+2025-02-11T14:16:10.603Z [INFO]: API call to /access/table
+2025-02-11T14:16:13.281Z [INFO]: API call to /temperature/lastHour
+2025-02-11T14:16:14.413Z [INFO]: API call to /humidity/lastHour
+2025-02-11T14:16:20.354Z [INFO]: API call to /humidity/lastHour
+2025-02-11T14:17:04.052Z [INFO]: API call to /humidity/lastHour
+2025-02-11T14:17:32.445Z [INFO]: API call to /humidity/lastHour
+2025-02-11T14:18:07.258Z [INFO]: API call to /humidity/lastHour
+2025-02-11T14:18:46.773Z [INFO]: API call to /temperature/lastHour
+2025-02-11T14:20:10.698Z [INFO]: API call to /humidity/lastHour
+2025-02-11T14:24:20.835Z [ERROR]: Error fetching temperature data.
+2025-02-11T14:24:22.189Z [ERROR]: Error fetching temperature data.
+2025-02-11T14:25:04.819Z [INFO]: Temperature data saved successfully in /api/temperature
+2025-02-11T14:25:15.040Z [INFO]: Temperature data saved successfully in /api/temperature
+2025-02-11T14:25:21.666Z [INFO]: Temperature data saved successfully in /api/temperature
+2025-02-11T14:25:27.990Z [INFO]: Temperature data saved successfully in /api/temperature
+2025-02-11T14:25:28.043Z [INFO]: Notification created for user sistemista2: Temperature at 30°C
+2025-02-11T14:25:28.047Z [INFO]: Notification created for user docente1: Temperature at 30°C
+2025-02-11T14:25:28.050Z [INFO]: Notification created for user docente2: Temperature at 30°C
+2025-02-11T14:25:30.944Z [INFO]: Temperature data saved successfully in /api/temperature
+2025-02-11T14:25:30.995Z [INFO]: Notification created for user sistemista2: Temperature at 30°C
+2025-02-11T14:25:30.998Z [INFO]: Notification created for user docente1: Temperature at 30°C
+2025-02-11T14:25:31.000Z [INFO]: Notification created for user docente2: Temperature at 30°C
+2025-02-11T14:25:33.913Z [INFO]: Temperature data saved successfully in /api/temperature
+2025-02-11T14:25:33.964Z [INFO]: Notification created for user sistemista2: Temperature at 30°C
+2025-02-11T14:25:33.967Z [INFO]: Notification created for user docente1: Temperature at 30°C
+2025-02-11T14:25:33.969Z [INFO]: Notification created for user docente2: Temperature at 30°C
+2025-02-11T14:25:42.388Z [INFO]: Temperature data saved successfully in /api/temperature
+2025-02-11T14:25:50.360Z [INFO]: Temperature data saved successfully in /api/temperature
+2025-02-11T14:25:50.448Z [INFO]: Notification created for user sistemista1: Temperature at 55°C
+2025-02-11T14:25:51.702Z [INFO]: Notification email sent to tom.schillerwein@samtrevano.ch
+2025-02-11T14:25:51.707Z [INFO]: Notification created for user sistemista2: Temperature at 55°C
+2025-02-11T14:25:51.707Z [WARN]: No email to send notification for user sistemista2: Temperature at 55°C
+2025-02-11T14:25:51.710Z [INFO]: Notification created for user docente1: Temperature at 55°C
+2025-02-11T14:25:51.711Z [WARN]: No email to send notification for user docente1: Temperature at 55°C
+2025-02-11T14:25:51.714Z [INFO]: Notification created for user docente2: Temperature at 55°C
+2025-02-11T14:25:51.714Z [WARN]: No email to send notification for user docente2: Temperature at 55°C
+2025-02-11T14:26:12.443Z [INFO]: Humidity data saved successfully in /api/humidity
+2025-02-11T14:26:16.216Z [INFO]: Humidity data saved successfully in /api/humidity
+2025-02-11T14:26:21.017Z [INFO]: Humidity data saved successfully in /api/humidity
+2025-02-11T14:26:26.641Z [INFO]: Humidity data saved successfully in /api/humidity
+2025-02-11T14:26:26.707Z [INFO]: Notification created for user sistemista1: Humidity at 50%
+2025-02-11T14:26:34.561Z [INFO]: Humidity data saved successfully in /api/humidity
+2025-02-11T14:26:34.610Z [INFO]: Notification created for user sistemista1: Humidity at 55%
+2025-02-11T14:26:39.888Z [INFO]: Humidity data saved successfully in /api/humidity
+2025-02-11T14:26:39.935Z [INFO]: Notification created for user sistemista1: Humidity at 60%
+2025-02-11T14:26:41.057Z [INFO]: Notification email sent to tom.schillerwein@samtrevano.ch
+2025-02-11T14:26:41.061Z [INFO]: Notification created for user sistemista2: Humidity at 60%
+2025-02-11T14:26:41.064Z [INFO]: Notification created for user docente1: Humidity at 60%
+2025-02-11T14:26:41.067Z [INFO]: Notification created for user docente2: Humidity at 60%
+2025-02-11T14:26:45.101Z [INFO]: Humidity data saved successfully in /api/humidity
+2025-02-11T14:26:45.159Z [INFO]: Notification created for user sistemista1: Humidity at 70%
+2025-02-11T14:26:46.202Z [INFO]: Notification email sent to tom.schillerwein@samtrevano.ch
+2025-02-11T14:26:46.206Z [INFO]: Notification created for user sistemista2: Humidity at 70%
+2025-02-11T14:26:46.206Z [WARN]: No email to send notification for user sistemista2: Humidity at 70%
+2025-02-11T14:26:46.210Z [INFO]: Notification created for user docente1: Humidity at 70%
+2025-02-11T14:26:46.210Z [WARN]: No email to send notification for user docente1: Humidity at 70%
+2025-02-11T14:26:46.212Z [INFO]: Notification created for user docente2: Humidity at 70%
+2025-02-11T14:26:46.213Z [WARN]: No email to send notification for user docente2: Humidity at 70%
+2025-02-11T14:26:50.183Z [INFO]: CO2 data saved successfully in /api/co2
+2025-02-11T14:27:04.467Z [INFO]: CO2 data saved successfully in /api/co2
+2025-02-11T14:27:08.387Z [INFO]: CO2 data saved successfully in /api/co2
+2025-02-11T14:27:14.587Z [INFO]: CO2 data saved successfully in /api/co2
+2025-02-11T14:27:24.624Z [INFO]: CO2 data saved successfully in /api/co2
+2025-02-11T14:27:29.768Z [INFO]: CO2 data saved successfully in /api/co2
+2025-02-11T14:27:37.070Z [INFO]: CO2 data saved successfully in /api/co2
+2025-02-11T14:28:23.212Z [ERROR]: Error saving access data.
+2025-02-11T14:29:13.874Z [ERROR]: Error saving access data. ReferenceError: value is not defined
+2025-02-11T14:29:41.988Z [ERROR]: Error saving access data. PrismaClientValidationError: 
+Invalid `prisma.access.create()` invocation in
+E:\I4BC\Progetto\WatchTower\5_Applicativo\backend\src\routes\api.js:117:31
+
+  114   
+  115 if (timestamp && authorized) {
+  116   if (!isNaN(Date.parse(timestamp))) {
+→ 117     await prisma.access.create({
+            data: {
+              timestamp: new Date("2024-02-11T13:00:00.000Z"),
+              name: "tom.schillerwein",
+              authorized: true,
+          +   motive: String
+            }
+          })
+
+Argument `motive` must not be null.
+2025-02-11T14:30:10.135Z [INFO]: Access data saved successfully in /api/access
+2025-02-11T14:30:10.135Z [ERROR]: Error saving access data. ReferenceError: value is not defined
+2025-02-11T14:32:57.972Z [INFO]: Access data saved successfully in /api/access
+2025-02-11T14:34:12.432Z [INFO]: Access data saved successfully in /api/access
+2025-02-11T14:34:22.956Z [ERROR]: Wrong data sended to /api/access
+2025-02-11T14:36:02.406Z [INFO]: Access data saved successfully in /api/access
+2025-02-11T14:36:02.498Z [ERROR]: Error creating notifications: 
+Invalid `prisma.alert.create()` invocation in
+E:\I4BC\Progetto\WatchTower\5_Applicativo\backend\src\routes\api.js:163:28
+
+  160 
+  161 const { severity, message, description } = getSeverityAndMessage({ type, value }, settings);
+  162 if(severity != "LOW"){ // Maybe put normalized back on
+→ 163   await prisma.alert.create({
+          data: {
+            type: "ACCESS",
+            value: "",
+                   ~~
+            timestamp: new Date("2024-02-11T13:00:00.000Z"),
+            severity: "HIGH",
+            message: "Unauthorized access attempt",
+            description: "Someone entered the server room but didn't authenticate himselves.",
+            user: "sistemista1",
+            status: "ACTIVE"
+          }
+        })
+
+Argument `value`: Invalid value provided. Expected Float, provided String.
+2025-02-11T14:36:21.175Z [INFO]: API call to /temperature
+2025-02-11T14:36:21.192Z [INFO]: API call to /humidity
+2025-02-11T14:36:21.212Z [INFO]: API call to /access-attempts
+2025-02-11T14:36:21.219Z [INFO]: API call to /co2
+2025-02-11T14:36:38.044Z [INFO]: API call to /temperature/lastHour
+2025-02-11T14:37:17.367Z [INFO]: API call to /temperature/lastHour
+2025-02-11T14:39:39.317Z [INFO]: Access data saved successfully in /api/access
+2025-02-11T14:39:39.402Z [INFO]: Notification created for user sistemista1: Unauthorized access attempt
+2025-02-11T14:39:41.292Z [INFO]: Notification email sent to tom.schillerwein@samtrevano.ch
+2025-02-11T14:39:41.297Z [INFO]: Notification created for user sistemista2: Unauthorized access attempt
+2025-02-11T14:39:41.298Z [WARN]: No email to send notification for user sistemista2: Unauthorized access attempt
+2025-02-11T14:39:41.302Z [INFO]: Notification created for user docente1: Unauthorized access attempt
+2025-02-11T14:39:41.302Z [WARN]: No email to send notification for user docente1: Unauthorized access attempt
+2025-02-11T14:39:41.309Z [INFO]: Notification created for user docente2: Unauthorized access attempt
+2025-02-11T14:39:41.310Z [WARN]: No email to send notification for user docente2: Unauthorized access attempt
+2025-02-11T14:40:47.556Z [INFO]: API call to /temperature/lastHour
+2025-02-11T14:40:51.748Z [INFO]: API call to /temperature/lastHour
+2025-02-11T14:40:53.160Z [INFO]: API call to /humidity/lastHour
+2025-02-11T14:40:56.716Z [INFO]: API call to /humidity/lastHour
+2025-02-11T14:41:01.054Z [INFO]: API call to /co2/lastHour
+2025-02-11T14:41:07.621Z [INFO]: API call to /co2/lastHour
+2025-02-11T14:41:08.353Z [INFO]: API call to /access/chart
+2025-02-11T14:41:08.354Z [INFO]: API call to /access/table
+2025-02-11T14:45:35.698Z [INFO]: API call to /access/table
+2025-02-11T14:45:35.701Z [INFO]: API call to /access/chart
+2025-02-11T14:45:37.317Z [INFO]: API call to /temperature/lastHour
+2025-02-11T14:46:18.104Z [INFO]: API call to /temperature/lastHour
+2025-02-11T14:47:05.093Z [INFO]: API call to /temperature/lastHour
+2025-02-11T14:47:08.197Z [INFO]: API call to /temperature/lastHour
+2025-02-11T14:47:15.247Z [INFO]: API call to /access/table
+2025-02-11T14:47:15.248Z [INFO]: API call to /access/chart
+2025-02-11T14:47:16.216Z [INFO]: API call to /humidity/lastHour
+2025-02-11T14:47:16.975Z [INFO]: API call to /temperature/lastHour
+2025-02-11T14:48:08.151Z [INFO]: API call to /temperature/lastHour
+2025-02-11T14:50:17.909Z [INFO]: API call to /temperature/lastHour
+2025-02-11T14:51:07.399Z [INFO]: API call to /temperature/lastHour
+2025-02-11T14:54:29.476Z [INFO]: API call to /temperature/lastHour
+2025-02-11T14:55:26.021Z [INFO]: API call to /temperature/lastHour
+2025-02-11T14:58:12.103Z [INFO]: API call to /temperature/lastHour
+2025-02-11T14:58:32.315Z [INFO]: API call to /temperature/lastHour
+2025-02-11T14:58:32.326Z [INFO]: API call to /temperature/lastHour
+2025-02-11T14:58:32.328Z [INFO]: API call to /humidity/lastHour
+2025-02-11T14:58:32.329Z [INFO]: API call to /co2/lastHour
+2025-02-11T14:58:32.329Z [INFO]: API call to /access/chart
+2025-02-11T14:58:32.331Z [INFO]: API call to /access/table
+2025-02-11T14:58:32.333Z [INFO]: API call to /temperature
+2025-02-11T14:58:32.335Z [INFO]: API call to /alerts
+2025-02-11T14:58:32.336Z [INFO]: API call to /temperature/lastHour
+2025-02-11T14:58:32.340Z [INFO]: API call to /temperature/lastHour
+2025-02-11T14:58:32.342Z [INFO]: API call to /humidity
+2025-02-11T14:58:32.360Z [INFO]: API call to /access-attempts
+2025-02-11T14:58:32.365Z [INFO]: API call to /co2
+2025-02-11T14:58:39.269Z [INFO]: API call to /temperature/lastHour
+2025-02-11T15:03:06.175Z [INFO]: API call to /temperature/lastHour
+2025-02-11T15:12:32.400Z [INFO]: API call to /temperature/lastHour
+2025-02-11T15:14:47.377Z [INFO]: API call to /temperature/lastHour
+2025-02-11T15:14:48.688Z [ERROR]: Error fetching last day temperature records.
+2025-02-11T15:15:26.706Z [INFO]: API call to /temperature/lastHour
+2025-02-11T15:15:28.207Z [ERROR]: Error fetching last day temperature records.
+2025-02-11T15:15:51.048Z [INFO]: API call to /temperature/lastHour
+2025-02-11T15:15:52.119Z [ERROR]: Error fetching last day temperature records. TypeError: now.getHours is not a function
+2025-02-11T15:15:54.475Z [ERROR]: Error fetching last day temperature records. TypeError: now.getHours is not a function
+2025-02-11T15:15:55.491Z [ERROR]: Error fetching last day temperature records. TypeError: now.getHours is not a function
+2025-02-11T15:16:29.817Z [INFO]: API call to /temperature/lastHour
+2025-02-11T15:16:33.436Z [INFO]: API call to /temperature/lastHour
+2025-02-11T15:17:23.084Z [INFO]: API call to /temperature/lastHour
+2025-02-11T15:17:24.177Z [ERROR]: Error fetching last day temperature records.
+2025-02-11T15:17:54.616Z [INFO]: API call to /temperature/lastHour
+2025-02-11T15:21:13.985Z [INFO]: API call to /temperature/lastHour
+2025-02-11T15:21:50.778Z [INFO]: Temperature data saved successfully in /api/temperature
+2025-02-11T15:21:50.876Z [INFO]: Notification created for user sistemista1: Temperature at 55°C
+2025-02-11T15:21:52.741Z [INFO]: Notification email sent to tom.schillerwein@samtrevano.ch
+2025-02-11T15:21:52.754Z [INFO]: Notification created for user sistemista2: Temperature at 55°C
+2025-02-11T15:21:52.755Z [WARN]: No email to send notification for user sistemista2: Temperature at 55°C
+2025-02-11T15:21:52.759Z [INFO]: Notification created for user docente1: Temperature at 55°C
+2025-02-11T15:21:52.759Z [WARN]: No email to send notification for user docente1: Temperature at 55°C
+2025-02-11T15:21:52.763Z [INFO]: Notification created for user docente2: Temperature at 55°C
+2025-02-11T15:21:52.763Z [WARN]: No email to send notification for user docente2: Temperature at 55°C
+2025-02-11T15:21:52.990Z [INFO]: API call to /temperature/lastHour
+2025-02-11T15:22:08.794Z [INFO]: API call to /temperature/lastHour
+2025-02-11T15:22:16.293Z [INFO]: API call to /temperature/lastHour
+2025-02-11T15:23:39.500Z [INFO]: API call to /humidity/lastHour
+2025-02-11T15:23:40.839Z [INFO]: API call to /co2/lastHour
+2025-02-11T15:23:42.313Z [INFO]: API call to /access/chart
+2025-02-11T15:23:42.314Z [INFO]: API call to /access/table
+2025-02-11T15:23:47.399Z [INFO]: API call to /co2/lastHour
+2025-02-11T15:24:26.392Z [INFO]: API call to /temperature/lastHour
+2025-02-11T15:24:28.585Z [INFO]: API call to /humidity/lastHour
+2025-02-11T15:24:29.134Z [INFO]: API call to /co2/lastHour
+2025-02-11T15:24:29.935Z [INFO]: API call to /temperature/lastHour
+2025-02-11T15:24:36.900Z [INFO]: API call to /temperature/lastHour
+2025-02-11T15:24:37.736Z [INFO]: API call to /access/chart
+2025-02-11T15:24:37.736Z [INFO]: API call to /access/table
+2025-02-11T15:24:55.100Z [INFO]: API call to /humidity/lastHour

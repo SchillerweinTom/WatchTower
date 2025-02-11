@@ -1,9 +1,11 @@
 const express = require("express");
 const router = express.Router();
 const { PrismaClient } = require("@prisma/client");
+//const moment = require("moment-timezone");
 const prisma = new PrismaClient();
 const logger = require("../controllers/apiLogger");
-const jwt = require("jsonwebtoken");
+const { authenticateToken } = require("../controllers/ldap");
+
 
 //TEMPERATURE, HUMIDITY, CO2
 
@@ -51,16 +53,20 @@ async function getLastDayData(type, res) {
     const twentyFourHoursAgo = new Date(now);
     twentyFourHoursAgo.setHours(now.getHours() - 24);
 
+    console.log(twentyFourHoursAgo);
+
     const data = await prisma[type].findMany({
       where: { timestamp: { gte: twentyFourHoursAgo } },
       orderBy: { timestamp: "asc" },
     });
 
+    const hourlyData = [];
+
     if (!data || data.length === 0) {
-      return res.status(404).json({ message: `No ${type} data found` });
+      return res.json(hourlyData);
     }
 
-    const hourlyData = [];
+    
     for (let i = 0; i < 24; i++) {
       const hourTime = new Date(now);
       hourTime.setHours(now.getHours() - i, 0, 0, 0);
@@ -99,11 +105,13 @@ async function getLastWeekData(type, res) {
       orderBy: { timestamp: "asc" },
     });
 
-    if (!data || data.length === 0) {
-      return res.status(404).json({ message: `No ${type} data found` });
-    }
-
     const dailyData = {};
+    const formattedData = [];
+
+    if (!data || data.length === 0) {
+      return res.json(formattedData);
+    }
+    
     data.forEach((entry) => {
       const date = new Date(entry.timestamp).toISOString().split("T")[0];
       if (!dailyData[date] || entry.value > dailyData[date]) {
@@ -111,7 +119,6 @@ async function getLastWeekData(type, res) {
       }
     });
 
-    const formattedData = [];
     for (let i = 6; i >= 0; i--) {
       const date = new Date();
       date.setDate(now.getDate() - i);
@@ -234,29 +241,12 @@ router.get("/alerts", authenticateToken, async (req, res) => {
       orderBy: { timestamp: "desc" },
     });
 
-    const settings = await prisma.alert_setting.findUnique({
-      where: { user: req.user.username },
-    });
-
-    if (!settings) {
-      settings = {
-        temp_limit_max: 30,
-        temp_limit_min: 18,
-        hum_limit_max: 60,
-        hum_limit_min: 30,
-        co2_limit_max: 1000,
-      };
-    }
-
     const formattedNotifications = notifications.map((notification) => {
-      const { severity, message, details } = getSeverityAndMessage(notification, settings);
       return {
         ...notification,
         timestamp: `${formatDate(notification.timestamp)} ${formatTime(notification.timestamp)}`,
-        severity,
-        message,
-        type: notification.type.toLowerCase(),
-        details: details
+        severity: notification.severity.toLowerCase(),
+        type: notification.type.toLowerCase()
       };
       
     });
@@ -503,7 +493,7 @@ router.get("/access-attempts", authenticateToken, async (req, res) => {
     const change = accessAttemptsToday - accessAttemptsYesterday;
     const description =
       change !== 0
-        ? `${change > 0 ? "+" : ""}${change} access attempts today`
+        ? `${change > 0 ? "+" : ""}${change} access attempts from yesterday`
         : "No change in access attempts";
 
     logger.info(`API call to /access-attempts`);
@@ -547,23 +537,6 @@ router.get("/co2", authenticateToken, async (req, res) => {
   }
 });
 
-// Middleware
-function authenticateToken(req, res, next) {
-  const token = req.headers["authorization"];
-
-  if (!token) {
-    return res.status(403).json({ message: "Access denied" });
-  }
-
-  jwt.verify(token, process.env.SECRET_KEY, (err, user) => {
-    if (err) {
-      return res.status(403).json({ message: "Invalid token" });
-    }
-    req.user = user;
-    next();
-  });
-}
-
 // Helpers
 
 const isAuthorized = (req) => {
@@ -578,58 +551,6 @@ const formatDate = (date) => {
 
 const formatTime = (date) => {
   return date.toISOString().slice(11, 16);
-};
-
-const getSeverityAndMessage = (notification, user) => {
-  const type = notification.type.toLowerCase();
-
-  if (type.includes("access")) {
-    return {
-      severity: "high",
-      message: "Unauthorized access attempt",
-      details: "Someone entered the server room but didn't authenticate himselves."
-    };
-  } else {
-    const value = notification.value;
-
-    if (type.includes("temperature") && value !== null) {
-      if (value > user.temp_limit_max * 1.1) {
-        return { severity: "high", message: `Temperature at ${value}°C`, details: "The temperature is significantly higher than expected." };
-      }else if (value < user.temp_limit_min * 0.9) {
-        return { severity: "high", message: `Temperature at ${value}°C`, details: "The temperature is significantly lower than expected." };
-      } else if (value < user.temp_limit_max && value > user.temp_limit_min) {
-        return { severity: "low", message: "Temperature normalized", details: "The temperature returned to normal conditions." };
-      }
-      if(value > user.temp_limit_max){
-        return { severity: "medium", message: `Temperature at ${value}°C`, details: "The temperature is slightly higher than expected." };
-      }else{
-        return { severity: "medium", message: `Temperature at ${value}°C`, details: "The temperature is slightly lower than expected." };
-      }
-    }
-    if (type.includes("humidity") && value !== null) {
-      if (value > user.hum_limit_max * 1.1) {
-        return { severity: "high", message: `Humidity at ${value}%`, details: "The humidity is significantly higher than expected." };
-      }else if (value < user.hum_limit_min * 0.9) {
-        return { severity: "high", message: `Humidity at ${value}%`, details: "The humidity is significantly lower than expected." };
-      } else if (value < user.hum_limit_max && value > user.hum_limit_min) {
-        return { severity: "low", message: "Humidity normalized", details: "The humidity returned to normal conditions."  };
-      }
-      if(value > user.hum_limit_max){
-        return { severity: "medium", message: `Humidity at ${value}%`, details: "The humidity is slightly higher than expected." };
-      }else{
-        return { severity: "medium", message: `Humidity at ${value}%`, details: "The humidity is slightly lower than expected." };
-      }
-    }
-    if (type.includes("co2") && value !== null) {
-      if (value > user.co2_limit_max * 1.1) {
-        return { severity: "high", message: `CO2 at ${value}ppm`, details: "The CO2 is significantly higher than expected." };
-      } else if (value < user.co2_limit_max && value > 0) {
-        return { severity: "low", message: "CO2 normalized", details: "The CO2 returned to normal conditions." };
-      }
-      return { severity: "medium", message: `CO2 at ${value}ppm`, details: "The CO2 is slightly higher than expected." };
-    }
-  }
-  return { severity: "medium", message: `Other Alert`, details: "No more information." };
 };
 
 module.exports = router;

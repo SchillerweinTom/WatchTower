@@ -1,0 +1,9 @@
+Last 24 Hours Graph --> ?
+Last Week Graph --> ?
+AC control weekly graph --> ?
+
+DATE IS NOT WITH LEGAL HOUR
+
+Alert LOW --> Currently disabled
+
+Redo the ER diagramm

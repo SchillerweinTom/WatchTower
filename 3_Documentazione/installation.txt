@@ -29,7 +29,7 @@ modifca schema.prisma
 Eseguire migration:
 npx prisma migrate dev --name init
 
-
+$env:TZ = "Europe/Zurich"
 
 DB:
 
