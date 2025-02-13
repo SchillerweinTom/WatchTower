@@ -1,11 +1,8 @@
 const express = require("express");
 const router = express.Router();
-const { PrismaClient } = require("@prisma/client");
-//const moment = require("moment-timezone");
-const prisma = new PrismaClient();
-const logger = require("../controllers/apiLogger");
-const { authenticateToken } = require("../controllers/ldap");
-
+const logger = require("../utils/apiLogger");
+const { authenticateToken } = require("../middlewares/auth");
+const prisma = require("../config/db");
 
 //TEMPERATURE, HUMIDITY, CO2
 
@@ -53,20 +50,19 @@ async function getLastDayData(type, res) {
     const twentyFourHoursAgo = new Date(now);
     twentyFourHoursAgo.setHours(now.getHours() - 24);
 
-    console.log(twentyFourHoursAgo);
-
     const data = await prisma[type].findMany({
-      where: { timestamp: { gte: twentyFourHoursAgo } },
+      where: { timestamp: { gte: twentyFourHoursAgo.toISOString() } },
       orderBy: { timestamp: "asc" },
     });
 
     const hourlyData = [];
 
+    logger.info(`API call to /${type}/lastDay`);
+
     if (!data || data.length === 0) {
       return res.json(hourlyData);
     }
 
-    
     for (let i = 0; i < 24; i++) {
       const hourTime = new Date(now);
       hourTime.setHours(now.getHours() - i, 0, 0, 0);
@@ -84,7 +80,6 @@ async function getLastDayData(type, res) {
       });
     }
 
-    logger.info(`API call to /${type}/lastDay`);
     return res.json(hourlyData.reverse());
   } catch (error) {
     logger.error(`Error fetching last day ${type} records.`);
@@ -101,7 +96,7 @@ async function getLastWeekData(type, res) {
     sevenDaysAgo.setDate(now.getDate() - 7);
 
     const data = await prisma[type].findMany({
-      where: { timestamp: { gte: sevenDaysAgo } },
+      where: { timestamp: { gte: sevenDaysAgo.toISOString() } },
       orderBy: { timestamp: "asc" },
     });
 

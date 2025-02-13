@@ -1,5 +1,4 @@
 const ldap = require("ldapjs");
-const jwt = require("jsonwebtoken");
 
 function authenticate(username, password) {
   return new Promise((resolve, reject) => {
@@ -85,25 +84,7 @@ function authenticate(username, password) {
   });
 }
 
-// Middleware
-function authenticateToken(req, res, next) {
-  const token = req.headers["authorization"];
-
-  if (!token) {
-    return res.status(403).json({ message: "Access denied" });
-  }
-
-  jwt.verify(token, process.env.SECRET_KEY, (err, user) => {
-    if (err) {
-      return res.status(403).json({ message: "Invalid token" });
-    }
-    req.user = user;
-    next();
-  });
-}
-
-//Helpers
-async function fetchLdapUsers(groups) {
+function fetchLdapUsers(groups) {
   return new Promise((resolve, reject) => {
     const client = ldap.createClient({ url: process.env.LDAP_SERVER_URL });
 
@@ -174,4 +155,4 @@ async function fetchLdapUsers(groups) {
   });
 }
 
-module.exports = { authenticate, authenticateToken, fetchLdapUsers };
+module.exports = { authenticate, fetchLdapUsers };

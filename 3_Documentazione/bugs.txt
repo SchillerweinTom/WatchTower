@@ -1,8 +1,7 @@
-Last 24 Hours Graph --> ?
-Last Week Graph --> ?
-AC control weekly graph --> ?
+Date Fixed, if not use this:
 
-DATE IS NOT WITH LEGAL HOUR
+let d = new Date() ;
+d.setTime( d.getTime() - d.getTimezoneOffset()*60*1000 );
 
 Alert LOW --> Currently disabled
 

@@ -17,15 +17,15 @@
                             <TableHead>Name</TableHead>
                             <TableHead>Time</TableHead>
                             <TableHead>Motive</TableHead>
-                            <TableHead>Status</TableHead>
+                            <TableHead class="text-center">Status</TableHead>
                         </TableRow>
                     </TableHeader>
                     <TableBody>
                         <TableRow v-for="event in accessList" :key="event.id">
-                            <TableCell class="font-medium">{{ event.name }}</TableCell>
+                            <TableCell class="font-medium">{{ event.name || "-" }}</TableCell>
                             <TableCell>{{ event.time }}</TableCell>
-                            <TableCell>{{ event.motive }}</TableCell>
-                            <TableCell>
+                            <TableCell>{{ event.motive || "-" }}</TableCell>
+                            <TableCell class="text-center">
                                 <Badge
                                     :class="event.authorized ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'"
                                     variant="outline">

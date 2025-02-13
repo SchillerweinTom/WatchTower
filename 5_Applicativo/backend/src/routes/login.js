@@ -1,7 +1,7 @@
 require("dotenv").config();
 const express = require("express");
 const { authenticate } = require("../controllers/ldap");
-const logger = require("../controllers/authLogger");
+const logger = require("../utils/authLogger");
 const jwt = require("jsonwebtoken");
 
 const login = express.Router();

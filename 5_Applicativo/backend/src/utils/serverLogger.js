@@ -4,7 +4,14 @@ const path = require("path");
 const logger = winston.createLogger({
   level: "info",
   format: winston.format.combine(
-    winston.format.timestamp(),
+    winston.format.timestamp({
+      format: () => {
+        const now = new Date();
+        return now.toLocaleString("en-GB", { 
+          timeZone: "Europe/Zurich" 
+        }).replace(/\//g, '-');
+      }
+    }),
     winston.format.printf(({ timestamp, level, message }) => {
       return `${timestamp} [${level.toUpperCase()}]: ${message}`;
     })
