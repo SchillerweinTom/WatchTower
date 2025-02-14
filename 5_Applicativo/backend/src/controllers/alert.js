@@ -6,8 +6,6 @@ const prisma = require("../config/db");
 async function createNotifications(type, value, timestamp) {
     try {
       const ldapUsers = await fetchLdapUsers(["CN=Docenti", "CN=Sistemisti"]);
-  
-        console.log(ldapUsers);
 
       for (const user of ldapUsers) {
         let settings = await prisma.alert_setting.findUnique({

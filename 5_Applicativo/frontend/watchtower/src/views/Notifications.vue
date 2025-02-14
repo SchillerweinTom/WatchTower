@@ -69,12 +69,10 @@
                     </Badge>
                 </div>
                 <DialogFooter>
-                    <!--<Button @click="isDialogOpen = false">Close</Button>-->
                     <Button @click="confirmResolve = true" variant="destructive">Resolved</Button>
                 </DialogFooter>
             </DialogContent>
         </Dialog>
-        <!-- Confirmation Dialog -->
         <Dialog v-model:open="confirmResolve">
             <DialogContent>
                 <DialogHeader>
