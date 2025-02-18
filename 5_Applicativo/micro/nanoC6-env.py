@@ -2,7 +2,7 @@ import os, sys, io
 import M5
 from M5 import *
 import network
-#import umqtt.simple as mqtt
+from m5espnow import M5ESPNow
 from hardware import I2C
 from hardware import Pin
 from unit import ENVUnit
@@ -11,14 +11,10 @@ import time
 i2c0 = None
 env3_0 = None
 client = None
-
-WIFI_SSID = "BLACKNET-DEVICES"
-WIFI_PASSWORD = "TDAauynX8BAKa)^"
-MQTT_BROKER = "test.mosquitto.org"
-MQTT_TOPIC = "nanoC6/env_data"
+espnow_0 = None
 
 def setup():
-    global i2c0, env3_0, client
+    global i2c0, env3_0, client, espnow_0
 
     M5.begin()
 
@@ -33,20 +29,12 @@ def setup():
 
     env3_0 = ENVUnit(i2c=i2c0, type=3)
 
-    #wifi = network.WLAN(network.STA_IF)
-    #wifi.active(True)
-    #wifi.connect(WIFI_SSID, WIFI_PASSWORD)
-    
-    #print("Connecting to Wi-Fi...")
-    #while not wifi.isconnected():
-    #    time.sleep(1)
-    #print("Connected! IP Address:", wifi.ifconfig()[0])
+    espnow_0 = M5ESPNow(1)
+    espnow_0.set_add_peer('4827E266A618', 1, 0, False)
 
-    #client = mqtt.MQTTClient("NanoC6", MQTT_BROKER)
-    #client.connect()
 
 def loop():
-    global env3_0, client
+    global env3_0, client, espnow_0
 
     if env3_0 is None:
         print("ENV sensor not initialized! Skipping loop.")
@@ -60,10 +48,11 @@ def loop():
     pressure = env3_0.read_pressure()
 
     data = '{"temperature": %.2f, "humidity": %.2f, "pressure": %.2f}' % (temp, humidity, pressure)
-    #client.publish(MQTT_TOPIC, data)
+    espnow_0.send_data(1, data)
 
     print("Sent:", data)
-    time.sleep(5)
+
+    time.sleep(30)
 
 if __name__ == '__main__':
     try:

@@ -1,0 +1,5 @@
+CoreS3 -> CoreS3
+NanoC6-1 -> ENV 3
+NanoC6-2 -> Gas/Co2 -> Ora LED
+NanoC6-3 -> PIR sensor
+NanoC6-4 -> RFID e Tastiera
