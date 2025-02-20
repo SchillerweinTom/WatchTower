@@ -5,6 +5,7 @@ from hardware import I2C
 from hardware import Pin
 from unit import ENVUnit
 from unit import RGBUnit
+from unit import TVOCUnit
 import time
 from m5espnow import M5ESPNow
 import json
@@ -24,6 +25,7 @@ hub_0 = None
 espnow_0 = None
 espnow_mac = None
 espnow_data = None
+tvoc_0 = None
 co2 = 0
 
 def espnow_recv_callback(espnow_obj):
@@ -54,31 +56,33 @@ def espnow_recv_callback(espnow_obj):
 
 
 def setup():
-  global label0, label1, title0, label2, label3, label4, label5, i2c0, rgb_0, hub_0, espnow_0, rect0
+  global label0, label1, title0, label2, label3, label4, label5, i2c0, rgb_0, hub_0, espnow_0, rect0, tvoc_0
 
   M5.begin()
   Widgets.fillScreen(0x222222)
   label0 = Widgets.Label("Temperature: ", 39, 51, 1.0, 0xffffff, 0x222222, Widgets.FONTS.DejaVu18)
-  label1 = Widgets.Label("", 176, 52, 1.0, 0xffffff, 0x222222, Widgets.FONTS.DejaVu18)
+  label1 = Widgets.Label("0", 176, 52, 1.0, 0xffffff, 0x222222, Widgets.FONTS.DejaVu18)
   title0 = Widgets.Title("Enviroment data", 3, 0xffffff, 0x008fff, Widgets.FONTS.DejaVu18)
   label2 = Widgets.Label("Humidity:", 39, 80, 1.0, 0xffffff, 0x222222, Widgets.FONTS.DejaVu18)
   label3 = Widgets.Label("Co2:", 39, 109, 1.0, 0xffffff, 0x222222, Widgets.FONTS.DejaVu18)
-  label4 = Widgets.Label("", 140, 79, 1.0, 0xffffff, 0x222222, Widgets.FONTS.DejaVu18)
-  label5 = Widgets.Label("", 142, 108, 1.0, 0xffffff, 0x222222, Widgets.FONTS.DejaVu18)
+  label4 = Widgets.Label("0", 140, 79, 1.0, 0xffffff, 0x222222, Widgets.FONTS.DejaVu18)
+  label5 = Widgets.Label("0", 90, 109, 1.0, 0xffffff, 0x222222, Widgets.FONTS.DejaVu18)
   label6 = Widgets.Label("Person detected:", 39, 172, 1.0, 0xffffff, 0x222222, Widgets.FONTS.DejaVu18)
   rect0 = Widgets.Rectangle(210, 167, 30, 30, 0xff0000, 0xff0000)
 
   i2c0 = I2C(0, scl=Pin(1), sda=Pin(2), freq=100000)
   rgb_0 = RGBUnit((8, 9), 3)
 
+  tvoc_0 = TVOCUnit(i2c0)
+
   espnow_0 = M5ESPNow(1)
   espnow_0.set_irq_callback(espnow_recv_callback)
 
 
 def loop():
-  global co2
+  global co2, tvoc_0
   M5.update()
-
+  co2 = tvoc_0.co2eq()
   label5.setText(str(co2))
 
   if co2 < 800:
