@@ -7,18 +7,22 @@ async function getLastHourData(type, res) {
         orderBy: { timestamp: "desc" },
         take: 12,
       });
+
+      const lastHourData = [];
+
+      logger.info(`API call to /${type}/lastHour`);
   
       if (!data || data.length === 0) {
-        return res.status(404).json({ message: `No ${type} data found` });
+        return res.json(lastHourData);
       }
   
-      const formattedData = data.map((item) => ({
+      lastHourData = data.map((item) => ({
         time: item.timestamp.toISOString().slice(11, 16),
         value: item.value,
       }));
   
-      logger.info(`API call to /${type}/lastHour`);
-      return res.json(formattedData.reverse());
+      
+      return res.json(lastHourData.reverse());
     } catch (error) {
       logger.error(`Error fetching last hour ${type} records.`);
       return res

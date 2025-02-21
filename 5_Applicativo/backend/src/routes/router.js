@@ -295,14 +295,23 @@ router.get("/temperature", authenticateToken, async (req, res) => {
       orderBy: { timestamp: "desc" },
     });
 
+    if (!temperatureData) {
+      logger.info(`API call to /temperature - No temperature data found`);
+      return res.json({
+        value: "-",
+        change: 0,
+        description: "No data available",
+      });
+    }
+
     const previousTemperatureData = await prisma.temperature.findFirst({
-      where: { timestamp: { lt: temperatureData.timestamp } },
-      orderBy: { timestamp: "desc" },
+        where: { timestamp: { lt: temperatureData.timestamp } },
+        orderBy: { timestamp: "desc" },
     });
 
     const change = previousTemperatureData
-      ? temperatureData.value - previousTemperatureData.value
-      : 0;
+      ? temperatureData.value - previousTemperatureData.value : 0;
+
     const description = previousTemperatureData
       ? `${change > 0 ? "+" : ""}${change.toFixed(1)}°C from last hour`
       : "No previous data available";
@@ -315,7 +324,7 @@ router.get("/temperature", authenticateToken, async (req, res) => {
       description: description,
     });
   } catch (error) {
-    logger.error("Error fetching temperature data.");
+    logger.error(`Error fetching temperature data.`);
     res.status(500).json({ message: "Error fetching temperature data" });
   }
 });
@@ -325,6 +334,15 @@ router.get("/humidity", authenticateToken, async (req, res) => {
     const humidityData = await prisma.humidity.findFirst({
       orderBy: { timestamp: "desc" },
     });
+
+    if (!humidityData) {
+      logger.info(`API call to /humidity - No humidity data found`);
+      return res.json({
+        value: "-",
+        change: 0,
+        description: "No data available",
+      });
+    }
 
     const previousHumidityData = await prisma.humidity.findFirst({
       where: { timestamp: { lt: humidityData.timestamp } },
@@ -392,6 +410,15 @@ router.get("/co2", authenticateToken, async (req, res) => {
     const co2Data = await prisma.co2.findFirst({
       orderBy: { timestamp: "desc" },
     });
+
+    if (!co2Data) {
+      logger.info(`API call to /co2 - No co2 data found`);
+      return res.json({
+        value: "-",
+        change: 0,
+        description: "No data available",
+      });
+    }
 
     const previousCo2Data = await prisma.co2.findFirst({
       where: { timestamp: { lt: co2Data.timestamp } },

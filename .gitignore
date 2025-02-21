@@ -7,7 +7,7 @@
 #Ignora gli errori
 errors.log
 
-#Ignora i file di environment che contengono 
+#Ignora i file di environment
 .env
 *.env
 
@@ -21,3 +21,5 @@ errors.log
 *.cert
 
 .DS_Store
+
+docker-compose.yml

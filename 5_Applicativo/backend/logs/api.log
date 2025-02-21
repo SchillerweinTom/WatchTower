@@ -228,3 +228,5 @@
 14-02-2025, 16:17:28 [INFO]: API call to /humidity
 14-02-2025, 16:17:28 [INFO]: API call to /access-attempts
 14-02-2025, 16:17:28 [INFO]: API call to /co2
+21-02-2025, 11:07:18 [ERROR]: Error fetching temperature data.
+21-02-2025, 11:09:03 [ERROR]: Error fetching temperature data.
