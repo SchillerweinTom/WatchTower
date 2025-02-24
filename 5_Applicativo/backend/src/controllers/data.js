@@ -8,7 +8,7 @@ async function getLastHourData(type, res) {
         take: 12,
       });
 
-      const lastHourData = [];
+      let lastHourData = [];
 
       logger.info(`API call to /${type}/lastHour`);
   
@@ -24,7 +24,7 @@ async function getLastHourData(type, res) {
       
       return res.json(lastHourData.reverse());
     } catch (error) {
-      logger.error(`Error fetching last hour ${type} records.`);
+      logger.error(`Error fetching last hour ${type} records. ${error}`);
       return res
         .status(500)
         .json({ message: `Error fetching last hour ${type} records.` });
@@ -42,7 +42,7 @@ async function getLastHourData(type, res) {
         orderBy: { timestamp: "asc" },
       });
   
-      const hourlyData = [];
+      let hourlyData = [];
   
       logger.info(`API call to /${type}/lastDay`);
   
@@ -87,8 +87,8 @@ async function getLastHourData(type, res) {
         orderBy: { timestamp: "asc" },
       });
   
-      const dailyData = {};
-      const formattedData = [];
+      let dailyData = {};
+      let formattedData = [];
   
       if (!data || data.length === 0) {
         return res.json(formattedData);
