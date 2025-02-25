@@ -58,7 +58,7 @@ def espnow_recv_callback(espnow_obj):
           http_req2 = requests2.post(server_url + "humidity", json={'value':humidity,'timestamp':get_timestamp()}, headers={'Content-Type': 'application/json','Authorization':token})
           print("Humidity and temperature request succefull!")
         except Exception as e:
-          print(f"Error sending post request to: {server_url}, {e}")
+          print(f"Error sending post request to: {server_url}temperature or {server_url}humidity")
 
     except Exception as e:
       print("Error reading evn data:", e)
@@ -72,6 +72,7 @@ def espnow_recv_callback(espnow_obj):
       print("Error setting color:", e)
   elif espnow_mac == b'@L\xca[\x1f8':
     print("Token: ", espnow_data.decode())
+    #do action with it ?
 
 
 def setup():
