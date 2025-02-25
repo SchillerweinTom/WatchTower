@@ -7,22 +7,18 @@ RUN npm install
 
 COPY . .
 
-ARG VITE_BASE_URL_API
-ENV VITE_BASE_URL_API=${VITE_BASE_URL_API}
+#ARG VITE_BASE_URL_API
+#ENV VITE_BASE_URL_API=${VITE_BASE_URL_API}
+ENV VITE_BASE_URL_API="http://watchtower-api.caprover.samt.local:3333"
 
 RUN npm run build
 
 FROM httpd:latest
-#FROM nginx:latest
 
 COPY --from=build /app/dist/ /usr/local/apache2/htdocs/
 COPY public/new-apache.conf /usr/local/apache2/conf/httpd.conf
 COPY public/.htaccess /usr/local/apache2/htdocs/
 
-#COPY --from=build /app/dist/ /usr/share/nginx/html/
-#COPY public/new-nginx.conf /etc/nginx/nginx.conf
-
 EXPOSE 80
 
 CMD ["httpd", "-D", "FOREGROUND"]
-#CMD ["nginx", "-g", "daemon off;"]

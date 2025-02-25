@@ -72,3 +72,9 @@ model alert_setting {
   temp_limit_min Float
   hum_limit_min Float
 }
+
+model badge_link {
+  id        Int      @id @default(autoincrement())
+  user     	String   @unique
+  token     String   @unique
+}

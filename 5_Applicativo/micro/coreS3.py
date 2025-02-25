@@ -33,13 +33,12 @@ wlan = None
 co2 = 0
 ssid = "BLACKNET-DEVICES"
 wifi_password="TDAauynX8BAKa)^"
-server_url = "http://192.168.56.10:3000/api/co2"
-http_req = None
-token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InNpc3RlbWlzdGExIiwicm9sZSI6InNpc3RlbWlzdGEiLCJpYXQiOjE3NDAzODM5NDAsImV4cCI6MTc0MDQwNTU0MH0.HatNK3eT3I1mtsoyUz27QfPcBgYwwE3G5QoGEwZJDtg"
+server_url = "http://10.4.0.21:3333/api/"
+token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkNvcmVTMyBDb250cm9sbGVyIn0.baPpMzEDgthJw_dVWoTuqGVz_gZ_kzIm26r8rw7Q70g"
 count = 0
 
 def espnow_recv_callback(espnow_obj):
-  global espnow_0, espnow_mac, espnow_data, label1, label4, label5, rgb_0, rect0
+  global espnow_0, espnow_mac, espnow_data, label1, label4, label5, rgb_0, rect0, wlan, server_url
   
   espnow_mac, espnow_data = espnow_obj.recv_data()
 
@@ -53,6 +52,14 @@ def espnow_recv_callback(espnow_obj):
       label1.setText(str(temp))
       label4.setText(str(humidity))
 
+      if wlan.isconnected():
+        try:
+          http_req1 = requests2.post(server_url + "temperature", json={'value':temp,'timestamp':get_timestamp()}, headers={'Content-Type': 'application/json','Authorization':token})
+          http_req2 = requests2.post(server_url + "humidity", json={'value':humidity,'timestamp':get_timestamp()}, headers={'Content-Type': 'application/json','Authorization':token})
+          print("Humidity and temperature request succefull!")
+        except Exception as e:
+          print(f"Error sending post request to: {server_url}, {e}")
+
     except Exception as e:
       print("Error reading evn data:", e)
   elif espnow_mac == b'@L\xca[\x1c\x80':
@@ -63,6 +70,8 @@ def espnow_recv_callback(espnow_obj):
         rect0.setColor(color=0xff0000, fill_c=0xff0000)
     except Exception as e:
       print("Error setting color:", e)
+  elif espnow_mac == b'@L\xca[\x1f8':
+    print("Token: ", espnow_data.decode())
 
 
 def setup():
@@ -94,7 +103,7 @@ def setup():
 
 
 def loop():
-  global co2, tvoc_0, wlan, http_req, token, server_url, count
+  global co2, tvoc_0, wlan, token, server_url, count
   M5.update()
   co2 = tvoc_0.co2eq()
   label5.setText(str(co2))
@@ -110,11 +119,13 @@ def loop():
   rgb_0.set_color(1, color)
   rgb_0.set_color(2, color)
  
-  if wlan.isconnected() and count % 6 == 0:
+  if wlan.isconnected() and count % 60 == 0:
     try:
-      http_req = requests2.post(server_url, json={'value':co2,'timestamp':time.localtime()}, headers={'Content-Type': 'application/json','Authorization':token})
-    except Exception:
-      print("Error POST /api/co2")
+      http_req = requests2.post(server_url + "co2", json={'value':co2,'timestamp':get_timestamp()}, headers={'Content-Type': 'application/json','Authorization':token})
+      count = 0
+      print("Co2 request succefull!")
+    except Exception as e:
+      print(f"Error sending post request to: {server_url}co2")
 
   count += 1
   time.sleep(5)
@@ -132,20 +143,27 @@ def connect_wifi():
 
   print("Connected to Wi-Fi: ", ssid)
 
-def sync_ntp(max_retries=5, delay=2):
-    ntptime.host = "pool.ntp.org"
-    for attempt in range(max_retries):
-        try:
-            print(f"Attempt {attempt + 1} to sync NTP...")
-            ntptime.settime()
-            print("NTP time synced", time.localtime())
-            return
-        except OSError as e:
-            print(f"NTP sync failed: {e}, retrying in {delay} sec...")
-            time.sleep(delay)
-    
-    print("NTP sync failed after multiple attempts.")
 
+def sync_ntp(max_retries=5, delay=2):
+  ntptime.host = "pool.ntp.org"
+  for attempt in range(max_retries):
+    try:
+      print(f"Attempt {attempt + 1} to sync NTP...")
+      ntptime.settime()
+      print("NTP time synced", time.localtime())
+      return
+    except OSError as e:
+      print(f"NTP sync failed: {e}, retrying in {delay} sec...")
+      time.sleep(delay)
+    
+  print("NTP sync failed after multiple attempts.")
+
+def get_timestamp():
+  tm = time.localtime()
+  timestamp = "{}-{:02d}-{:02d}T{:02d}:{:02d}:{:02d}Z".format(
+    tm[0], tm[1], tm[2], tm[3], tm[4], tm[5]
+  )
+  return timestamp
 
 if __name__ == '__main__':
   try:

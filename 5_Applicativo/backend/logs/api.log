@@ -230,3 +230,17 @@
 14-02-2025, 16:17:28 [INFO]: API call to /co2
 21-02-2025, 11:07:18 [ERROR]: Error fetching temperature data.
 21-02-2025, 11:09:03 [ERROR]: Error fetching temperature data.
+25-02-2025, 09:07:39 [INFO]: API call to /temperature
+25-02-2025, 09:07:39 [INFO]: API call to /humidity
+25-02-2025, 09:07:39 [INFO]: API call to /access-attempts
+25-02-2025, 09:07:39 [INFO]: API call to /co2
+25-02-2025, 09:07:41 [INFO]: API call to /alerts
+25-02-2025, 14:08:26 [ERROR]: Error fetching temperature data.
+25-02-2025, 14:08:31 [INFO]: API call to /temperature
+25-02-2025, 14:08:31 [INFO]: API call to /humidity
+25-02-2025, 14:08:31 [INFO]: API call to /access-attempts
+25-02-2025, 14:08:31 [INFO]: API call to /co2
+25-02-2025, 14:08:34 [INFO]: API call to /alerts
+25-02-2025, 14:08:35 [INFO]: API call to /alert-settings
+25-02-2025, 14:08:39 [INFO]: Alert settings saved for sistemista1
+25-02-2025, 14:08:40 [INFO]: API call to /alert-settings

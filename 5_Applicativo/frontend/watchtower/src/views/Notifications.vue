@@ -128,7 +128,10 @@ const fetchNotifications = async () => {
 const filteredNotifications = computed(() => {
     return activeTab.value === "all"
         ? notifications.value
-        : notifications.value.filter((n) => n.type === activeTab.value);
+        : notifications.value.filter((n) => {
+            const normalizedType = n.type.toLowerCase() === "co2" ? "other" : n.type;
+            return normalizedType === activeTab.value;
+        });
 });
 
 const openDialog = (notification) => {

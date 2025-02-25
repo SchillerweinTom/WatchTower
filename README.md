@@ -10,7 +10,7 @@ Il sistema è progettato per fornire un monitoraggio continuo e consentire l'imp
   - Temperatura
   - Umidità
   - Gas
-  - Accessi
+  - Accessi fisici
   
 - **Dashboard interattiva** per la visualizzazione dei dati raccolti dai sensori.
 - **Notifiche e allerte** via e-mail per eventi
@@ -18,13 +18,21 @@ Il sistema è progettato per fornire un monitoraggio continuo e consentire l'imp
 ## Architettura del Sistema
 
 1. **M5Stack**: Piattaforma hardware principale, utilizzata per raccogliere i dati dai sensori e inviarli al server.
-2. **Sensori**:
-   - 
-3. **Server Backend**:
+2. **Microcontrollori**
+   - CoreS3
+   - NanoC6
+1. **Sensori**:
+   - ENV |||
+   - RFID 2
+   - RGB LED
+   - Tvoc/eCO2
+   - PIR
+   - CardKB
+1. **Server Backend**:
    - Node JS
-4. **Database**:
+2. **Database**:
    - MySQL con integrazione Prisma con Node JS
-5. **Frontend Dashboard**:
+3. **Frontend Dashboard**:
    - Vue.JS 3 con Tailwind CSS e Shadcn for Vue
    
 ## Setup del Progetto
@@ -33,8 +41,9 @@ Il sistema è progettato per fornire un monitoraggio continuo e consentire l'imp
 
 - **Hardware**:
   - M5Stack
-  - Sensori di temperatura, umidità, gas e accesso
+  - Sensori di temperatura, umidità, gas, accesso, mini keyboard, led e rfid.
 - **Software**:
-  - 
+  - Node JS
 
 ### Installazione
+...
