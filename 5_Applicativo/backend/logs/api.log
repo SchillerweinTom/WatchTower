@@ -244,3 +244,332 @@
 25-02-2025, 14:08:35 [INFO]: API call to /alert-settings
 25-02-2025, 14:08:39 [INFO]: Alert settings saved for sistemista1
 25-02-2025, 14:08:40 [INFO]: API call to /alert-settings
+27-02-2025, 09:17:44 [ERROR]: Error fetching temperature data.
+27-02-2025, 09:17:48 [INFO]: API call to /temperature
+27-02-2025, 09:17:48 [INFO]: API call to /humidity
+27-02-2025, 09:17:48 [INFO]: API call to /access-attempts
+27-02-2025, 09:17:48 [INFO]: API call to /co2
+27-02-2025, 09:19:52 [INFO]: API call to /temperature
+27-02-2025, 09:19:52 [INFO]: API call to /humidity
+27-02-2025, 09:19:52 [INFO]: API call to /access-attempts
+27-02-2025, 09:19:52 [INFO]: API call to /co2
+27-02-2025, 09:25:31 [INFO]: API call to /co2/lastHour
+27-02-2025, 09:26:09 [INFO]: API call to /temperature
+27-02-2025, 09:26:09 [INFO]: API call to /humidity
+27-02-2025, 09:26:09 [INFO]: API call to /access-attempts
+27-02-2025, 09:26:09 [INFO]: API call to /co2
+27-02-2025, 09:26:11 [INFO]: API call to /temperature
+27-02-2025, 09:26:11 [INFO]: API call to /humidity
+27-02-2025, 09:26:11 [INFO]: API call to /access-attempts
+27-02-2025, 09:26:11 [INFO]: API call to /co2
+27-02-2025, 09:26:27 [INFO]: API call to /temperature
+27-02-2025, 09:26:27 [INFO]: API call to /humidity
+27-02-2025, 09:26:27 [INFO]: API call to /access-attempts
+27-02-2025, 09:26:27 [INFO]: API call to /co2
+27-02-2025, 09:26:29 [INFO]: API call to /temperature
+27-02-2025, 09:26:29 [INFO]: API call to /humidity
+27-02-2025, 09:26:29 [INFO]: API call to /access-attempts
+27-02-2025, 09:26:29 [INFO]: API call to /co2
+27-02-2025, 09:28:18 [INFO]: API call to /temperature
+27-02-2025, 09:28:18 [INFO]: API call to /humidity
+27-02-2025, 09:28:18 [INFO]: API call to /access-attempts
+27-02-2025, 09:28:18 [INFO]: API call to /co2
+27-02-2025, 09:28:57 [INFO]: API call to /temperature
+27-02-2025, 09:28:57 [INFO]: API call to /humidity
+27-02-2025, 09:28:57 [INFO]: API call to /access-attempts
+27-02-2025, 09:28:57 [INFO]: API call to /co2
+27-02-2025, 09:29:24 [INFO]: API call to /temperature
+27-02-2025, 09:29:24 [INFO]: API call to /humidity
+27-02-2025, 09:29:24 [INFO]: API call to /access-attempts
+27-02-2025, 09:29:24 [INFO]: API call to /co2
+27-02-2025, 09:31:16 [INFO]: API call to /temperature
+27-02-2025, 09:31:16 [INFO]: API call to /humidity
+27-02-2025, 09:31:16 [INFO]: API call to /access-attempts
+27-02-2025, 09:31:16 [INFO]: API call to /co2
+27-02-2025, 09:32:28 [INFO]: API call to /temperature
+27-02-2025, 09:32:28 [INFO]: API call to /humidity
+27-02-2025, 09:32:28 [INFO]: API call to /access-attempts
+27-02-2025, 09:32:28 [INFO]: API call to /co2
+27-02-2025, 09:34:05 [INFO]: API call to /temperature
+27-02-2025, 09:34:05 [INFO]: API call to /humidity
+27-02-2025, 09:34:05 [INFO]: API call to /access-attempts
+27-02-2025, 09:34:05 [INFO]: API call to /co2
+27-02-2025, 09:35:29 [INFO]: API call to /temperature
+27-02-2025, 09:35:29 [INFO]: API call to /humidity
+27-02-2025, 09:35:29 [INFO]: API call to /access-attempts
+27-02-2025, 09:35:29 [INFO]: API call to /co2
+27-02-2025, 09:35:29 [INFO]: API call to /temperature
+27-02-2025, 09:35:29 [INFO]: API call to /humidity
+27-02-2025, 09:35:29 [INFO]: API call to /access-attempts
+27-02-2025, 09:35:29 [INFO]: API call to /co2
+27-02-2025, 09:37:27 [INFO]: API call to /temperature
+27-02-2025, 09:37:27 [INFO]: API call to /humidity
+27-02-2025, 09:37:27 [INFO]: API call to /access-attempts
+27-02-2025, 09:37:27 [INFO]: API call to /co2
+27-02-2025, 09:37:54 [INFO]: API call to /temperature
+27-02-2025, 09:37:54 [INFO]: API call to /humidity
+27-02-2025, 09:37:54 [INFO]: API call to /access-attempts
+27-02-2025, 09:37:54 [INFO]: API call to /co2
+27-02-2025, 09:38:05 [INFO]: API call to /temperature
+27-02-2025, 09:38:05 [INFO]: API call to /humidity
+27-02-2025, 09:38:05 [INFO]: API call to /access-attempts
+27-02-2025, 09:38:05 [INFO]: API call to /co2
+27-02-2025, 09:38:32 [INFO]: API call to /temperature
+27-02-2025, 09:38:32 [INFO]: API call to /humidity
+27-02-2025, 09:38:32 [INFO]: API call to /access-attempts
+27-02-2025, 09:38:32 [INFO]: API call to /co2
+27-02-2025, 09:38:47 [INFO]: API call to /temperature
+27-02-2025, 09:38:47 [INFO]: API call to /humidity
+27-02-2025, 09:38:47 [INFO]: API call to /access-attempts
+27-02-2025, 09:38:47 [INFO]: API call to /co2
+27-02-2025, 09:39:13 [INFO]: API call to /temperature
+27-02-2025, 09:39:13 [INFO]: API call to /humidity
+27-02-2025, 09:39:13 [INFO]: API call to /access-attempts
+27-02-2025, 09:39:13 [INFO]: API call to /co2
+27-02-2025, 09:39:15 [INFO]: API call to /temperature
+27-02-2025, 09:39:15 [INFO]: API call to /humidity
+27-02-2025, 09:39:15 [INFO]: API call to /access-attempts
+27-02-2025, 09:39:15 [INFO]: API call to /co2
+27-02-2025, 09:39:31 [INFO]: API call to /temperature
+27-02-2025, 09:39:31 [INFO]: API call to /humidity
+27-02-2025, 09:39:31 [INFO]: API call to /access-attempts
+27-02-2025, 09:39:31 [INFO]: API call to /co2
+27-02-2025, 09:39:56 [INFO]: API call to /temperature
+27-02-2025, 09:39:56 [INFO]: API call to /humidity
+27-02-2025, 09:39:56 [INFO]: API call to /access-attempts
+27-02-2025, 09:39:56 [INFO]: API call to /co2
+27-02-2025, 09:39:58 [INFO]: API call to /temperature
+27-02-2025, 09:39:58 [INFO]: API call to /humidity
+27-02-2025, 09:39:58 [INFO]: API call to /access-attempts
+27-02-2025, 09:39:58 [INFO]: API call to /co2
+27-02-2025, 09:40:08 [INFO]: API call to /alerts
+27-02-2025, 09:40:09 [INFO]: API call to /alert-settings
+27-02-2025, 09:40:16 [INFO]: API call to /co2/lastHour
+27-02-2025, 09:40:17 [INFO]: API call to /temperature
+27-02-2025, 09:40:17 [INFO]: API call to /humidity
+27-02-2025, 09:40:17 [INFO]: API call to /access-attempts
+27-02-2025, 09:40:17 [INFO]: API call to /co2
+27-02-2025, 09:41:23 [INFO]: API call to /temperature
+27-02-2025, 09:41:23 [INFO]: API call to /humidity
+27-02-2025, 09:41:23 [INFO]: API call to /access-attempts
+27-02-2025, 09:41:23 [INFO]: API call to /co2
+27-02-2025, 09:44:23 [INFO]: API call to /temperature
+27-02-2025, 09:44:23 [INFO]: API call to /humidity
+27-02-2025, 09:44:23 [INFO]: API call to /access-attempts
+27-02-2025, 09:44:23 [INFO]: API call to /co2
+27-02-2025, 09:44:24 [INFO]: API call to /temperature
+27-02-2025, 09:44:24 [INFO]: API call to /humidity
+27-02-2025, 09:44:24 [INFO]: API call to /access-attempts
+27-02-2025, 09:44:24 [INFO]: API call to /co2
+27-02-2025, 09:44:34 [INFO]: API call to /temperature
+27-02-2025, 09:44:34 [INFO]: API call to /humidity
+27-02-2025, 09:44:34 [INFO]: API call to /access-attempts
+27-02-2025, 09:44:34 [INFO]: API call to /co2
+27-02-2025, 09:49:59 [INFO]: API call to /temperature
+27-02-2025, 09:49:59 [INFO]: API call to /humidity
+27-02-2025, 09:49:59 [INFO]: API call to /access-attempts
+27-02-2025, 09:49:59 [INFO]: API call to /co2
+27-02-2025, 09:52:13 [INFO]: API call to /temperature
+27-02-2025, 09:52:13 [INFO]: API call to /humidity
+27-02-2025, 09:52:13 [INFO]: API call to /access-attempts
+27-02-2025, 09:52:13 [INFO]: API call to /co2
+27-02-2025, 09:52:15 [INFO]: API call to /temperature
+27-02-2025, 09:52:15 [INFO]: API call to /humidity
+27-02-2025, 09:52:15 [INFO]: API call to /access-attempts
+27-02-2025, 09:52:15 [INFO]: API call to /co2
+27-02-2025, 09:53:54 [INFO]: API call to /temperature
+27-02-2025, 09:53:54 [INFO]: API call to /humidity
+27-02-2025, 09:53:54 [INFO]: API call to /access-attempts
+27-02-2025, 09:53:54 [INFO]: API call to /co2
+27-02-2025, 09:53:57 [INFO]: API call to /temperature
+27-02-2025, 09:53:57 [INFO]: API call to /humidity
+27-02-2025, 09:53:57 [INFO]: API call to /access-attempts
+27-02-2025, 09:53:57 [INFO]: API call to /co2
+27-02-2025, 09:54:57 [INFO]: API call to /temperature
+27-02-2025, 09:54:57 [INFO]: API call to /humidity
+27-02-2025, 09:54:57 [INFO]: API call to /access-attempts
+27-02-2025, 09:54:57 [INFO]: API call to /co2
+27-02-2025, 09:55:00 [INFO]: API call to /temperature
+27-02-2025, 09:55:00 [INFO]: API call to /humidity
+27-02-2025, 09:55:00 [INFO]: API call to /access-attempts
+27-02-2025, 09:55:00 [INFO]: API call to /co2
+27-02-2025, 09:59:03 [INFO]: API call to /temperature
+27-02-2025, 09:59:03 [INFO]: API call to /humidity
+27-02-2025, 09:59:03 [INFO]: API call to /access-attempts
+27-02-2025, 09:59:03 [INFO]: API call to /co2
+27-02-2025, 10:03:39 [INFO]: API call to /temperature
+27-02-2025, 10:03:39 [INFO]: API call to /humidity
+27-02-2025, 10:03:39 [INFO]: API call to /access-attempts
+27-02-2025, 10:03:39 [INFO]: API call to /co2
+27-02-2025, 10:10:05 [INFO]: API call to /temperature
+27-02-2025, 10:10:05 [INFO]: API call to /humidity
+27-02-2025, 10:10:05 [INFO]: API call to /access-attempts
+27-02-2025, 10:10:05 [INFO]: API call to /co2
+27-02-2025, 10:10:35 [INFO]: API call to /temperature
+27-02-2025, 10:10:36 [INFO]: API call to /humidity
+27-02-2025, 10:10:36 [INFO]: API call to /access-attempts
+27-02-2025, 10:10:36 [INFO]: API call to /co2
+27-02-2025, 10:10:36 [ERROR]: Error fetching badge data.
+27-02-2025, 10:11:02 [INFO]: API call to /temperature
+27-02-2025, 10:11:02 [INFO]: API call to /humidity
+27-02-2025, 10:11:02 [INFO]: API call to /access-attempts
+27-02-2025, 10:11:02 [INFO]: API call to /co2
+27-02-2025, 10:11:02 [ERROR]: Error fetching badge data. 
+Invalid `prisma.badge_link.findFirst()` invocation in
+E:\I4BC\Progetto\WatchTower\5_Applicativo\backend\src\routes\router.js:453:47
+
+  450 }
+  451 
+  452 try {
+→ 453   const badgeData = await prisma.badge_link.findFirst({
+          where: {
+            user: {
+              username: "sistemista1",
+              ~~~~~~~~
+              role: "sistemista",
+              iat: 1740644260,
+              exp: 1740665860,
+        ?     equals?: String | StringFieldRefInput,
+        ?     in?: String[],
+        ?     notIn?: String[],
+        ?     lt?: String | StringFieldRefInput,
+        ?     lte?: String | StringFieldRefInput,
+        ?     gt?: String | StringFieldRefInput,
+        ?     gte?: String | StringFieldRefInput,
+        ?     contains?: String | StringFieldRefInput,
+        ?     startsWith?: String | StringFieldRefInput,
+        ?     endsWith?: String | StringFieldRefInput,
+        ?     search?: String,
+        ?     not?: String | NestedStringFilter
+            }
+          }
+        })
+
+Unknown argument `username`. Available options are marked with ?.
+27-02-2025, 10:11:48 [INFO]: API call to /temperature
+27-02-2025, 10:11:48 [INFO]: API call to /humidity
+27-02-2025, 10:11:48 [INFO]: API call to /access-attempts
+27-02-2025, 10:11:48 [INFO]: API call to /co2
+27-02-2025, 10:11:48 [INFO]: API call to /badge - No badge data found
+27-02-2025, 10:13:15 [INFO]: API call to /temperature
+27-02-2025, 10:13:15 [INFO]: API call to /humidity
+27-02-2025, 10:13:15 [INFO]: API call to /access-attempts
+27-02-2025, 10:13:15 [INFO]: API call to /co2
+27-02-2025, 10:13:15 [INFO]: API call to /badge - No badge data found
+27-02-2025, 10:13:16 [INFO]: API call to /temperature
+27-02-2025, 10:13:16 [INFO]: API call to /humidity
+27-02-2025, 10:13:16 [INFO]: API call to /access-attempts
+27-02-2025, 10:13:16 [INFO]: API call to /co2
+27-02-2025, 10:13:16 [INFO]: API call to /badge - No badge data found
+27-02-2025, 10:13:44 [INFO]: API call to /temperature
+27-02-2025, 10:13:44 [INFO]: API call to /humidity
+27-02-2025, 10:13:44 [INFO]: API call to /access-attempts
+27-02-2025, 10:13:44 [INFO]: API call to /co2
+27-02-2025, 10:13:44 [INFO]: API call to /badge - No badge data found
+27-02-2025, 10:13:55 [INFO]: API call to /temperature
+27-02-2025, 10:13:55 [INFO]: API call to /humidity
+27-02-2025, 10:13:55 [INFO]: API call to /access-attempts
+27-02-2025, 10:13:55 [INFO]: API call to /co2
+27-02-2025, 10:13:55 [INFO]: API call to /badge - No badge data found
+27-02-2025, 10:23:07 [INFO]: API call to /temperature
+27-02-2025, 10:23:07 [INFO]: API call to /humidity
+27-02-2025, 10:23:07 [INFO]: API call to /access-attempts
+27-02-2025, 10:23:07 [INFO]: API call to /co2
+27-02-2025, 10:23:07 [INFO]: API call to /badge - No badge data found, adding user and otp
+27-02-2025, 10:23:07 [ERROR]: Error fetching badge data.
+27-02-2025, 10:23:31 [INFO]: API call to /temperature
+27-02-2025, 10:23:31 [INFO]: API call to /humidity
+27-02-2025, 10:23:31 [INFO]: API call to /access-attempts
+27-02-2025, 10:23:31 [INFO]: API call to /co2
+27-02-2025, 10:23:31 [INFO]: API call to /badge - No badge data found, adding user and otp
+27-02-2025, 10:23:31 [ERROR]: Error fetching badge data. 
+Invalid `prisma.badge_link.create()` invocation in
+E:\I4BC\Progetto\WatchTower\5_Applicativo\backend\src\routes\router.js:461:31
+
+  458 logger.info(`API call to /badge - No badge data found, adding user and otp`);
+  459 const otp = Math.floor(1000 + Math.random() * 9000).toString();
+  460 
+→ 461 await prisma.badge_link.create({
+        data: {
+          user: "sistemista1",
+          otp: "4342",
+      +   badge: String
+        }
+      })
+
+Argument `badge` must not be null.
+27-02-2025, 10:25:17 [INFO]: API call to /temperature
+27-02-2025, 10:25:17 [INFO]: API call to /humidity
+27-02-2025, 10:25:17 [INFO]: API call to /access-attempts
+27-02-2025, 10:25:17 [INFO]: API call to /co2
+27-02-2025, 10:25:17 [INFO]: API call to /badge - No badge data found, adding user and otp
+27-02-2025, 10:25:38 [INFO]: API call to /temperature
+27-02-2025, 10:25:38 [INFO]: API call to /humidity
+27-02-2025, 10:25:38 [INFO]: API call to /access-attempts
+27-02-2025, 10:25:38 [INFO]: API call to /co2
+27-02-2025, 10:25:38 [INFO]: API call to /badge
+27-02-2025, 10:25:55 [INFO]: API call to /temperature
+27-02-2025, 10:25:55 [INFO]: API call to /humidity
+27-02-2025, 10:25:55 [INFO]: API call to /access-attempts
+27-02-2025, 10:25:55 [INFO]: API call to /co2
+27-02-2025, 10:26:07 [INFO]: API call to /temperature
+27-02-2025, 10:26:07 [INFO]: API call to /humidity
+27-02-2025, 10:26:07 [INFO]: API call to /access-attempts
+27-02-2025, 10:26:07 [INFO]: API call to /co2
+27-02-2025, 10:26:07 [INFO]: API call to /badge
+27-02-2025, 11:14:26 [INFO]: API call to /temperature
+27-02-2025, 11:14:26 [INFO]: API call to /humidity
+27-02-2025, 11:14:26 [INFO]: API call to /access-attempts
+27-02-2025, 11:14:26 [INFO]: API call to /co2
+27-02-2025, 11:14:26 [INFO]: API call to /badge
+27-02-2025, 11:21:00 [INFO]: API call to /temperature
+27-02-2025, 11:21:00 [INFO]: API call to /humidity
+27-02-2025, 11:21:00 [INFO]: API call to /access-attempts
+27-02-2025, 11:21:00 [INFO]: API call to /co2
+27-02-2025, 11:21:00 [INFO]: API call to /badge
+27-02-2025, 11:24:46 [ERROR]: Error saving badge data.
+27-02-2025, 11:25:05 [ERROR]: Error saving badge data. 
+Invalid `prisma.badge_link.update()` invocation in
+E:\I4BC\Progetto\WatchTower\5_Applicativo\backend\src\routes\api.js:141:47
+
+  138 try {
+  139   const { badge, code } = req.body;
+  140 
+→ 141   const badgeData = await prisma.badge_link.update({
+          where: {
+            otp: "9752"
+          },
+          update: {
+          ~~~~~~
+            badge: "ciaoooo",
+            otp: null
+          },
+        ? data?: badge_linkUpdateInput | badge_linkUncheckedUpdateInput
+        })
+
+Unknown argument `update`. Did you mean `data`? Available options are marked with ?.
+27-02-2025, 11:30:08 [ERROR]: Error saving badge data. 
+Invalid `prisma.badge_link.update()` invocation in
+E:\I4BC\Progetto\WatchTower\5_Applicativo\backend\src\routes\api.js:141:47
+
+  138 try {
+  139   const { badge, code } = req.body;
+  140 
+→ 141   const badgeData = await prisma.badge_link.update(
+An operation failed because it depends on one or more records that were required but not found. Record to update not found.
+27-02-2025, 11:33:23 [INFO]: API call to /temperature
+27-02-2025, 11:33:23 [INFO]: API call to /humidity
+27-02-2025, 11:33:23 [INFO]: API call to /access-attempts
+27-02-2025, 11:33:23 [INFO]: API call to /co2
+27-02-2025, 11:33:23 [INFO]: API call to /badge
+27-02-2025, 11:39:33 [INFO]: Badge linked status requested in /api/badge-linked
+27-02-2025, 11:39:45 [INFO]: Badge linked status requested in /api/badge-linked
+27-02-2025, 11:40:00 [INFO]: Badge linked status requested in /api/badge-linked
+27-02-2025, 12:03:14 [INFO]: Badge linked status requested in /api/badge-linked
+27-02-2025, 12:10:14 [INFO]: Badge otp invalid in /api/badge
+27-02-2025, 12:10:23 [ERROR]: Error saving badge data. authorized is not defined
+27-02-2025, 12:10:49 [INFO]: Badge otp invalid in /api/badge
+27-02-2025, 12:11:13 [INFO]: Badge data saved successfully in /api/badge
+27-02-2025, 12:11:24 [INFO]: API call to /alerts
+27-02-2025, 12:11:33 [INFO]: API call to /access/table
+27-02-2025, 12:11:33 [INFO]: API call to /access/chart

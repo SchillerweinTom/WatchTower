@@ -3,3 +3,8 @@
 21-02-2025, 11:07:14 [INFO]: Login successful: sistemista1 (Role: sistemista)
 21-02-2025, 11:08:59 [INFO]: Login successful: sistemista1 (Role: sistemista)
 25-02-2025, 09:07:39 [INFO]: Login successful: sistemista1 (Role: sistemista)
+27-02-2025, 09:17:40 [INFO]: Login successful: sistemista1 (Role: sistemista)
+27-02-2025, 10:25:38 [INFO]: Login successful: sistemista1 (Role: sistemista)
+27-02-2025, 10:25:49 [WARN]: Failed login attempt: allievo1 (Invalid credentials)
+27-02-2025, 10:25:55 [INFO]: Login successful: allievo3 (Role: allievo)
+27-02-2025, 10:26:07 [INFO]: Login successful: sistemista1 (Role: sistemista)

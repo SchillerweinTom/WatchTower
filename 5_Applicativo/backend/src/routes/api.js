@@ -134,4 +134,63 @@ api.post("/access", authenticateToken, async (req, res) => {
   }
 });
 
+api.post("/badge", authenticateToken, async (req, res) => {
+  try {
+    const { badge, code } = req.body;
+
+    const badgeData = await prisma.badge_link.findUnique({
+      where: { otp: code }
+    });
+
+    if(!badgeData){
+      logger.info("Badge otp invalid in /api/badge");
+      return res.status(404).json({message: "Invalid OTP"});
+    }
+
+    const updateDate = await prisma.badge_link.update({
+      where: { otp: code },
+      data: { badge: badge, otp: null}
+    });
+
+    let timestamp = new Date().toISOString();
+
+    await prisma.access.create({
+      data: {
+        timestamp: new Date(timestamp),
+        name: badgeData.user || "",
+        motive: "Badge linked",
+        authorized: true,
+      },
+    });
+
+    logger.info("Badge data saved successfully in /api/badge");
+    return res.status(201).json({message: "Badge data updated"});    
+  } catch (error) {
+    logger.error(`Error saving badge data.`, error);
+    return res.status(500).json({ message: "Error saving badge data." });
+  }
+});
+
+api.get("/badge-linked", authenticateToken, async (req, res) => {
+  try {
+    const { badge } = req.body;
+
+    const badgeData = await prisma.badge_link.findUnique({
+      where: { badge: badge }
+    });
+
+    logger.info("Badge linked status requested in /api/badge-linked");  
+
+    if(!badgeData){
+      return res.json({linked: false});
+    }else{
+      return res.json({linked: true});
+    }
+
+  } catch (error) {
+    logger.error(`Error fetching badge status.`, error);
+    return res.status(500).json({ message: "Error fetching badge status." });
+  }
+});
+
 module.exports = api;

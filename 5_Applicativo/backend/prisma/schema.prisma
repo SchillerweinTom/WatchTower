@@ -76,5 +76,6 @@ model alert_setting {
 model badge_link {
   id        Int      @id @default(autoincrement())
   user     	String   @unique
-  token     String   @unique
+  otp       String?  @unique
+  badge     String?  @unique
 }

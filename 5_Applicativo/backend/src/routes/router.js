@@ -443,6 +443,50 @@ router.get("/co2", authenticateToken, async (req, res) => {
   }
 });
 
+router.get("/badge", authenticateToken, async (req, res) => {
+  
+  if(!isAuthorized(req)){
+    return res.json({ code: null });
+  }
+
+  try {
+    const badgeData = await prisma.badge_link.findFirst({
+      where: { user: req.user.username },
+    });
+
+    if (!badgeData) {
+      logger.info(`API call to /badge - No badge data found, adding user and otp`);
+      const otp = Math.floor(1000 + Math.random() * 9000).toString();
+
+      await prisma.badge_link.create({
+        data: {
+          user: req.user.username,
+          otp: otp,
+          badge: null,
+        },
+      });
+
+      return res.json({ code: otp });
+    }
+
+    logger.info(`API call to /badge`);
+
+    if(!badgeData.badge){
+      return res.json({
+        code: badgeData.otp
+      });
+    }else{
+      return res.json({
+        code: null
+      });
+    }
+    
+  } catch (error) {
+    logger.error("Error fetching badge data.", error);
+    res.status(500).json({ message: "Error fetching badge data" });
+  }
+});
+
 // Helpers
 
 const isAuthorized = (req) => {

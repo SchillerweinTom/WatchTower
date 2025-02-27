@@ -3,6 +3,7 @@ Date Fixed, if not use this:
 let d = new Date() ;
 d.setTime( d.getTime() - d.getTimezoneOffset()*60*1000 );
 
-Alert LOW --> Currently disabled
-
 Redo the ER diagramm
+
+Change settings on container not working.
+
