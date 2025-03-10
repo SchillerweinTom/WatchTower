@@ -120,7 +120,7 @@
                 </div>
             </aside>
         </div>
-        <main class="flex-1 overflow-y-auto p-8">
+        <main :class="isMobile ? 'pt-16' : 'p-8'" class="flex-1 overflow-y-auto">
             <slot></slot>
         </main>
         <AlertDialog :open="isLogoutDialogOpen" @open-change="isLogoutDialogOpen = $event">

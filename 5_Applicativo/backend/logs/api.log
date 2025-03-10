@@ -589,3 +589,300 @@ An operation failed because it depends on one or more records that were required
 28-02-2025, 14:12:25 [INFO]: API call to /access-attempts
 28-02-2025, 14:12:25 [INFO]: API call to /co2
 28-02-2025, 14:12:25 [INFO]: API call to /badge
+10-03-2025, 09:31:33 [INFO]: API call to /temperature
+10-03-2025, 09:31:33 [INFO]: API call to /humidity
+10-03-2025, 09:31:33 [INFO]: API call to /access-attempts
+10-03-2025, 09:31:33 [INFO]: API call to /co2
+10-03-2025, 09:31:33 [INFO]: API call to /badge
+10-03-2025, 09:31:44 [INFO]: Badge linked status requested in /api/badge-linked
+10-03-2025, 09:33:12 [INFO]: CO2 data saved successfully in /api/co2
+10-03-2025, 09:33:13 [INFO]: Notification created for user paolo.rossi: CO2 at 1005ppm
+10-03-2025, 09:33:13 [INFO]: Notification created for user ivan.macello: CO2 at 1005ppm
+10-03-2025, 09:33:13 [INFO]: Notification created for user sistemista1: CO2 normalized
+10-03-2025, 09:33:13 [INFO]: Notification created for user sistemista2: CO2 at 1005ppm
+10-03-2025, 09:33:13 [INFO]: Notification created for user docente1: CO2 at 1005ppm
+10-03-2025, 09:33:13 [INFO]: Notification created for user docente2: CO2 at 1005ppm
+10-03-2025, 09:33:31 [INFO]: API call to /alerts
+10-03-2025, 09:33:51 [INFO]: API call to /temperature
+10-03-2025, 09:33:51 [INFO]: API call to /humidity
+10-03-2025, 09:33:51 [INFO]: API call to /access-attempts
+10-03-2025, 09:33:51 [INFO]: API call to /co2
+10-03-2025, 09:33:51 [INFO]: API call to /badge
+10-03-2025, 09:34:43 [INFO]: Temperature data saved successfully in /api/temperature
+10-03-2025, 09:34:43 [INFO]: Notification created for user paolo.rossi: Temperature at 30°C
+10-03-2025, 09:34:43 [INFO]: Notification created for user ivan.macello: Temperature at 30°C
+10-03-2025, 09:34:43 [INFO]: Notification created for user sistemista2: Temperature at 30°C
+10-03-2025, 09:34:43 [INFO]: Notification created for user docente1: Temperature at 30°C
+10-03-2025, 09:34:43 [INFO]: Notification created for user docente2: Temperature at 30°C
+10-03-2025, 09:34:52 [INFO]: Temperature data saved successfully in /api/temperature
+10-03-2025, 09:34:52 [INFO]: Notification created for user paolo.rossi: Temperature at 32°C
+10-03-2025, 09:34:52 [INFO]: Notification created for user ivan.macello: Temperature at 32°C
+10-03-2025, 09:34:52 [INFO]: Notification created for user sistemista2: Temperature at 32°C
+10-03-2025, 09:34:52 [INFO]: Notification created for user docente1: Temperature at 32°C
+10-03-2025, 09:34:52 [INFO]: Notification created for user docente2: Temperature at 32°C
+10-03-2025, 09:35:05 [INFO]: Temperature data saved successfully in /api/temperature
+10-03-2025, 09:35:05 [INFO]: Notification created for user paolo.rossi: Temperature normalized
+10-03-2025, 09:35:05 [INFO]: Notification created for user ivan.macello: Temperature normalized
+10-03-2025, 09:35:05 [INFO]: Notification created for user sistemista2: Temperature normalized
+10-03-2025, 09:35:05 [INFO]: Notification created for user docente1: Temperature normalized
+10-03-2025, 09:35:05 [INFO]: Notification created for user docente2: Temperature normalized
+10-03-2025, 09:35:12 [ERROR]: Temperature value or timestamp not valid at /api/temperature
+10-03-2025, 09:35:21 [ERROR]: Temperature value or timestamp not valid at /api/temperature
+10-03-2025, 09:35:25 [INFO]: Temperature data saved successfully in /api/temperature
+10-03-2025, 09:35:25 [INFO]: Notification created for user paolo.rossi: Temperature normalized
+10-03-2025, 09:35:25 [INFO]: Notification created for user ivan.macello: Temperature normalized
+10-03-2025, 09:35:25 [INFO]: Notification created for user sistemista2: Temperature normalized
+10-03-2025, 09:35:25 [INFO]: Notification created for user docente1: Temperature normalized
+10-03-2025, 09:35:25 [INFO]: Notification created for user docente2: Temperature normalized
+10-03-2025, 09:35:34 [INFO]: Temperature data saved successfully in /api/temperature
+10-03-2025, 09:35:34 [INFO]: Notification created for user paolo.rossi: Temperature normalized
+10-03-2025, 09:35:34 [INFO]: Notification created for user ivan.macello: Temperature normalized
+10-03-2025, 09:35:34 [INFO]: Notification created for user sistemista2: Temperature normalized
+10-03-2025, 09:35:34 [INFO]: Notification created for user docente1: Temperature normalized
+10-03-2025, 09:35:34 [INFO]: Notification created for user docente2: Temperature normalized
+10-03-2025, 09:35:41 [INFO]: Temperature data saved successfully in /api/temperature
+10-03-2025, 09:35:41 [INFO]: Notification created for user paolo.rossi: Temperature normalized
+10-03-2025, 09:35:41 [INFO]: Notification created for user ivan.macello: Temperature normalized
+10-03-2025, 09:35:41 [INFO]: Notification created for user sistemista2: Temperature normalized
+10-03-2025, 09:35:41 [INFO]: Notification created for user docente1: Temperature normalized
+10-03-2025, 09:35:41 [INFO]: Notification created for user docente2: Temperature normalized
+10-03-2025, 09:35:45 [INFO]: API call to /temperature
+10-03-2025, 09:35:45 [INFO]: API call to /humidity
+10-03-2025, 09:35:45 [INFO]: API call to /access-attempts
+10-03-2025, 09:35:45 [INFO]: API call to /co2
+10-03-2025, 09:35:45 [INFO]: API call to /badge
+10-03-2025, 09:35:46 [INFO]: API call to /temperature/lastHour
+10-03-2025, 09:36:03 [INFO]: Temperature data saved successfully in /api/temperature
+10-03-2025, 09:36:03 [INFO]: Notification created for user paolo.rossi: Temperature at 18°C
+10-03-2025, 09:36:03 [INFO]: Notification created for user ivan.macello: Temperature at 18°C
+10-03-2025, 09:36:03 [INFO]: Notification created for user sistemista2: Temperature at 18°C
+10-03-2025, 09:36:03 [INFO]: Notification created for user docente1: Temperature at 18°C
+10-03-2025, 09:36:03 [INFO]: Notification created for user docente2: Temperature at 18°C
+10-03-2025, 09:36:12 [INFO]: Temperature data saved successfully in /api/temperature
+10-03-2025, 09:36:12 [INFO]: Notification created for user paolo.rossi: Temperature normalized
+10-03-2025, 09:36:12 [INFO]: Notification created for user ivan.macello: Temperature normalized
+10-03-2025, 09:36:12 [INFO]: Notification created for user sistemista2: Temperature normalized
+10-03-2025, 09:36:12 [INFO]: Notification created for user docente1: Temperature normalized
+10-03-2025, 09:36:12 [INFO]: Notification created for user docente2: Temperature normalized
+10-03-2025, 09:36:20 [INFO]: Temperature data saved successfully in /api/temperature
+10-03-2025, 09:36:20 [INFO]: Notification created for user paolo.rossi: Temperature normalized
+10-03-2025, 09:36:20 [INFO]: Notification created for user ivan.macello: Temperature normalized
+10-03-2025, 09:36:20 [INFO]: Notification created for user sistemista2: Temperature normalized
+10-03-2025, 09:36:20 [INFO]: Notification created for user docente1: Temperature normalized
+10-03-2025, 09:36:20 [INFO]: Notification created for user docente2: Temperature normalized
+10-03-2025, 09:36:26 [INFO]: Temperature data saved successfully in /api/temperature
+10-03-2025, 09:36:26 [INFO]: Notification created for user paolo.rossi: Temperature normalized
+10-03-2025, 09:36:26 [INFO]: Notification created for user ivan.macello: Temperature normalized
+10-03-2025, 09:36:26 [INFO]: Notification created for user sistemista2: Temperature normalized
+10-03-2025, 09:36:26 [INFO]: Notification created for user docente1: Temperature normalized
+10-03-2025, 09:36:26 [INFO]: Notification created for user docente2: Temperature normalized
+10-03-2025, 09:36:27 [INFO]: API call to /temperature/lastHour
+10-03-2025, 09:36:37 [INFO]: Temperature data saved successfully in /api/temperature
+10-03-2025, 09:36:37 [INFO]: Notification created for user paolo.rossi: Temperature normalized
+10-03-2025, 09:36:37 [INFO]: Notification created for user ivan.macello: Temperature normalized
+10-03-2025, 09:36:37 [INFO]: Notification created for user sistemista2: Temperature normalized
+10-03-2025, 09:36:37 [INFO]: Notification created for user docente1: Temperature normalized
+10-03-2025, 09:36:37 [INFO]: Notification created for user docente2: Temperature normalized
+10-03-2025, 09:36:45 [INFO]: Temperature data saved successfully in /api/temperature
+10-03-2025, 09:36:45 [INFO]: Notification created for user paolo.rossi: Temperature normalized
+10-03-2025, 09:36:45 [INFO]: Notification created for user ivan.macello: Temperature normalized
+10-03-2025, 09:36:45 [INFO]: Notification created for user sistemista2: Temperature normalized
+10-03-2025, 09:36:45 [INFO]: Notification created for user docente1: Temperature normalized
+10-03-2025, 09:36:45 [INFO]: Notification created for user docente2: Temperature normalized
+10-03-2025, 09:36:46 [INFO]: API call to /temperature/lastHour
+10-03-2025, 09:36:55 [INFO]: API call to /temperature/lastDay
+10-03-2025, 09:37:32 [INFO]: Temperature data saved successfully in /api/temperature
+10-03-2025, 09:37:33 [INFO]: API call to /temperature/lastHour
+10-03-2025, 09:37:36 [INFO]: API call to /temperature/lastDay
+10-03-2025, 09:38:08 [INFO]: Temperature data saved successfully in /api/temperature
+10-03-2025, 09:38:12 [INFO]: Temperature data saved successfully in /api/temperature
+10-03-2025, 09:38:14 [INFO]: API call to /temperature/lastHour
+10-03-2025, 09:38:15 [INFO]: API call to /temperature/lastDay
+10-03-2025, 09:38:27 [INFO]: Temperature data saved successfully in /api/temperature
+10-03-2025, 09:38:28 [INFO]: API call to /temperature/lastHour
+10-03-2025, 09:38:29 [INFO]: API call to /temperature/lastDay
+10-03-2025, 09:44:42 [INFO]: API call to /temperature/lastHour
+10-03-2025, 09:44:49 [INFO]: API call to /temperature/lastDay
+10-03-2025, 09:45:20 [INFO]: API call to /temperature/lastHour
+10-03-2025, 09:45:22 [INFO]: API call to /temperature/lastDay
+10-03-2025, 09:45:47 [INFO]: Temperature data saved successfully in /api/temperature
+10-03-2025, 09:45:49 [INFO]: API call to /temperature/lastHour
+10-03-2025, 09:45:50 [INFO]: API call to /temperature/lastDay
+10-03-2025, 09:47:11 [INFO]: API call to /temperature/lastHour
+10-03-2025, 09:47:12 [INFO]: API call to /temperature/lastDay
+10-03-2025, 09:47:30 [INFO]: API call to /temperature/lastHour
+10-03-2025, 09:47:31 [INFO]: API call to /temperature/lastDay
+10-03-2025, 09:48:06 [INFO]: API call to /temperature/lastHour
+10-03-2025, 09:48:07 [INFO]: API call to /temperature/lastDay
+10-03-2025, 09:48:14 [INFO]: API call to /humidity/lastHour
+10-03-2025, 09:48:16 [INFO]: API call to /humidity/lastDay
+10-03-2025, 09:48:18 [INFO]: API call to /co2/lastHour
+10-03-2025, 09:48:19 [INFO]: API call to /co2/lastDay
+10-03-2025, 09:48:22 [INFO]: API call to /co2/lastHour
+10-03-2025, 09:48:23 [INFO]: API call to /humidity/lastHour
+10-03-2025, 09:48:24 [INFO]: API call to /temperature/lastHour
+10-03-2025, 09:48:26 [INFO]: API call to /temperature/lastDay
+10-03-2025, 09:48:30 [INFO]: API call to /temperature/lastWeek
+10-03-2025, 09:48:35 [INFO]: API call to /temperature/lastHour
+10-03-2025, 09:48:51 [INFO]: API call to /alerts
+10-03-2025, 10:04:11 [INFO]: API call to /alerts
+10-03-2025, 10:15:33 [INFO]: API call to /alert-resolved
+10-03-2025, 10:15:33 [INFO]: Alert id 51 marked as RESOLVED
+10-03-2025, 10:15:33 [INFO]: API call to /alerts
+10-03-2025, 10:33:40 [INFO]: API call to /alerts
+10-03-2025, 10:34:08 [INFO]: API call to /alert-settings
+10-03-2025, 10:34:55 [INFO]: API call to /alerts
+10-03-2025, 10:41:24 [INFO]: API call to /temperature
+10-03-2025, 10:41:24 [INFO]: API call to /humidity
+10-03-2025, 10:41:24 [INFO]: API call to /access-attempts
+10-03-2025, 10:41:24 [INFO]: API call to /co2
+10-03-2025, 10:41:24 [INFO]: API call to /badge
+10-03-2025, 10:41:52 [INFO]: API call to /temperature/lastHour
+10-03-2025, 10:42:07 [INFO]: API call to /temperature
+10-03-2025, 10:42:07 [INFO]: API call to /humidity
+10-03-2025, 10:42:07 [INFO]: API call to /access-attempts
+10-03-2025, 10:42:07 [INFO]: API call to /co2
+10-03-2025, 10:42:07 [INFO]: API call to /badge
+10-03-2025, 10:42:10 [INFO]: API call to /alerts
+10-03-2025, 10:42:37 [INFO]: API call to /temperature
+10-03-2025, 10:42:37 [INFO]: API call to /humidity
+10-03-2025, 10:42:37 [INFO]: API call to /access-attempts
+10-03-2025, 10:42:37 [INFO]: API call to /co2
+10-03-2025, 10:42:37 [INFO]: API call to /badge
+10-03-2025, 10:42:46 [INFO]: API call to /co2/lastHour
+10-03-2025, 10:42:49 [INFO]: API call to /alerts
+10-03-2025, 10:43:04 [INFO]: API call to /temperature
+10-03-2025, 10:43:04 [INFO]: API call to /humidity
+10-03-2025, 10:43:04 [INFO]: API call to /access-attempts
+10-03-2025, 10:43:04 [INFO]: API call to /co2
+10-03-2025, 10:43:04 [INFO]: API call to /badge
+10-03-2025, 10:43:12 [INFO]: API call to /temperature/lastHour
+10-03-2025, 10:43:22 [INFO]: API call to /temperature/lastDay
+10-03-2025, 10:43:25 [INFO]: API call to /temperature/lastWeek
+10-03-2025, 10:43:28 [INFO]: API call to /access/chart
+10-03-2025, 10:43:28 [INFO]: API call to /access/table
+10-03-2025, 10:43:46 [INFO]: API call to /alerts
+10-03-2025, 10:43:56 [INFO]: API call to /temperature
+10-03-2025, 10:43:56 [INFO]: API call to /humidity
+10-03-2025, 10:43:56 [INFO]: API call to /access-attempts
+10-03-2025, 10:43:56 [INFO]: API call to /co2
+10-03-2025, 10:43:56 [INFO]: API call to /badge
+10-03-2025, 10:44:09 [INFO]: API call to /alerts
+10-03-2025, 10:48:13 [INFO]: API call to /alerts
+10-03-2025, 10:49:06 [INFO]: API call to /alerts
+10-03-2025, 10:50:00 [INFO]: API call to /alerts
+10-03-2025, 10:54:59 [INFO]: API call to /alert-settings
+10-03-2025, 10:55:05 [INFO]: Alert settings saved for sistemista1
+10-03-2025, 10:55:07 [INFO]: API call to /alert-settings
+10-03-2025, 11:01:41 [INFO]: API call to /temperature/lastHour
+10-03-2025, 11:01:53 [INFO]: API call to /alerts
+10-03-2025, 11:04:06 [INFO]: API call to /alerts
+10-03-2025, 11:04:58 [INFO]: API call to /alert-settings
+10-03-2025, 11:06:11 [INFO]: API call to /alerts
+10-03-2025, 11:07:21 [INFO]: API call to /alerts
+10-03-2025, 11:08:39 [INFO]: API call to /temperature
+10-03-2025, 11:08:39 [INFO]: API call to /humidity
+10-03-2025, 11:08:39 [INFO]: API call to /access-attempts
+10-03-2025, 11:08:39 [INFO]: API call to /co2
+10-03-2025, 11:08:39 [INFO]: API call to /badge
+10-03-2025, 11:08:40 [INFO]: API call to /alerts
+10-03-2025, 11:08:44 [INFO]: API call to /alert-settings
+10-03-2025, 11:14:30 [INFO]: API call to /alerts
+10-03-2025, 11:15:18 [INFO]: API call to /alerts
+10-03-2025, 11:16:35 [INFO]: API call to /alerts
+10-03-2025, 11:17:27 [INFO]: API call to /alerts
+10-03-2025, 11:17:31 [INFO]: API call to /alerts
+10-03-2025, 11:18:47 [INFO]: Badge linked status requested in /api/badge-linked
+10-03-2025, 11:20:45 [INFO]: API call to /alerts
+10-03-2025, 11:20:47 [INFO]: API call to /alert-all-resolved
+10-03-2025, 11:20:47 [INFO]: All alerts of user sistemista1 marked as RESOLVED
+10-03-2025, 11:20:47 [INFO]: API call to /alerts
+10-03-2025, 11:20:53 [INFO]: API call to /access/chart
+10-03-2025, 11:20:53 [INFO]: API call to /access/table
+10-03-2025, 11:20:53 [INFO]: API call to /co2/lastHour
+10-03-2025, 11:20:54 [INFO]: API call to /access/chart
+10-03-2025, 11:20:54 [INFO]: API call to /access/table
+10-03-2025, 11:21:08 [INFO]: API call to /alerts
+10-03-2025, 11:21:09 [INFO]: API call to /temperature
+10-03-2025, 11:21:09 [INFO]: API call to /humidity
+10-03-2025, 11:21:09 [INFO]: API call to /access-attempts
+10-03-2025, 11:21:09 [INFO]: API call to /co2
+10-03-2025, 11:21:09 [INFO]: API call to /badge
+10-03-2025, 11:31:03 [INFO]: Badge linked status requested in /api/badge-linked
+10-03-2025, 11:33:44 [ERROR]: Error saving alert settings
+10-03-2025, 11:34:04 [ERROR]: Error saving alert settings 
+Invalid `prisma.alert_setting.upsert()` invocation in
+E:\I4BC\Progetto\WatchTower\5_Applicativo\backend\src\routes\router.js:210:51
+
+  207   });
+  208 }
+  209 
+→ 210 const newSetting = await prisma.alert_setting.upsert({
+        where: {
+          user: "sistemista2"
+        },
+        update: {
+          temp_limit_min: "18",
+          temp_limit_max: "30",
+          hum_limit_min: "30",
+          hum_limit_max: "60",
+          co2_limit_max: 1400
+        },
+        create: {
+          user: "sistemista2",
+          temp_limit_min: "18",
+                          ~~~~
+          temp_limit_max: "30",
+          hum_limit_min: "30",
+          hum_limit_max: "60",
+          co2_limit_max: 1400
+        }
+      })
+
+Argument `temp_limit_min`: Invalid value provided. Expected Float, provided String.
+10-03-2025, 13:17:15 [INFO]: API call to /temperature
+10-03-2025, 13:17:15 [INFO]: API call to /humidity
+10-03-2025, 13:17:15 [INFO]: API call to /access-attempts
+10-03-2025, 13:17:15 [INFO]: API call to /co2
+10-03-2025, 13:17:15 [INFO]: API call to /badge
+10-03-2025, 13:17:16 [INFO]: API call to /alerts
+10-03-2025, 13:17:18 [INFO]: API call to /alert-settings
+10-03-2025, 13:18:20 [INFO]: API call to /alert-settings
+10-03-2025, 13:18:26 [INFO]: Alert settings saved for sistemista1
+10-03-2025, 13:25:14 [ERROR]: Error saving alert settings Assignment to constant variable.
+10-03-2025, 13:25:43 [INFO]: Alert settings saved for sistemista2
+10-03-2025, 13:26:20 [INFO]: API call to /alerts
+10-03-2025, 13:26:23 [INFO]: API call to /alert-settings
+10-03-2025, 13:26:30 [INFO]: Alert settings saved for sistemista1
+10-03-2025, 13:26:32 [INFO]: API call to /access/chart
+10-03-2025, 13:26:32 [INFO]: API call to /access/table
+10-03-2025, 13:26:32 [INFO]: API call to /humidity/lastHour
+10-03-2025, 13:26:33 [INFO]: API call to /temperature
+10-03-2025, 13:26:33 [INFO]: API call to /humidity
+10-03-2025, 13:26:33 [INFO]: API call to /access-attempts
+10-03-2025, 13:26:33 [INFO]: API call to /co2
+10-03-2025, 13:26:33 [INFO]: API call to /badge
+10-03-2025, 13:26:33 [INFO]: API call to /temperature/lastHour
+10-03-2025, 13:26:33 [INFO]: API call to /humidity/lastHour
+10-03-2025, 13:26:34 [INFO]: API call to /co2/lastHour
+10-03-2025, 13:26:34 [INFO]: API call to /alerts
+10-03-2025, 13:26:35 [INFO]: API call to /access/chart
+10-03-2025, 13:26:35 [INFO]: API call to /access/table
+10-03-2025, 13:26:35 [INFO]: API call to /humidity/lastHour
+10-03-2025, 13:26:35 [INFO]: API call to /temperature/lastHour
+10-03-2025, 13:26:36 [INFO]: API call to /temperature
+10-03-2025, 13:26:36 [INFO]: API call to /humidity
+10-03-2025, 13:26:36 [INFO]: API call to /access-attempts
+10-03-2025, 13:26:36 [INFO]: API call to /co2
+10-03-2025, 13:26:36 [INFO]: API call to /badge
+10-03-2025, 13:26:36 [INFO]: API call to /alerts
+10-03-2025, 13:26:40 [INFO]: API call to /temperature
+10-03-2025, 13:26:40 [INFO]: API call to /humidity
+10-03-2025, 13:26:40 [INFO]: API call to /access-attempts
+10-03-2025, 13:26:40 [INFO]: API call to /co2
+10-03-2025, 13:26:40 [INFO]: API call to /badge
+10-03-2025, 15:02:33 [INFO]: API call to /temperature
+10-03-2025, 15:02:33 [INFO]: API call to /humidity
+10-03-2025, 15:02:33 [INFO]: API call to /access-attempts
+10-03-2025, 15:02:33 [INFO]: API call to /co2
+10-03-2025, 15:02:33 [INFO]: API call to /badge

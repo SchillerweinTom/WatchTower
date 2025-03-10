@@ -68,11 +68,11 @@ const { toast } = useToast();
 const emit = defineEmits(["close"]);
 
 const settings = ref({
-    temp_limit_max: "30",
-    temp_limit_min: "18",
-    hum_limit_max: "60",
-    hum_limit_min: "30",
-    co2_limit_max: "1000",
+    temp_limit_max: 30,
+    temp_limit_min: 18,
+    hum_limit_max: 60,
+    hum_limit_min: 30,
+    co2_limit_max: 1000,
 });
 const message = ref("Error saving settings!");
 const saveFailed = ref(false);

@@ -145,7 +145,7 @@ router.post("/alert-settings", authenticateToken, async (req, res) => {
       return res.status(403).json({ message: "Unauthorized" });
     }
 
-    const {
+    let {
       user,
       co2_limit_max,
       hum_limit_max,
@@ -157,6 +157,12 @@ router.post("/alert-settings", authenticateToken, async (req, res) => {
     if (!user) {
       return res.json({ message: "LDAP user is required" });
     }
+
+    co2_limit_max = parseFloat(co2_limit_max);
+    hum_limit_max = parseFloat(hum_limit_max);
+    hum_limit_min = parseFloat(hum_limit_min);
+    temp_limit_max = parseFloat(temp_limit_max);
+    temp_limit_min = parseFloat(temp_limit_min);
 
     if (temp_limit_min >= temp_limit_max) {
       return res.json({
@@ -230,7 +236,7 @@ router.post("/alert-settings", authenticateToken, async (req, res) => {
 
     return res.status(201).json({ message: "Success" });
   } catch (error) {
-    logger.error(`Error saving alert settings`);
+    logger.error(`Error saving alert settings`, error);
     return res.status(500).json({ message: "Error saving alert settings" });
   }
 });
@@ -281,6 +287,30 @@ router.put("/alert-resolved/:id", authenticateToken, async (req, res) => {
     logger.info(`Alert id ${alertId} marked as RESOLVED`);
 
     return res.json({ message: "Alert resolved successfully" });
+  } catch (error) {
+    logger.error("Error resolving an alert.");
+    return res.status(500).json({ message: "Error resolving an alert" });
+  }
+});
+
+router.put("/alert-all-resolved", authenticateToken, async (req, res) => {
+  try {
+    if (!isAuthorized(req)) {
+      return res.status(403).json({ message: "Unauthorized" });
+    }
+    logger.info(`API call to /alert-all-resolved`);
+
+    const user = req.user.username;
+    if(user){
+      const updatedAlerts = await prisma.alert.updateMany({
+        where: { user: user },
+        data: { status: "RESOLVED" },
+      });
+  
+      logger.info(`All alerts of user ${user} marked as RESOLVED`);
+  
+      return res.json({ message: "Alerts resolved successfully" });
+    }
   } catch (error) {
     logger.error("Error resolving an alert.");
     return res.status(500).json({ message: "Error resolving an alert" });

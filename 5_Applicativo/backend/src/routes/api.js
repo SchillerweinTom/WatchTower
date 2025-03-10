@@ -193,4 +193,26 @@ api.get("/badge-linked", authenticateToken, async (req, res) => {
   }
 });
 
+api.get("/badge", authenticateToken, async (req, res) => {
+  try {
+    const { badge } = req.body;
+
+    const badgeData = await prisma.badge_link.findUnique({
+      where: { badge: badge }
+    });
+
+    logger.info("Badge user requested");  
+
+    if(!badgeData){
+      return res.json({user: ""});
+    }else{
+      return res.json({user: badgeData.user});
+    }
+
+  } catch (error) {
+    logger.error(`Error fetching badge status.`, error);
+    return res.status(500).json({ message: "Error fetching badge status." });
+  }
+});
+
 module.exports = api;

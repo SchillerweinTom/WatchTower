@@ -4,19 +4,24 @@
             <CardHeader>
                 <div class="flex justify-between">
                     <CardTitle>Notifications</CardTitle>
-                    <Button variant="outline" @click="goSettings">
-                        <Settings class="w-4 h-4" /> Settings
-                    </Button>
+                    <div class="flex">
+                        <Button variant="outline" @click="goSettings" class="ml-2">
+                            <Settings class="w-4 h-4" /> <span v-if="!isMobile">Settings</span>
+                        </Button>
+                        <Button @click="confirmResolveAll = true" variant="destructive" class="ml-2">
+                            <Trash2 class="w-4 h-4" /><span v-if="!isMobile">Resolve All</span>
+                        </Button>
+                    </div>
                 </div>
             </CardHeader>
             <CardContent>
                 <Tabs v-model="activeTab" class="w-full">
                     <TabsList class="grid w-full grid-cols-5">
                         <TabsTrigger value="all">All</TabsTrigger>
-                        <TabsTrigger value="temperature">Temperature</TabsTrigger>
-                        <TabsTrigger value="access">Access</TabsTrigger>
-                        <TabsTrigger value="humidity">Humidity</TabsTrigger>
-                        <TabsTrigger value="other">Other</TabsTrigger>
+                        <TabsTrigger value="temperature"><span v-if="isMobile"><Thermometer class="w-4 h-4" /></span><span v-else>Temperature</span></TabsTrigger>
+                        <TabsTrigger value="access"><span v-if="isMobile"><Unlock class="w-4 h-4" /></span><span v-else>Access</span></TabsTrigger>
+                        <TabsTrigger value="humidity"><span v-if="isMobile"><Droplets class="w-4 h-4" /></span><span v-else>Humidity</span></TabsTrigger>
+                        <TabsTrigger value="other"><span v-if="isMobile"><MoreHorizontal class="w-4 h-4" /></span><span v-else>Other</span></TabsTrigger>
                     </TabsList>
                     <TabsContent class="mt-6" :value="activeTab">
                         <ul class="space-y-4">
@@ -80,8 +85,20 @@
                     <DialogDescription>Are you sure you want to mark this notification as resolved?</DialogDescription>
                 </DialogHeader>
                 <DialogFooter>
-                    <Button @click="confirmResolve = false">Cancel</Button>
+                    <Button @click="confirmResolve = false">Cancel</Button><div v-if="isMobile" class="mt-3"></div>
                     <Button variant="destructive" @click="resolve(selectedNotification.id)">Confirm</Button>
+                </DialogFooter>
+            </DialogContent>
+        </Dialog>
+        <Dialog v-model:open="confirmResolveAll">
+            <DialogContent>
+                <DialogHeader>
+                    <DialogTitle>Confirm Resolution</DialogTitle>
+                    <DialogDescription>Are you sure you want to mark <b>ALL</b> notification as resolved?</DialogDescription>
+                </DialogHeader>
+                <DialogFooter>
+                    <Button @click="confirmResolveAll = false">Cancel</Button><div v-if="isMobile" class="mt-3"></div>
+                    <Button variant="destructive" @click="resolveAll()">Confirm</Button>
                 </DialogFooter>
             </DialogContent>
         </Dialog>
@@ -96,18 +113,31 @@ import { Badge } from "@/components/ui/badge";
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import DashboardLayout from "@/components/layout.vue";
-import { Settings, Thermometer, Lock, Droplets, AlertTriangle } from "lucide-vue-next";
+import { Settings, Thermometer, Lock, Unlock, Droplets, AlertTriangle, Trash2, MoreHorizontal } from "lucide-vue-next";
 import SettingsDialog from "@/components/settingDialog.vue";
 import api from "@/router/axios";
 
 const showSettingDialog = ref(false);
-
+const isMobile = ref(false);
 const activeTab = ref("all");
 const isDialogOpen = ref(false);
 const selectedNotification = ref(null);
 const confirmResolve = ref(false);
+const confirmResolveAll = ref(false);
 
 const notifications = ref([]);
+
+onMounted(() => {
+    const checkScreenSize = () => {
+        isMobile.value = window.innerWidth < 768;
+    };
+    checkScreenSize();
+    window.addEventListener("resize", checkScreenSize);
+
+    fetchNotifications();
+
+    return () => window.removeEventListener("resize", checkScreenSize);
+});
 
 const fetchNotifications = async () => {
     try {
@@ -178,5 +208,21 @@ const resolve = async (id) => {
         console.error("Error resolving alert:", error);
     }
 };
-onMounted(fetchNotifications);
+const resolveAll = async () => {
+    try {
+        const token = localStorage.getItem("token");
+
+        await api.put(`/alert-all-resolved`, {}, {
+            headers: {
+                Authorization: token,
+            },
+        });
+
+        confirmResolveAll.value = false;
+        fetchNotifications();
+
+    } catch (error) {
+        console.error("Error resolving alert:", error);
+    }
+};
 </script>

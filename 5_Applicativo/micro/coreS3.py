@@ -36,9 +36,14 @@ wifi_password="TDAauynX8BAKa)^"
 server_url = "http://10.4.0.21:3333/api/"
 token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkNvcmVTMyBDb250cm9sbGVyIn0.baPpMzEDgthJw_dVWoTuqGVz_gZ_kzIm26r8rw7Q70g"
 count = 0
+badge_link = None
+badge_data = None
+access_detected = None
+pir_timestamp = None
+rfid_timestamp = None
 
 def espnow_recv_callback(espnow_obj):
-  global espnow_0, espnow_mac, espnow_data, label1, label4, label5, rgb_0, rect0, wlan, server_url
+  global espnow_0, espnow_mac, espnow_data, label1, label4, label5, rgb_0, rect0, wlan, server_url, token, badge_link, badge_data, access_detected
   
   espnow_mac, espnow_data = espnow_obj.recv_data()
 
@@ -66,14 +71,59 @@ def espnow_recv_callback(espnow_obj):
     try:
       if "not" not in espnow_data: 
         rect0.setColor(color=0x00ff00, fill_c=0x00ff00)
+        access_detected = True
+        pir_timestamp = get_timestamp()
       else:
         rect0.setColor(color=0xff0000, fill_c=0xff0000)
+        access_detected = False
     except Exception as e:
       print("Error setting color:", e)
-  elif espnow_mac == b'@L\xca[\x1f8':
-    print("Token: ", espnow_data.decode())
-    #do action with it ?
+  elif espnow_mac == b'@L\xca[\x1f8': #access_detected aggiungere
+    badge_data = espnow_data.decode()
+    print("Token: ", badge_data)
+    if wlan.isconnected():
+      try:
+        http_req = requests2.get(server_url + "badge-linked", json={'badge':badge_data}, headers={'Content-Type': 'application/json','Authorization':token})
+        response_json = http_req.json()
+        badge_link = response_json['linked']
+        rfid_timestamp = get_timestamp()
+        print(f"Linked status: {badge_link}")
+      except Exception as e:
+        print(f"Error sending get request to {server_url}badge-linked")
 
+  elif espnow_mac == b'@L\xca[\x1f\x08': #access_detected aggiungere
+    text_input = espnow_data.decode()
+    print("Text entered: ", text_input)
+    if badge_link is not None:
+      if badge_link:
+        motive = "Other"
+        if text_input == "1":
+          motive = "Maintenance"
+        elif text_input == "2":
+          motive = "Inspection"
+        elif text_input == "3":
+          motive = "Emergency"
+        elif text_input == "4":
+          motive = "Testing"
+        
+        http_req = requests2.get(server_url + "badge", json={'badge':badge_data}, headers={'Content-Type': 'application/json','Authorization':token})
+        response_json = http_req.json()
+        badge_user = response_json['user']
+
+        http_req2 = requests2.post(server_url + "access", json={'name':badge_user, 'motive':motive, 'authorized':True, 'timestamp':get_timestamp()}, headers={'Content-Type': 'application/json','Authorization':token})
+        print("Access registered")
+      else:
+        http_req = requests2.post(server_url + "badge", json={'badge':badge_data, text_input}, headers={'Content-Type': 'application/json','Authorization':token})
+        if http_req.json()['message'] == "Invalid OTP":
+          print("Wrong OTP code")
+        else:
+          print("Badge registered")
+
+      badge_link = None
+      badge_data = None
+      rfid_timestamp = None
+      pir_timestamp = None
+        
 
 def setup():
   global label0, label1, title0, label2, label3, label4, label5, i2c0, rgb_0, hub_0, espnow_0, rect0, tvoc_0
