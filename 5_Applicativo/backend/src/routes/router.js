@@ -334,8 +334,11 @@ router.get("/temperature", authenticateToken, async (req, res) => {
       });
     }
 
+    let oneHourAgo = temperatureData.timestamp;
+    oneHourAgo.setHours(oneHourAgo.getHours() - 1);
+
     const previousTemperatureData = await prisma.temperature.findFirst({
-        where: { timestamp: { lt: temperatureData.timestamp } },
+        where: { timestamp: { lte: oneHourAgo } },
         orderBy: { timestamp: "desc" },
     });
 
@@ -374,8 +377,11 @@ router.get("/humidity", authenticateToken, async (req, res) => {
       });
     }
 
+    let oneHourAgo = humidityData.timestamp;
+    oneHourAgo.setHours(oneHourAgo.getHours() - 1);
+
     const previousHumidityData = await prisma.humidity.findFirst({
-      where: { timestamp: { lt: humidityData.timestamp } },
+      where: { timestamp: { lt: oneHourAgo } },
       orderBy: { timestamp: "desc" },
     });
 
@@ -450,8 +456,11 @@ router.get("/co2", authenticateToken, async (req, res) => {
       });
     }
 
+    let oneHourAgo = co2Data.timestamp;
+    oneHourAgo.setHours(oneHourAgo.getHours() - 1);
+
     const previousCo2Data = await prisma.co2.findFirst({
-      where: { timestamp: { lt: co2Data.timestamp } },
+      where: { timestamp: { lt: oneHourAgo } },
       orderBy: { timestamp: "desc" },
     });
 

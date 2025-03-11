@@ -3,7 +3,9 @@ Date Fixed, if not use this:
 let d = new Date() ;
 d.setTime( d.getTime() - d.getTimezoneOffset()*60*1000 );
 
-Redo the ER diagramm
 
-Change settings on container not working.
+
+Scrivere i limiti dei sensori e della mia applicazione.
+
+
 

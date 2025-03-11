@@ -16,5 +16,5 @@ app.use('/api', api);
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-  logger.info(`Server started on http://localhost:${PORT}`);
+  logger.info(`Server started on http://watchtower.caprover.samt.local/${PORT}`);
 });

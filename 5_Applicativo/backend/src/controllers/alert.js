@@ -95,7 +95,7 @@ async function sendAlertEmail(email, message, description) {
               </p>
               <hr style="border: none; border-top: 1px solid #ddd; margin: 20px 0;">
               <p style="font-size: 12px; color: #777;">
-              This is an automated message. Please do not reply to this email.s
+              This is an automated message. Please do not reply to this email.
               </p>
           </div>
           `,

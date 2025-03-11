@@ -136,7 +136,7 @@ api.post("/access", authenticateToken, async (req, res) => {
 
 api.post("/badge", authenticateToken, async (req, res) => {
   try {
-    const { badge, code } = req.body;
+    const { badge, code, timestamp } = req.body;
 
     const badgeData = await prisma.badge_link.findUnique({
       where: { otp: code }
@@ -147,12 +147,10 @@ api.post("/badge", authenticateToken, async (req, res) => {
       return res.status(404).json({message: "Invalid OTP"});
     }
 
-    const updateDate = await prisma.badge_link.update({
+    const update = await prisma.badge_link.update({
       where: { otp: code },
       data: { badge: badge, otp: null}
     });
-
-    let timestamp = new Date().toISOString();
 
     await prisma.access.create({
       data: {
