@@ -26,3 +26,13 @@
 11-03-2025, 13:58:38 [INFO]: API call to /temperature/lastHour
 11-03-2025, 13:58:38 [INFO]: API call to /humidity/lastHour
 11-03-2025, 13:58:39 [INFO]: API call to /temperature/lastHour
+13-03-2025, 09:24:26 [INFO]: API call to /temperature
+13-03-2025, 09:24:26 [INFO]: API call to /humidity
+13-03-2025, 09:24:26 [INFO]: API call to /access-attempts
+13-03-2025, 09:24:26 [INFO]: API call to /co2
+13-03-2025, 09:24:26 [INFO]: API call to /badge
+13-03-2025, 09:24:28 [INFO]: API call to /temperature
+13-03-2025, 09:24:28 [INFO]: API call to /humidity
+13-03-2025, 09:24:28 [INFO]: API call to /access-attempts
+13-03-2025, 09:24:28 [INFO]: API call to /co2
+13-03-2025, 09:24:28 [INFO]: API call to /badge
