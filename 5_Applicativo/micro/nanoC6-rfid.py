@@ -12,6 +12,7 @@ i2c0 = None
 espnow_0 = None
 rfid_0 = None
 data = None
+key = b'\xe6\xcb\xba- \x18\x84\x90\xa6Mmk?\xb9\xdd\xbd'
 
 
 def setup():
@@ -21,7 +22,8 @@ def setup():
   i2c0 = I2C(0, scl=Pin(1), sda=Pin(2), freq=100000)
   rfid_0 = RFIDUnit(i2c0)
   espnow_0 = M5ESPNow(1)
-  espnow_0.set_add_peer('4827E266A618', 1, 0, False)
+  espnow_0.set_add_peer('4827E266A618', 1, 0) # True, key
+  #espnow_0.set_pmk_encrypt(key)
 
 
 def loop():
