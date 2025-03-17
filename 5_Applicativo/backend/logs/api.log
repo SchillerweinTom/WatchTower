@@ -36,3 +36,9 @@
 13-03-2025, 09:24:28 [INFO]: API call to /access-attempts
 13-03-2025, 09:24:28 [INFO]: API call to /co2
 13-03-2025, 09:24:28 [INFO]: API call to /badge
+14-03-2025, 09:02:55 [INFO]: Access data saved successfully in /api/access
+14-03-2025, 09:03:17 [INFO]: Access data saved successfully in /api/access
+14-03-2025, 09:04:47 [INFO]: User no more in LDAP in /api/access
+14-03-2025, 09:04:47 [INFO]: Removing user from link badge in /api/access
+14-03-2025, 09:17:36 [INFO]: User no more in LDAP in /api/access
+14-03-2025, 09:17:36 [INFO]: Removing user from link badge in /api/access

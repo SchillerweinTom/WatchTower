@@ -4,6 +4,7 @@ const { authenticateToken } = require("../middlewares/auth");
 const { createNotifications } = require("../controllers/alert");
 const logger = require("../utils/apiLogger");
 const prisma = require("../config/db");
+const { fetchLdapUsers } = require("../controllers/ldap");
 
 const api = express.Router();
 api.use(express.json());
@@ -106,7 +107,32 @@ api.post("/access", authenticateToken, async (req, res) => {
   try {
     const { name, motive, authorized, timestamp } = req.body;
 
+    const ldapUsers = await fetchLdapUsers(["CN=Docenti", "CN=Sistemisti"]);
+    
     if (timestamp && !isNaN(Date.parse(timestamp))) {
+
+      if (!ldapUsers.some(user => user.username[0] === name)) {
+        logger.info("User no more in LDAP in /api/access");
+        logger.info("Removing user from link badge in /api/access");
+
+        await prisma.badge_link.deleteMany({
+          where: { user: name },
+        });
+
+        await prisma.access.create({
+          data: {
+            timestamp: new Date(timestamp),
+            name: "",
+            motive: "",
+            authorized: false
+          },
+        });
+
+        createNotifications("ACCESS", 0, timestamp);
+
+        return res.status(403).json({ message: "User not in LDAP" });
+      }
+
       await prisma.access.create({
         data: {
           timestamp: new Date(timestamp),
@@ -144,7 +170,7 @@ api.post("/badge", authenticateToken, async (req, res) => {
 
     if(!badgeData){
       logger.info("Badge otp invalid in /api/badge");
-      return res.status(404).json({message: "Invalid OTP"});
+      return res.status(403).json({message: "Invalid OTP"});
     }
 
     const update = await prisma.badge_link.update({

@@ -5,23 +5,25 @@ from hardware import I2C
 from hardware import Pin
 from unit import RGBUnit
 from m5espnow import M5ESPNow
+import time
 
 i2c0 = None
 rgb_0 = None
 espnow_0 = None
-co2_value = 0 
+access = False
 
 def espnow_recv_callback(espnow_obj):
-    global co2_value
-    mac, data = espnow_obj.recv_data()
+  global access
+  mac, data = espnow_obj.recv_data()
     
-    try:
-        decoded_data = json.loads(data.decode())
-        if "CO2" in decoded_data:
-            co2_value = decoded_data["CO2"]
-            print(f"Received CO2 Value: {co2_value} ppm")
-    except Exception as e:
-        print("Error parsing ESP-NOW data:", e)
+  try:
+    decoded_data = data.decode()
+    if decoded_data == "in":
+      access = True
+    elif decoded_data == "out":
+      access = False
+  except Exception as e:
+    print("Error parsing ESP-NOW data:", e)
 
 def setup():
   global rgb_0, espnow_0
@@ -34,13 +36,11 @@ def setup():
 
 
 def loop():
-  global i2c0, rgb_0, tvoc_0
+  global access, rgb_0, espnow_0
   M5.update()
 
-  if co2_value < 800:
+  if access:
     color = 0x00ff00
-  elif 800 <= co2_value <= 1200:
-    color = 0xffff00
   else:
     color = 0xff0000
 
