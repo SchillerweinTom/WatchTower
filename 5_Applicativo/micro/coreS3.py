@@ -46,6 +46,7 @@ temp = 0
 humidity = 0
 co2 = 0
 count_standby = 1
+key = b'\xe6\xcb\xba- \x18\x84\x90\xa6Mmk?\xb9\xdd\xbd'
 
 def espnow_recv_callback(espnow_obj):
   global espnow_0, espnow_mac, espnow_data, label1, label4, label5, rgb_0, wlan, server_url, token, badge_link, badge_data, access_detected, exit_delay, access_authorized, image_pages, is_page_data, temp, humidity, co2
@@ -167,7 +168,7 @@ def espnow_recv_callback(espnow_obj):
         
 
 def setup():
-  global title0, i2c0, rgb_0, espnow_0, tvoc_0, image_pages
+  global title0, i2c0, rgb_0, espnow_0, tvoc_0, image_pages, key
 
   M5.begin()
   time.timezone('GMT-1')
@@ -181,14 +182,16 @@ def setup():
   tvoc_0 = TVOCUnit(i2c0)
 
   espnow_0 = M5ESPNow(1)
+  espnow_0.set_pmk_encrypt(key)
   espnow_0.set_irq_callback(espnow_recv_callback)
-  espnow_0.set_add_peer('404CCA5B1EC0', 1, 0)
-  #espnow_0.set_pmk_encrypt(b'\xe6\xcb\xba- \x18\x84\x90\xa6Mmk?\xb9\xdd\xbd')
+  espnow_0.set_add_peer('404CCA5B1EC0', 10, 0, True, key) 
+  espnow_0.set_add_peer('404CCA5B1F38', 1, 0, True, key)
+  espnow_0.set_add_peer('404CCA5B1F70', 1, 0, True, key)
+  espnow_0.set_add_peer('404CCA5B1F08', 1, 0, True, key)
+  espnow_0.set_add_peer('404CCA5B1C80', 1, 0, True, key)
 
   connect_wifi()
   sync_ntp()
-
-  #M5.Lcd.setBrightness(0);
 
 
 def loop():
@@ -302,9 +305,9 @@ def send_access(is_in_room=False):
   global espnow_0
   try:
     if is_in_room:
-      espnow_0.send_data(1, "in")
+      espnow_0.send_data(10, "in")
     else:
-      espnow_0.send_data(1, "out")
+      espnow_0.send_data(10, "out")
   except Exception as e:
     print("Error: ")
     print(e)

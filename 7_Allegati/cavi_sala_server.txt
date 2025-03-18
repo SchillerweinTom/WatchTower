@@ -1,8 +1,16 @@
-2x USB 3.0 to usb c 1.5m https://www.digitec.ch/de/s1/product/ugreen-usb-c-usb-a-150-m-usb-30-usb-kabel-20840497?dbq=1&supplier=406802&utm_source=google&utm_medium=cpc&utm_campaign=PROD_CH_PMAX_M10_C3&campaignid=20563498272&adgroupid=&adid=&dgCidg=EAIaIQobChMItdW_-piRjAMV00CRBR09ChXlEAQYASABEgITrfD_BwE&gad_source=1&gclid=EAIaIQobChMItdW_-piRjAMV00CRBR09ChXlEAQYASABEgITrfD_BwE&gclsrc=aw.ds
-1x 230V to usb a https://www.digitec.ch/de/s1/product/goobay-usb-a-ladegeraet-slim-5-w-usb-ladegeraet-16177622?dbq=1&supplier=406802&utm_source=google&utm_medium=cpc&utm_campaign=PROD_CH_PMAX_M10_C3&campaignid=20563498272&adgroupid=&adid=&dgCidg=EAIaIQobChMI1P7A15mRjAMVZqWDBx0k7AuLEAQYBCABEgJpIvD_BwE&gad_source=1&gclid=EAIaIQobChMI1P7A15mRjAMVZqWDBx0k7AuLEAQYBCABEgJpIvD_BwE&gclsrc=aw.ds
-1x usb a to usb c https://www.digitec.ch/de/s1/product/good-connections-usb-a-usb-c-5-m-usb-30-usb-kabel-14391300?dbq=1&supplier=406802&utm_source=google&utm_medium=cpc&utm_campaign=PROD_CH_PMAX_M9_C3&campaignid=21028346280&adgroupid=&adid=&dgCidg=EAIaIQobChMI9tmQxZmRjAMVkKODBx0YqTxnEAQYASABEgJPjvD_BwE&gad_source=1&gclid=EAIaIQobChMI9tmQxZmRjAMVkKODBx0YqTxnEAQYASABEgJPjvD_BwE&gclsrc=aw.ds
-1x usb c to usb c 3m (male to female) https://www.apfelkiste.ch/3m-100w-pd-usb-c-kabel-verlangerungskabel-adapter.html?utm_source=google&utm_medium=cpc&utm_content=shopping&gad_source=1&gclid=EAIaIQobChMIjdD_6ZORjAMVep-DBx1LlAa5EAQYAiABEgKn7fD_BwE
-1x usb c to 3 usb c splitter https://www.amazon.com/GELRHONR-Splitter-Braided-Charging-Compatible/dp/B0D4DJC1LX?th=1
+Versione 1 (senza ups, ciabatta sopra la porta):
+1x USB 25cm  c to c  https://www.digitec.ch/de/s1/product/digitec-usb-typ-c-usb-typ-c-025-m-usb-32-gen-1-usb-kabel-24841516?dbq=1&supplier=406802&utm_source=google&utm_medium=cpc&utm_campaign=PROD_CH_PMAX_M1_C3&campaignid=21028152687&adgroupid=&adid=&dgCidg=EAIaIQobChMI2I-HmJ-TjAMVTqeDBx2FghCeEAQYAiABEgLOrPD_BwE&gad_source=1&gclid=EAIaIQobChMI2I-HmJ-TjAMVTqeDBx2FghCeEAQYAiABEgLOrPD_BwE&gclsrc=aw.ds
+2x USB 150cm A to c  https://www.digitec.ch/de/s1/product/ugreen-usb-c-usb-a-150-m-usb-30-usb-kabel-20840497?dbq=1&supplier=406802&utm_source=google&utm_medium=cpc&utm_campaign=PROD_CH_PMAX_M10_C3&campaignid=20563498272&adgroupid=&adid=&dgCidg=EAIaIQobChMItdW_-piRjAMV00CRBR09ChXlEAQYASABEgITrfD_BwE&gad_source=1&gclid=EAIaIQobChMItdW_-piRjAMV00CRBR09ChXlEAQYASABEgITrfD_BwE&gclsrc=aw.ds   
+1x USB 300cm c to c  https://www.apfelkiste.ch/3m-100w-pd-usb-c-kabel-verlangerungskabel-adapter.html?utm_source=google&utm_medium=cpc&utm_content=shopping&gad_source=1&gclid=EAIaIQobChMIjdD_6ZORjAMVep-DBx1LlAa5EAQYAiABEgKn7fD_BwE
+1x Splitter 1 to 3   https://www.amazon.com/GELRHONR-Splitter-Braided-Charging-Compatible/dp/B0D4DJC1LX?th=1
+1x Splitter 1 to 2   https://www.reichelt.com/ch/de/shop/produkt/usb_2_0_adapter_c_buchse_auf_2x_c_stecker_y-kabel_0_3_m-334186?country=ch&CCTYPE=private&LANGUAGE=de
+1x c to c adapter    https://www.reichelt.com/ch/de/shop/produkt/usb_3_1_adapter_c_buchse_auf_c_buchse-334204?PROVID=2808&currency=CHF&gad_source=1&gclid=EAIaIQobChMI49vZtKWTjAMV0JWDBx33FwsFEAQYAiABEgK3sfD_BwE
 
-1x ciabatta della scuola che ho già
-1x powerbank (sarebbe da mettere prima della ciabatta, che porta a problemi come collegare la ciabbatta alimentatore a un powerbank???)
+
+Versione 2 (con ups, ciabatta da parte la porta):
+1x USB 25cm  c to c  https://www.digitec.ch/de/s1/product/digitec-usb-typ-c-usb-typ-c-025-m-usb-32-gen-1-usb-kabel-24841516?dbq=1&supplier=406802&utm_source=google&utm_medium=cpc&utm_campaign=PROD_CH_PMAX_M1_C3&campaignid=21028152687&adgroupid=&adid=&dgCidg=EAIaIQobChMI2I-HmJ-TjAMVTqeDBx2FghCeEAQYAiABEgLOrPD_BwE&gad_source=1&gclid=EAIaIQobChMI2I-HmJ-TjAMVTqeDBx2FghCeEAQYAiABEgLOrPD_BwE&gclsrc=aw.ds
+1x USB A to c 200cm  https://www.reichelt.com/ch/de/shop/produkt/usb-a_stecker_auf_usb-c_stecker_2m-268272?PROVID=2808&currency=CHF&gad_source=1&gclid=EAIaIQobChMI_OPoqqSTjAMVvJiDBx2uyhlaEAQYASABEgKMFPD_BwE
+1x USB a to c 300cm  https://www.reichelt.com/ch/de/shop/produkt/sync-_ladekabel_usb-a_-_usb-c_3_0_m_schwarz-215849?PROVID=2808&currency=CHF&gad_source=1&gclid=EAIaIQobChMI6aTt4qSTjAMVDyzUAR0JAy4yEAQYASABEgJ9J_D_BwE
+1x USB c to c 300cm  https://www.apfelkiste.ch/3m-100w-pd-usb-c-kabel-verlangerungskabel-adapter.html?utm_source=google&utm_medium=cpc&utm_content=shopping&gad_source=1&gclid=EAIaIQobChMIjdD_6ZORjAMVep-DBx1LlAa5EAQYAiABEgKn7fD_BwE
+1x Splitter 1 to 3   https://www.amazon.com/GELRHONR-Splitter-Braided-Charging-Compatible/dp/B0D4DJC1LX?th=1
+1x Power to usb c adapter https://www.digitec.ch/de/s1/product/digitec-fast-charger-20-w-usb-ladegeraet-23378929

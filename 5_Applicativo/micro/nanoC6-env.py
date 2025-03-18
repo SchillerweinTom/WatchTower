@@ -12,9 +12,10 @@ i2c0 = None
 env3_0 = None
 client = None
 espnow_0 = None
+key = b'\xe6\xcb\xba- \x18\x84\x90\xa6Mmk?\xb9\xdd\xbd'
 
 def setup():
-    global i2c0, env3_0, client, espnow_0
+    global i2c0, env3_0, client, espnow_0, key
 
     M5.begin()
 
@@ -30,7 +31,8 @@ def setup():
     env3_0 = ENVUnit(i2c=i2c0, type=3)
 
     espnow_0 = M5ESPNow(1)
-    espnow_0.set_add_peer('4827E266A618', 1, 0, False)
+    espnow_0.set_pmk_encrypt(key)
+    espnow_0.set_add_peer('4827E266A618', 1, 0, True, key)
 
 
 def loop():
@@ -52,7 +54,7 @@ def loop():
 
     print("Sent:", data)
 
-    time.sleep(30)
+    time.sleep(300)
 
 if __name__ == '__main__':
     try:

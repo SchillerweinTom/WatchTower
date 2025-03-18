@@ -11,6 +11,7 @@ i2c0 = None
 rgb_0 = None
 espnow_0 = None
 access = False
+key = b'\xe6\xcb\xba- \x18\x84\x90\xa6Mmk?\xb9\xdd\xbd'
 
 def espnow_recv_callback(espnow_obj):
   global access
@@ -26,13 +27,15 @@ def espnow_recv_callback(espnow_obj):
     print("Error parsing ESP-NOW data:", e)
 
 def setup():
-  global rgb_0, espnow_0
+  global rgb_0, espnow_0, key
 
   M5.begin()
   rgb_0 = RGBUnit((1, 2), 3)
 
   espnow_0 = M5ESPNow(1)
+  espnow_0.set_pmk_encrypt(key)
   espnow_0.set_irq_callback(espnow_recv_callback)
+  espnow_0.set_add_peer('4827E266A618', 1, 0, True, key)
 
 
 def loop():

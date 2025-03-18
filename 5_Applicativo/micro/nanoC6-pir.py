@@ -7,6 +7,7 @@ from m5espnow import M5ESPNow
 pir_0 = None
 espnow_0 = None
 i2c0 = None
+key = b'\xe6\xcb\xba- \x18\x84\x90\xa6Mmk?\xb9\xdd\xbd'
 
 def pir_0_active_event(pir):
   global espnow_0
@@ -25,7 +26,7 @@ def pir_0_negative_event(pir):
     print("Error sending ESP-NOW message:", e)
 
 def setup():
-  global pir_0, espnow_0
+  global pir_0, espnow_0, key
 
   M5.begin()
 
@@ -35,7 +36,8 @@ def setup():
   pir_0.enable_irq()
 
   espnow_0 = M5ESPNow(1)
-  espnow_0.set_add_peer('4827E266A618', 1, 0, False)
+  espnow_0.set_pmk_encrypt(key)
+  espnow_0.set_add_peer('4827E266A618', 1, 0, True, key)
 
 def loop():
   global pir_0, espnow_0
