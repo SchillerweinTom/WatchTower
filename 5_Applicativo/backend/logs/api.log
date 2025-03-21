@@ -42,3 +42,158 @@
 14-03-2025, 09:04:47 [INFO]: Removing user from link badge in /api/access
 14-03-2025, 09:17:36 [INFO]: User no more in LDAP in /api/access
 14-03-2025, 09:17:36 [INFO]: Removing user from link badge in /api/access
+20-03-2025, 09:24:12 [ERROR]: Error fetching temperature data.
+20-03-2025, 09:27:27 [INFO]: API call to /temperature
+20-03-2025, 09:27:27 [INFO]: API call to /humidity
+20-03-2025, 09:27:27 [INFO]: API call to /access-attempts
+20-03-2025, 09:27:27 [INFO]: API call to /co2
+20-03-2025, 09:27:27 [INFO]: API call to /badge
+20-03-2025, 09:27:40 [INFO]: API call to /temperature
+20-03-2025, 09:27:40 [INFO]: API call to /humidity
+20-03-2025, 09:27:40 [INFO]: API call to /access-attempts
+20-03-2025, 09:27:40 [INFO]: API call to /co2
+20-03-2025, 09:29:05 [INFO]: API call to /temperature
+20-03-2025, 09:29:05 [INFO]: API call to /humidity
+20-03-2025, 09:29:05 [INFO]: API call to /access-attempts
+20-03-2025, 09:29:05 [INFO]: API call to /co2
+20-03-2025, 09:29:05 [INFO]: API call to /badge
+20-03-2025, 09:29:08 [INFO]: API call to /temperature/lastHour
+20-03-2025, 09:34:23 [INFO]: API call to /temperature/lastHour
+20-03-2025, 09:39:35 [INFO]: API call to /temperature/lastHour
+20-03-2025, 09:42:03 [INFO]: API call to /temperature/lastDay
+20-03-2025, 09:43:25 [INFO]: API call to /temperature/lastHour
+20-03-2025, 09:43:28 [INFO]: API call to /temperature/lastDay
+20-03-2025, 09:43:36 [INFO]: API call to /temperature/lastHour
+20-03-2025, 09:43:43 [INFO]: API call to /temperature/lastDay
+20-03-2025, 09:43:47 [INFO]: API call to /temperature/lastHour
+20-03-2025, 09:43:55 [INFO]: API call to /temperature/lastHour
+20-03-2025, 09:44:14 [INFO]: API call to /temperature/lastDay
+20-03-2025, 09:44:46 [INFO]: API call to /temperature/lastHour
+20-03-2025, 09:44:48 [INFO]: API call to /temperature/lastDay
+20-03-2025, 09:51:33 [INFO]: API call to /temperature/lastHour
+20-03-2025, 09:51:35 [INFO]: API call to /temperature/lastDay
+20-03-2025, 09:52:04 [INFO]: API call to /temperature/lastHour
+20-03-2025, 09:52:07 [INFO]: API call to /temperature/lastDay
+20-03-2025, 09:52:10 [INFO]: API call to /temperature/lastWeek
+20-03-2025, 09:52:19 [INFO]: API call to /temperature/lastDay
+20-03-2025, 09:52:51 [INFO]: API call to /temperature/lastHour
+20-03-2025, 09:52:53 [INFO]: API call to /temperature/lastDay
+20-03-2025, 09:53:01 [INFO]: API call to /temperature/lastHour
+20-03-2025, 09:53:44 [INFO]: API call to /temperature/lastDay
+20-03-2025, 09:54:17 [INFO]: API call to /temperature/lastWeek
+20-03-2025, 09:55:57 [INFO]: API call to /temperature/lastHour
+20-03-2025, 09:55:58 [INFO]: API call to /temperature/lastWeek
+20-03-2025, 09:56:18 [INFO]: API call to /temperature/lastHour
+20-03-2025, 09:56:20 [INFO]: API call to /temperature/lastWeek
+20-03-2025, 09:59:12 [INFO]: API call to /access/chart
+20-03-2025, 09:59:12 [INFO]: API call to /access/table
+20-03-2025, 10:02:11 [INFO]: API call to /access/chart
+20-03-2025, 10:02:11 [INFO]: API call to /access/table
+20-03-2025, 10:03:29 [INFO]: API call to /alerts
+20-03-2025, 10:08:12 [INFO]: CO2 data saved successfully in /api/co2
+20-03-2025, 10:09:24 [INFO]: CO2 data saved successfully in /api/co2
+20-03-2025, 10:09:25 [INFO]: Notification created for user paolo.rossi: CO2 at 1800ppm
+20-03-2025, 10:09:25 [WARN]: No email to send notification for user paolo.rossi: CO2 at 1800ppm
+20-03-2025, 10:09:25 [INFO]: Notification created for user ivan.macello: CO2 at 1800ppm
+20-03-2025, 10:09:26 [INFO]: Notification email sent to ivan.macello@domain.com
+20-03-2025, 10:09:26 [INFO]: Notification created for user sistemista1: CO2 at 1800ppm
+20-03-2025, 10:09:27 [INFO]: Notification email sent to tom.schillerwein@samtrevano.ch
+20-03-2025, 10:09:27 [INFO]: Notification created for user sistemista2: CO2 at 1800ppm
+20-03-2025, 10:09:27 [WARN]: No email to send notification for user sistemista2: CO2 at 1800ppm
+20-03-2025, 10:09:27 [INFO]: Notification created for user docente1: CO2 at 1800ppm
+20-03-2025, 10:09:27 [INFO]: Notification email sent to docente11111@gmail.com
+20-03-2025, 10:09:27 [INFO]: Notification created for user docente2: CO2 at 1800ppm
+20-03-2025, 10:09:28 [INFO]: Notification email sent to docente2@domain.com
+20-03-2025, 10:09:28 [INFO]: Notification created for user doc.info: CO2 at 1800ppm
+20-03-2025, 10:09:28 [WARN]: No email to send notification for user doc.info: CO2 at 1800ppm
+20-03-2025, 10:09:28 [INFO]: Notification created for user doc.chim: CO2 at 1800ppm
+20-03-2025, 10:09:28 [WARN]: No email to send notification for user doc.chim: CO2 at 1800ppm
+20-03-2025, 10:09:28 [INFO]: Notification created for user pascal.poncini: CO2 at 1800ppm
+20-03-2025, 10:09:29 [INFO]: Notification email sent to pascal.poncini@mail.com
+20-03-2025, 10:09:29 [INFO]: Notification created for user geo.petrini: CO2 at 1800ppm
+20-03-2025, 10:09:29 [INFO]: Notification email sent to geo.petrini@mail.com
+20-03-2025, 10:09:29 [INFO]: Notification created for user fabio.piccioni: CO2 at 1800ppm
+20-03-2025, 10:09:30 [INFO]: Notification email sent to fabio.piccioni@mail.com
+20-03-2025, 10:09:30 [INFO]: Notification created for user fabio.trevito: CO2 at 1800ppm
+20-03-2025, 10:09:31 [INFO]: Notification email sent to fabio.trevito@mail.com
+20-03-2025, 10:09:31 [INFO]: Notification created for user maurizio.diflorio: CO2 at 1800ppm
+20-03-2025, 10:09:32 [INFO]: Notification email sent to maurizio.diflorio@mail.com
+20-03-2025, 10:09:32 [INFO]: Notification created for user michel.tinelli: CO2 at 1800ppm
+20-03-2025, 10:09:32 [INFO]: Notification email sent to michel.tinelli@mail.com
+20-03-2025, 10:09:32 [INFO]: Notification created for user michel.palucci: CO2 at 1800ppm
+20-03-2025, 10:09:33 [INFO]: Notification email sent to michel.paplucci@mail.com
+20-03-2025, 10:10:14 [INFO]: Humidity data saved successfully in /api/humidity
+20-03-2025, 10:10:14 [INFO]: Notification created for user paolo.rossi: Humidity at 70%
+20-03-2025, 10:10:14 [WARN]: No email to send notification for user paolo.rossi: Humidity at 70%
+20-03-2025, 10:10:14 [INFO]: Notification created for user ivan.macello: Humidity at 70%
+20-03-2025, 10:10:16 [INFO]: Notification email sent to ivan.macello@domain.com
+20-03-2025, 10:10:16 [INFO]: Notification created for user sistemista1: Humidity at 70%
+20-03-2025, 10:10:17 [INFO]: Notification email sent to tom.schillerwein@samtrevano.ch
+20-03-2025, 10:10:17 [INFO]: Notification created for user sistemista2: Humidity normalized
+20-03-2025, 10:10:17 [INFO]: Notification created for user docente1: Humidity at 70%
+20-03-2025, 10:10:18 [INFO]: Notification email sent to docente11111@gmail.com
+20-03-2025, 10:10:18 [INFO]: Notification created for user docente2: Humidity at 70%
+20-03-2025, 10:10:21 [INFO]: Notification email sent to docente2@domain.com
+20-03-2025, 10:10:21 [INFO]: Notification created for user doc.info: Humidity at 70%
+20-03-2025, 10:10:21 [WARN]: No email to send notification for user doc.info: Humidity at 70%
+20-03-2025, 10:10:21 [INFO]: Notification created for user doc.chim: Humidity at 70%
+20-03-2025, 10:10:21 [WARN]: No email to send notification for user doc.chim: Humidity at 70%
+20-03-2025, 10:10:21 [INFO]: Notification created for user pascal.poncini: Humidity at 70%
+20-03-2025, 10:10:22 [INFO]: Notification email sent to pascal.poncini@mail.com
+20-03-2025, 10:10:22 [INFO]: Notification created for user geo.petrini: Humidity at 70%
+20-03-2025, 10:10:24 [INFO]: Notification email sent to geo.petrini@mail.com
+20-03-2025, 10:10:24 [INFO]: Notification created for user fabio.piccioni: Humidity at 70%
+20-03-2025, 10:10:29 [INFO]: Notification email sent to fabio.piccioni@mail.com
+20-03-2025, 10:10:29 [INFO]: Notification created for user fabio.trevito: Humidity at 70%
+20-03-2025, 10:10:31 [INFO]: Notification email sent to fabio.trevito@mail.com
+20-03-2025, 10:10:31 [INFO]: Notification created for user maurizio.diflorio: Humidity at 70%
+20-03-2025, 10:10:32 [INFO]: Notification email sent to maurizio.diflorio@mail.com
+20-03-2025, 10:10:32 [INFO]: Notification created for user michel.tinelli: Humidity at 70%
+20-03-2025, 10:10:33 [INFO]: Notification email sent to michel.tinelli@mail.com
+20-03-2025, 10:10:33 [INFO]: Notification created for user michel.palucci: Humidity at 70%
+20-03-2025, 10:10:34 [INFO]: Notification email sent to michel.paplucci@mail.com
+20-03-2025, 10:18:07 [INFO]: API call to /alerts
+20-03-2025, 10:18:13 [INFO]: API call to /alert-settings
+20-03-2025, 10:18:21 [INFO]: API call to /alert-settings
+20-03-2025, 10:18:42 [INFO]: API call to /alert-settings
+20-03-2025, 10:18:58 [INFO]: Humidity data saved successfully in /api/humidity
+20-03-2025, 10:18:58 [INFO]: Notification created for user paolo.rossi: Humidity normalized
+20-03-2025, 10:18:58 [INFO]: Notification created for user ivan.macello: Humidity normalized
+20-03-2025, 10:18:58 [INFO]: Notification created for user sistemista1: Humidity at 52%
+20-03-2025, 10:18:58 [INFO]: Notification created for user docente1: Humidity normalized
+20-03-2025, 10:18:58 [INFO]: Notification created for user docente2: Humidity normalized
+20-03-2025, 10:18:58 [INFO]: Notification created for user doc.info: Humidity normalized
+20-03-2025, 10:18:58 [INFO]: Notification created for user doc.chim: Humidity normalized
+20-03-2025, 10:18:58 [INFO]: Notification created for user pascal.poncini: Humidity normalized
+20-03-2025, 10:18:58 [INFO]: Notification created for user geo.petrini: Humidity normalized
+20-03-2025, 10:18:58 [INFO]: Notification created for user fabio.piccioni: Humidity normalized
+20-03-2025, 10:18:58 [INFO]: Notification created for user fabio.trevito: Humidity normalized
+20-03-2025, 10:18:58 [INFO]: Notification created for user maurizio.diflorio: Humidity normalized
+20-03-2025, 10:18:58 [INFO]: Notification created for user michel.tinelli: Humidity normalized
+20-03-2025, 10:18:58 [INFO]: Notification created for user michel.palucci: Humidity normalized
+20-03-2025, 10:19:04 [INFO]: Humidity data saved successfully in /api/humidity
+20-03-2025, 10:19:04 [INFO]: Notification created for user sistemista1: Humidity normalized
+20-03-2025, 10:19:07 [INFO]: API call to /alerts
+20-03-2025, 10:22:29 [INFO]: API call to /alert-settings
+20-03-2025, 10:23:46 [INFO]: API call to /alert-settings
+20-03-2025, 10:23:52 [INFO]: Alert settings saved for sistemista1
+20-03-2025, 10:23:53 [INFO]: API call to /alert-settings
+20-03-2025, 10:23:56 [INFO]: Alert settings saved for sistemista1
+20-03-2025, 10:23:57 [INFO]: API call to /alerts
+20-03-2025, 10:23:57 [INFO]: API call to /alert-settings
+20-03-2025, 10:24:35 [INFO]: API call to /temperature
+20-03-2025, 10:24:35 [INFO]: API call to /humidity
+20-03-2025, 10:24:35 [INFO]: API call to /access-attempts
+20-03-2025, 10:24:35 [INFO]: API call to /co2
+20-03-2025, 10:24:35 [INFO]: API call to /badge - No badge data found, adding user and otp
+20-03-2025, 11:00:57 [INFO]: API call to /access/chart
+20-03-2025, 11:00:57 [INFO]: API call to /access/table
+20-03-2025, 11:00:57 [INFO]: API call to /alerts
+20-03-2025, 11:04:40 [INFO]: API call to /alert-all-resolved
+20-03-2025, 11:04:40 [INFO]: All alerts of user sistemista2 marked as RESOLVED
+20-03-2025, 11:04:40 [INFO]: API call to /alerts
+20-03-2025, 11:05:53 [INFO]: API call to /temperature
+20-03-2025, 11:05:53 [INFO]: API call to /humidity
+20-03-2025, 11:05:53 [INFO]: API call to /access-attempts
+20-03-2025, 11:05:53 [INFO]: API call to /co2
+20-03-2025, 11:05:53 [INFO]: API call to /badge

@@ -5,7 +5,7 @@ async function getLastHourData(type, res) {
   try {
     const data = await prisma[type].findMany({
       orderBy: { timestamp: "desc" },
-      take: 12,
+      take: 13,
     });
 
     let lastHourData = [];
@@ -34,7 +34,7 @@ async function getLastDayData(type, res) {
   try {
     const now = new Date();
     const twentyFourHoursAgo = new Date(now);
-    twentyFourHoursAgo.setHours(now.getHours() - 24);
+    twentyFourHoursAgo.setHours(now.getHours() - 23, 0, 0, 0); // Start exactly 24 hours back
 
     const data = await prisma[type].findMany({
       where: { timestamp: { gte: twentyFourHoursAgo.toISOString() } },
@@ -42,7 +42,6 @@ async function getLastDayData(type, res) {
     });
 
     let hourlyData = [];
-
     logger.info(`API call to /${type}/lastDay`);
 
     if (!data || data.length === 0) {
@@ -50,14 +49,19 @@ async function getLastDayData(type, res) {
     }
 
     for (let i = 0; i < 24; i++) {
-      const hourTime = new Date(now);
-      //hourTime.setHours(now.getHours() - i, 0, 0, 0);
-      hourTime.setHours(now.getHours() - (23 - i), 0, 0, 0);
+      const hourTime = new Date(twentyFourHoursAgo);
+      hourTime.setHours(hourTime.getHours() + i);
+
       const hourLabel = `${String(hourTime.getHours()).padStart(2, "0")}:00`;
 
-      const dataForHour = data.filter(
-        (item) => new Date(item.timestamp).getHours() === hourTime.getHours()
-      );
+      const dataForHour = data.filter((item) => {
+        const itemTime = new Date(item.timestamp);
+        return (
+          itemTime.getHours() === hourTime.getHours() &&
+          itemTime.getDate() === hourTime.getDate() &&
+          itemTime.getMonth() === hourTime.getMonth()
+        );
+      });
 
       hourlyData.push({
         time: hourLabel,
@@ -69,10 +73,8 @@ async function getLastDayData(type, res) {
 
     return res.json(hourlyData);
   } catch (error) {
-    logger.error(`Error fetching last day ${type} records.`);
-    return res
-      .status(500)
-      .json({ message: `Error fetching last day ${type} records.` });
+    logger.error(`Error fetching last day ${type} records: ${error.message}`);
+    return res.status(500).json({ message: `Error fetching last day ${type} records.` });
   }
 }
 

@@ -1,2 +1,8 @@
 11-03-2025, 13:58:25 [INFO]: Login successful: aris.cheda (Role: allievo)
 13-03-2025, 09:24:26 [INFO]: Login successful: sistemista1 (Role: sistemista)
+20-03-2025, 09:24:08 [INFO]: Login successful: sistemista1 (Role: sistemista)
+20-03-2025, 09:27:37 [WARN]: Failed login attempt: allievo1 (Invalid credentials)
+20-03-2025, 09:27:40 [INFO]: Login successful: allievo2 (Role: allievo)
+20-03-2025, 09:29:05 [INFO]: Login successful: sistemista1 (Role: sistemista)
+20-03-2025, 10:24:32 [WARN]: Failed login attempt: sistemista (Invalid credentials)
+20-03-2025, 10:24:35 [INFO]: Login successful: sistemista2 (Role: sistemista)
