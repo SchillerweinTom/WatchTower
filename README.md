@@ -45,5 +45,5 @@ Il sistema è progettato per fornire un monitoraggio continuo e consentire l'imp
 - **Software**:
   - Node JS
 
-### Installazione
-...
+### Utilizzo App Web
+Accedere a: http://watchtower.caprover.samt.local/
