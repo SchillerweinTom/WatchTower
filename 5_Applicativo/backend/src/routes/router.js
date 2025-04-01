@@ -58,7 +58,7 @@ router.get("/access/chart", authenticateToken, async (req, res) => {
       (date) => accessSummary[date].unauthorized
     );
 
-    logger.info("API call to /access/chart");
+    logger.info("Successfully fetched access control chart data.");
 
     return res.json({
       labels: chartLabels,
@@ -98,7 +98,7 @@ router.get("/access/table", authenticateToken, async (req, res) => {
       authorized: event.authorized,
     }));
 
-    logger.info("API call to /access/table");
+    logger.info("Successfully fetched recent access events.");
 
     return res.json(formattedAccessList);
   } catch (error) {
@@ -112,6 +112,7 @@ router.get("/access/table", authenticateToken, async (req, res) => {
 router.get("/alerts", authenticateToken, async (req, res) => {
   try {
     if (!isAuthorized(req)) {
+      logger.warn("Unauthorized access attempt to alerts");
       return res.status(403).json({ message: "Unauthorized" });
     }
 
@@ -130,11 +131,11 @@ router.get("/alerts", authenticateToken, async (req, res) => {
       
     });
 
-    logger.info("API call to /alerts");
+    logger.info("Successfully fetched alerts.");
 
     return res.json(formattedNotifications);
   } catch (error) {
-    logger.error("Error fetching alerts.", error);
+    logger.error("Error fetching alerts.");
     res.status(500).json({ message: "Error fetching alerts" });
   }
 });
@@ -142,6 +143,7 @@ router.get("/alerts", authenticateToken, async (req, res) => {
 router.post("/alert-settings", authenticateToken, async (req, res) => {
   try {
     if (!isAuthorized(req)) {
+      logger.warn("Unauthorized access attempt to alert-settings");
       return res.status(403).json({ message: "Unauthorized" });
     }
 
@@ -236,7 +238,7 @@ router.post("/alert-settings", authenticateToken, async (req, res) => {
 
     return res.status(201).json({ message: "Success" });
   } catch (error) {
-    logger.error(`Error saving alert settings`, error);
+    logger.error(`Error saving alert settings`);
     return res.status(500).json({ message: "Error saving alert settings" });
   }
 });
@@ -244,6 +246,7 @@ router.post("/alert-settings", authenticateToken, async (req, res) => {
 router.get("/alert-settings", authenticateToken, async (req, res) => {
   try {
     if (!isAuthorized(req)) {
+      logger.warn("Unauthorized access attempt to alert-settings");
       return res.status(403).json({ message: "Unauthorized" });
     }
 
@@ -257,7 +260,7 @@ router.get("/alert-settings", authenticateToken, async (req, res) => {
         return res.json({ message: "No settings found" });
       }
 
-      logger.info(`API call to /alert-settings`);
+      logger.info(`Successfully fetched alert settings for ${user}.`);
 
       return res.json(settings);
     }
@@ -270,12 +273,14 @@ router.get("/alert-settings", authenticateToken, async (req, res) => {
 router.put("/alert-resolved/:id", authenticateToken, async (req, res) => {
   try {
     if (!isAuthorized(req)) {
+      logger.warn("Unauthorized access attempt to alert-resolved");
       return res.status(403).json({ message: "Unauthorized" });
     }
-    logger.info(`API call to /alert-resolved`);
+    logger.info(`Request to /alert-resolved`);
 
     const alertId = parseInt(req.params.id, 10);
     if (isNaN(alertId)) {
+      logger.info(`Invalid id for alert-resolved`);
       return res.status(400).json({ message: "Invalid alert id" });
     }
 
@@ -296,9 +301,10 @@ router.put("/alert-resolved/:id", authenticateToken, async (req, res) => {
 router.put("/alert-all-resolved", authenticateToken, async (req, res) => {
   try {
     if (!isAuthorized(req)) {
+      logger.warn("Unauthorized access attempt to alert-resolved");
       return res.status(403).json({ message: "Unauthorized" });
     }
-    logger.info(`API call to /alert-all-resolved`);
+    logger.info(`Request to /alert-all-resolved`);
 
     const user = req.user.username;
     if(user){
@@ -312,7 +318,7 @@ router.put("/alert-all-resolved", authenticateToken, async (req, res) => {
       return res.json({ message: "Alerts resolved successfully" });
     }
   } catch (error) {
-    logger.error("Error resolving an alert.");
+    logger.error("Error resolving all'alerts.");
     return res.status(500).json({ message: "Error resolving an alert" });
   }
 });
@@ -326,7 +332,7 @@ router.get("/temperature", authenticateToken, async (req, res) => {
     });
 
     if (!temperatureData) {
-      logger.info(`API call to /temperature - No temperature data found`);
+      logger.info(`Request to /temperature - No temperature data found`);
       return res.json({
         value: "-",
         change: 0,
@@ -349,7 +355,7 @@ router.get("/temperature", authenticateToken, async (req, res) => {
       ? `${change > 0 ? "+" : ""}${change.toFixed(1)}°C from last hour`
       : "No previous data available";
 
-    logger.info(`API call to /temperature`);
+    logger.info(`Successfully fetched temperature dashboard data.`);
 
     return res.json({
       value: temperatureData ? temperatureData.value : null,
@@ -369,7 +375,7 @@ router.get("/humidity", authenticateToken, async (req, res) => {
     });
 
     if (!humidityData) {
-      logger.info(`API call to /humidity - No humidity data found`);
+      logger.info(`Request to /humidity - No humidity data found`);
       return res.json({
         value: "-",
         change: 0,
@@ -393,7 +399,7 @@ router.get("/humidity", authenticateToken, async (req, res) => {
       ? `${change > 0 ? "+" : ""}${change.toFixed(1)}% from last hour`
       : "No previous data available";
 
-    logger.info(`API call to /humidity`);
+      logger.info(`Successfully fetched humidity dashboard data.`);
 
     return res.json({
       value: humidityData ? humidityData.value : null,
@@ -429,7 +435,7 @@ router.get("/access-attempts", authenticateToken, async (req, res) => {
         ? `${change > 0 ? "+" : ""}${change} access attempts from yesterday`
         : "No change in access attempts";
 
-    logger.info(`API call to /access-attempts`);
+    logger.info(`Successfully fetched access dashboard data.`);
 
     return res.json({
       value: accessAttemptsToday + "",
@@ -448,7 +454,7 @@ router.get("/co2", authenticateToken, async (req, res) => {
     });
 
     if (!co2Data) {
-      logger.info(`API call to /co2 - No co2 data found`);
+      logger.info(`Request to /co2 - No co2 data found`);
       return res.json({
         value: "-",
         change: 0,
@@ -469,7 +475,7 @@ router.get("/co2", authenticateToken, async (req, res) => {
       ? `${change > 0 ? "+" : ""}${change.toFixed(1)} ppm from last hour`
       : "No previous data available";
 
-    logger.info(`API call to /co2`);
+    logger.info(`Successfully fetched co2 dashboard data.`);
 
     return res.json({
       value: co2Data ? co2Data.value : null,
@@ -494,7 +500,7 @@ router.get("/badge", authenticateToken, async (req, res) => {
     });
 
     if (!badgeData) {
-      logger.info(`API call to /badge - No badge data found, adding user and otp`);
+      logger.info(`Request to /badge - No badge data found, adding user and otp`);
       const otp = Math.floor(1000 + Math.random() * 9000).toString();
 
       await prisma.badge_link.create({
@@ -508,7 +514,7 @@ router.get("/badge", authenticateToken, async (req, res) => {
       return res.json({ code: otp });
     }
 
-    logger.info(`API call to /badge`);
+    logger.info(`Successfully fetched badge data.`);
 
     if(!badgeData.badge){
       return res.json({
@@ -521,7 +527,7 @@ router.get("/badge", authenticateToken, async (req, res) => {
     }
     
   } catch (error) {
-    logger.error("Error fetching badge data.", error);
+    logger.error("Error fetching badge data.");
     res.status(500).json({ message: "Error fetching badge data" });
   }
 });

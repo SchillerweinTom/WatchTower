@@ -171,7 +171,7 @@ def setup():
   global title0, i2c0, rgb_0, espnow_0, tvoc_0, image_pages, key
 
   M5.begin()
-  time.timezone('GMT-1')
+  time.timezone('GMT-2')
   Widgets.fillScreen(0x222222)
   title0 = Widgets.Title("Watch Tower", 3, 0xffffff, 0x008fff, Widgets.FONTS.DejaVu18)
   image_pages = Widgets.Image("res/img/rfid_screen.png", 30, 41, scale_x=0.57, scale_y=0.57)

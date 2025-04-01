@@ -10,11 +10,12 @@ async function getLastHourData(type, res) {
 
     let lastHourData = [];
 
-    logger.info(`API call to /${type}/lastHour`);
-
     if (!data || data.length === 0) {
+      logger.info(`No ${type} data available for the last hour.`);
       return res.json(lastHourData);
     }
+
+    logger.info(`Successfully fetched ${type} records for the last hour.`);
 
     lastHourData = data.map((item) => ({
       time: item.timestamp.toISOString().slice(11, 16),
@@ -42,11 +43,13 @@ async function getLastDayData(type, res) {
     });
 
     let hourlyData = [];
-    logger.info(`API call to /${type}/lastDay`);
 
     if (!data || data.length === 0) {
+      logger.info(`No ${type} data available for the last day.`);
       return res.json(hourlyData);
     }
+
+    logger.info(`Successfully fetched ${type} records for the last day.`);
 
     for (let i = 0; i < 24; i++) {
       const hourTime = new Date(twentyFourHoursAgo);
@@ -93,8 +96,11 @@ async function getLastWeekData(type, res) {
     let formattedData = [];
 
     if (!data || data.length === 0) {
+      logger.info(`No ${type} data available for the last week.`);
       return res.json(formattedData);
     }
+
+    logger.info(`Successfully fetched ${type} records for the last week.`);
 
     data.forEach((entry) => {
       const date = new Date(entry.timestamp).toISOString().split("T")[0];
@@ -114,7 +120,6 @@ async function getLastWeekData(type, res) {
       });
     }
 
-    logger.info(`API call to /${type}/lastWeek`);
     return res.json(formattedData);
   } catch (error) {
     logger.error(`Error fetching last week ${type} records.`);

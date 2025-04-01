@@ -21,7 +21,7 @@ api.post("/temperature", authenticateToken, async (req, res) => {
             value,
           },
         });
-        logger.info("Temperature data saved successfully in /api/temperature");
+        logger.info(`API Call: Temperature data saved successfully - Value: ${value}`);
 
         createNotifications("TEMPERATURE", value, timestamp);
 
@@ -29,14 +29,14 @@ api.post("/temperature", authenticateToken, async (req, res) => {
           .status(201)
           .json({ message: "Temperature data saved successfully" });
       } else {
-        logger.error("Temperature value or timestamp not valid at /api/temperature");
+        logger.error("API Call: Temperature value or timestamp not valid at /api/temperature");
       }
     } else {
-      logger.error("Wrong data sended to /api/temperature");
+      logger.error("API Call: Wrong data sended to /api/temperature");
     }
     return res.status(500).json({ message: "Invalid temperature data." });
   } catch (error) {
-    logger.error(`Error saving temperature data.`);
+    logger.error(`API Call: Error saving temperature data in /api/temperature.`);
     return res.status(500).json({ message: "Error saving temperature data." });
   }
 });
@@ -53,7 +53,7 @@ api.post("/humidity", authenticateToken, async (req, res) => {
             value,
           },
         });
-        logger.info("Humidity data saved successfully in /api/humidity");
+        logger.info(`API Call: Humidity data saved successfully - Value: ${value}`);
 
         createNotifications("HUMIDITY", value, timestamp);
 
@@ -61,14 +61,14 @@ api.post("/humidity", authenticateToken, async (req, res) => {
           .status(201)
           .json({ message: "Humidity data saved successfully" });
       } else {
-        logger.error("Humidity value or timestamp not valid at /api/humidity");
+        logger.error("Api Call: Humidity value or timestamp not valid at /api/humidity");
       }
     } else {
-      logger.error("Wrong data sended to /api/humidity");
+      logger.error("API Call: Wrong data sended to /api/humidity");
     }
     return res.status(500).json({ message: "Invalid humidity data." });
   } catch (error) {
-    logger.error(`Error saving humidity data.`);
+    logger.error(`API Call: Error saving humidity data in /api/humidity.`);
     return res.status(500).json({ message: "Error saving humidity data." });
   }
 });
@@ -85,20 +85,20 @@ api.post("/co2", authenticateToken, async (req, res) => {
             value,
           },
         });
-        logger.info("CO2 data saved successfully in /api/co2");
+        logger.info(`API Call: CO2 data saved successfully - Value: ${value}`);
 
         createNotifications("CO2", value, timestamp);
 
         return res.status(201).json({ message: "CO2 data saved successfully" });
       } else {
-        logger.error("CO2 value or timestamp not valid at /api/co2");
+        logger.error("API Call: CO2 value or timestamp not valid at /api/co2");
       }
     } else {
-      logger.error("Wrong data sended to /api/co2");
+      logger.error("API Call: Wrong data sended to /api/co2");
     }
     return res.status(500).json({ message: "Invalid co2 data." });
   } catch (error) {
-    logger.error(`Error saving co2 data.`);
+    logger.error(`API CAll: Error saving co2 data in /api/co2.`);
     return res.status(500).json({ message: "Error saving co2 data." });
   }
 });
@@ -112,8 +112,8 @@ api.post("/access", authenticateToken, async (req, res) => {
     if (timestamp && !isNaN(Date.parse(timestamp))) {
 
       if (!ldapUsers.some(user => user.username[0] === name)) {
-        logger.info("User no more in LDAP in /api/access");
-        logger.info("Removing user from link badge in /api/access");
+        logger.info("API Call: User no more in LDAP in /api/access");
+        logger.info("API Call: Removing user from link badge in /api/access");
 
         await prisma.badge_link.deleteMany({
           where: { user: name },
@@ -141,7 +141,7 @@ api.post("/access", authenticateToken, async (req, res) => {
           authorized,
         },
       });
-      logger.info("Access data saved successfully in /api/access");
+      logger.info("API Call: Access data saved successfully in /api/access");
 
       if (!authorized) {
         createNotifications("ACCESS", 0, timestamp);
@@ -151,11 +151,11 @@ api.post("/access", authenticateToken, async (req, res) => {
         .status(201)
         .json({ message: "Access data saved successfully" });
     } else {
-      logger.error("Wrong data sended to /api/access");
+      logger.error("API Call: Wrong data sended to /api/access");
     }
     return res.status(500).json({ message: "Invalid access data." });
   } catch (error) {
-    logger.error(`Error saving access data. ${error}`);
+    logger.error(`API Call: Error saving access data in /api/access.`);
     return res.status(500).json({ message: "Error saving access data." });
   }
 });
@@ -169,7 +169,7 @@ api.post("/badge", authenticateToken, async (req, res) => {
     });
 
     if(!badgeData){
-      logger.info("Badge otp invalid in /api/badge");
+      logger.info("API Call: Badge otp invalid in /api/badge");
       return res.status(403).json({message: "Invalid OTP"});
     }
 
@@ -187,10 +187,10 @@ api.post("/badge", authenticateToken, async (req, res) => {
       },
     });
 
-    logger.info("Badge data saved successfully in /api/badge");
+    logger.info("API Call: Badge data saved successfully in /api/badge");
     return res.status(201).json({message: "Badge data updated"});    
   } catch (error) {
-    logger.error(`Error saving badge data.`, error);
+    logger.error(`API Call: Error saving badge data in /api/badge.`);
     return res.status(500).json({ message: "Error saving badge data." });
   }
 });
@@ -203,7 +203,7 @@ api.get("/badge-linked", authenticateToken, async (req, res) => {
       where: { badge: badge }
     });
 
-    logger.info("Badge linked status requested in /api/badge-linked");  
+    logger.info("API Call: Badge linked status requested in /api/badge-linked");  
 
     if(!badgeData){
       return res.json({linked: false});
@@ -212,7 +212,7 @@ api.get("/badge-linked", authenticateToken, async (req, res) => {
     }
 
   } catch (error) {
-    logger.error(`Error fetching badge status.`, error);
+    logger.error(`API Call: Error fetching badge status in /api/badge-linked.`);
     return res.status(500).json({ message: "Error fetching badge status." });
   }
 });
@@ -225,7 +225,7 @@ api.get("/badge", authenticateToken, async (req, res) => {
       where: { badge: badge }
     });
 
-    logger.info("Badge user requested");  
+    logger.info("API Call: Badge user requested");  
 
     if(!badgeData){
       return res.json({user: ""});
@@ -234,7 +234,7 @@ api.get("/badge", authenticateToken, async (req, res) => {
     }
 
   } catch (error) {
-    logger.error(`Error fetching badge status.`, error);
+    logger.error(`API Call: Error fetching badge status in /api/badge.`);
     return res.status(500).json({ message: "Error fetching badge status." });
   }
 });

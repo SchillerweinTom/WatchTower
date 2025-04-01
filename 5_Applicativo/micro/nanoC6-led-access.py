@@ -31,6 +31,7 @@ def setup():
 
   M5.begin()
   rgb_0 = RGBUnit((1, 2), 3)
+  rgb_0.set_brightness(50)
 
   espnow_0 = M5ESPNow(1)
   espnow_0.set_pmk_encrypt(key)
@@ -43,9 +44,9 @@ def loop():
   M5.update()
 
   if access:
-    color = 0x00ff00
-  else:
     color = 0xff0000
+  else:
+    color = 0x00ff00
 
   rgb_0.set_color(0, color)
   rgb_0.set_color(1, color)

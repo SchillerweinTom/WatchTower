@@ -197,3 +197,12 @@
 20-03-2025, 11:05:53 [INFO]: API call to /access-attempts
 20-03-2025, 11:05:53 [INFO]: API call to /co2
 20-03-2025, 11:05:53 [INFO]: API call to /badge
+01-04-2025, 15:49:26 [INFO]: Successfully fetched temperature dashboard data.
+01-04-2025, 15:49:26 [INFO]: Successfully fetched humidity dashboard data.
+01-04-2025, 15:49:27 [INFO]: Successfully fetched access dashboard data.
+01-04-2025, 15:49:27 [INFO]: Successfully fetched co2 dashboard data.
+01-04-2025, 15:49:27 [INFO]: Successfully fetched badge data.
+01-04-2025, 15:49:37 [INFO]: Successfully fetched temperature dashboard data.
+01-04-2025, 15:49:37 [INFO]: Successfully fetched humidity dashboard data.
+01-04-2025, 15:49:37 [INFO]: Successfully fetched access dashboard data.
+01-04-2025, 15:49:37 [INFO]: Successfully fetched co2 dashboard data.
