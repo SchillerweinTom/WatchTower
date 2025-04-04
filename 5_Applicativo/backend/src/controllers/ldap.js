@@ -68,11 +68,12 @@ function authenticate(username, password) {
               }
 
               let role = "allievo";
-              if (userGroups.some((group) => group.includes("CN=Docenti"))) {
-                role = "docente";
-              }
-              if (userGroups.some((group) => group.includes("CN=Sistemisti"))) {
-                role = "sistemista";
+              
+              if (userDN.includes("OU=Docenti")) {
+                  role = "docente";
+              } 
+              if (userDN.includes("OU=Admins")) {
+                  role = "sistemista";
               }
 
               resolve({ username, role });
@@ -84,7 +85,8 @@ function authenticate(username, password) {
   });
 }
 
-function fetchLdapUsers(groups) {
+
+function fetchLdapUsers(ouList) {
   return new Promise((resolve, reject) => {
     const client = ldap.createClient({ url: process.env.LDAP_SERVER_URL });
 
@@ -100,7 +102,8 @@ function fetchLdapUsers(groups) {
 
         const searchOptions = {
           scope: "sub",
-          attributes: ["dn", "cn", "memberOf", "sAMAccountName", "mail"],
+          filter: "(OU=SAMT)",
+          attributes: ["dn", "cn", "sAMAccountName", "mail"],
         };
 
         client.search(process.env.BASE_DN, searchOptions, (err, res) => {
@@ -114,24 +117,23 @@ function fetchLdapUsers(groups) {
           }
 
           const users = [];
-          
+
           res.on("searchEntry", (entry) => {
             if (!entry) return;
 
-            let userGroups = [];
-
             let username = entry.attributes.find((attr) => attr.type === "sAMAccountName")?.values;
             let mail = entry.attributes.find((attr) => attr.type === "mail")?.values || null;
-
-            if (entry.attributes) {
-              userGroups = entry.attributes.find((attr) => attr.type === "memberOf")?.values || [];
+            let userDN = entry.dn;
+            
+            if (Array.isArray(userDN)) {
+              userDN = userDN.join(',');
+            } else if (typeof userDN !== "string") {
+              userDN = String(userDN);
             }
-            let isInGroup = false;
-            if (userGroups) {
-              isInGroup = userGroups.some((userGroup) => groups.some((group) => userGroup.includes(group)));
-            }
+            
+            let isInOu = ouList.some((ou) => userDN.includes(ou));
 
-            if (isInGroup) {
+            if (isInOu) {
               users.push({
                 username: username,
                 email: mail || "",

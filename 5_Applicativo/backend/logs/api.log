@@ -206,3 +206,74 @@
 01-04-2025, 15:49:37 [INFO]: Successfully fetched humidity dashboard data.
 01-04-2025, 15:49:37 [INFO]: Successfully fetched access dashboard data.
 01-04-2025, 15:49:37 [INFO]: Successfully fetched co2 dashboard data.
+04-04-2025, 09:16:10 [INFO]: Successfully fetched temperature dashboard data.
+04-04-2025, 09:16:10 [INFO]: Successfully fetched humidity dashboard data.
+04-04-2025, 09:16:10 [INFO]: Successfully fetched access dashboard data.
+04-04-2025, 09:16:10 [INFO]: Successfully fetched co2 dashboard data.
+04-04-2025, 09:16:14 [INFO]: Successfully fetched co2 records for the last hour.
+04-04-2025, 09:16:15 [INFO]: Successfully fetched humidity records for the last hour.
+04-04-2025, 09:16:26 [INFO]: Successfully fetched temperature dashboard data.
+04-04-2025, 09:16:26 [INFO]: Successfully fetched humidity dashboard data.
+04-04-2025, 09:16:26 [INFO]: Successfully fetched access dashboard data.
+04-04-2025, 09:16:26 [INFO]: Successfully fetched co2 dashboard data.
+04-04-2025, 09:16:26 [INFO]: Request to /badge - No badge data found, adding user and otp
+04-04-2025, 09:16:27 [INFO]: Successfully fetched alerts.
+04-04-2025, 09:16:46 [INFO]: Successfully fetched temperature dashboard data.
+04-04-2025, 09:16:46 [INFO]: Successfully fetched humidity dashboard data.
+04-04-2025, 09:16:46 [INFO]: Successfully fetched access dashboard data.
+04-04-2025, 09:16:46 [INFO]: Successfully fetched co2 dashboard data.
+04-04-2025, 09:16:46 [INFO]: Successfully fetched badge data.
+04-04-2025, 09:30:18 [INFO]: Successfully fetched temperature dashboard data.
+04-04-2025, 09:30:18 [INFO]: Successfully fetched humidity dashboard data.
+04-04-2025, 09:30:18 [INFO]: Successfully fetched access dashboard data.
+04-04-2025, 09:30:18 [INFO]: Successfully fetched co2 dashboard data.
+04-04-2025, 09:30:18 [INFO]: Successfully fetched badge data.
+04-04-2025, 09:30:20 [INFO]: Successfully fetched alerts.
+04-04-2025, 09:30:46 [INFO]: Alert settings saved for adm.schillerwein
+04-04-2025, 09:31:16 [INFO]: API Call: Temperature data saved successfully - Value: 28
+04-04-2025, 09:31:38 [INFO]: Successfully fetched alerts.
+04-04-2025, 09:31:41 [INFO]: Successfully fetched temperature records for the last hour.
+04-04-2025, 09:32:05 [ERROR]: API Call: Temperature value or timestamp not valid at /api/temperature
+04-04-2025, 09:32:13 [INFO]: API Call: Temperature data saved successfully - Value: 29
+04-04-2025, 09:32:17 [INFO]: Successfully fetched temperature records for the last hour.
+04-04-2025, 09:32:19 [INFO]: Successfully fetched alerts.
+04-04-2025, 09:32:21 [INFO]: Successfully fetched alerts.
+04-04-2025, 09:32:21 [INFO]: Successfully fetched alerts.
+04-04-2025, 09:34:34 [INFO]: API Call: User no more in LDAP in /api/access
+04-04-2025, 09:34:34 [INFO]: API Call: Removing user from link badge in /api/access
+04-04-2025, 09:35:34 [INFO]: Successfully fetched alerts.
+04-04-2025, 09:35:35 [INFO]: Successfully fetched alerts.
+04-04-2025, 09:35:35 [INFO]: Successfully fetched alerts.
+04-04-2025, 09:35:36 [INFO]: Successfully fetched alerts.
+04-04-2025, 09:35:37 [INFO]: Successfully fetched access control chart data.
+04-04-2025, 09:35:37 [INFO]: Successfully fetched recent access events.
+04-04-2025, 09:35:37 [INFO]: Successfully fetched alerts.
+04-04-2025, 09:36:13 [INFO]: API Call: Temperature data saved successfully - Value: 50
+04-04-2025, 09:36:32 [INFO]: Successfully fetched alerts.
+04-04-2025, 09:36:33 [INFO]: Successfully fetched alerts.
+04-04-2025, 09:36:33 [INFO]: Successfully fetched alerts.
+04-04-2025, 09:36:34 [INFO]: Successfully fetched alerts.
+04-04-2025, 09:37:52 [INFO]: Successfully fetched alerts.
+04-04-2025, 09:38:03 [INFO]: API Call: Temperature data saved successfully - Value: 25
+04-04-2025, 09:39:14 [INFO]: API Call: Temperature data saved successfully - Value: 25
+04-04-2025, 09:40:29 [INFO]: API Call: User no more in LDAP in /api/access
+04-04-2025, 09:40:29 [INFO]: API Call: Removing user from link badge in /api/access
+04-04-2025, 09:41:01 [INFO]: API Call: Temperature data saved successfully - Value: 25
+04-04-2025, 09:41:14 [INFO]: Successfully fetched temperature dashboard data.
+04-04-2025, 09:41:14 [INFO]: Successfully fetched humidity dashboard data.
+04-04-2025, 09:41:14 [INFO]: Successfully fetched access dashboard data.
+04-04-2025, 09:41:14 [INFO]: Successfully fetched co2 dashboard data.
+04-04-2025, 09:41:14 [INFO]: Successfully fetched badge data.
+04-04-2025, 09:41:15 [INFO]: Successfully fetched temperature dashboard data.
+04-04-2025, 09:41:15 [INFO]: Successfully fetched humidity dashboard data.
+04-04-2025, 09:41:15 [INFO]: Successfully fetched access dashboard data.
+04-04-2025, 09:41:15 [INFO]: Successfully fetched co2 dashboard data.
+04-04-2025, 09:41:15 [INFO]: Successfully fetched badge data.
+04-04-2025, 09:41:16 [INFO]: Successfully fetched temperature records for the last hour.
+04-04-2025, 09:41:17 [INFO]: Successfully fetched humidity records for the last hour.
+04-04-2025, 09:41:23 [INFO]: Successfully fetched temperature records for the last hour.
+04-04-2025, 09:41:24 [INFO]: Successfully fetched humidity records for the last hour.
+04-04-2025, 09:41:31 [INFO]: Successfully fetched co2 records for the last hour.
+04-04-2025, 09:41:32 [INFO]: Successfully fetched access control chart data.
+04-04-2025, 09:41:32 [INFO]: Successfully fetched recent access events.
+04-04-2025, 09:41:34 [INFO]: Successfully fetched alerts.

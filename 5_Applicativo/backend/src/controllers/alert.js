@@ -5,7 +5,7 @@ const prisma = require("../config/db");
 
 async function createNotifications(type, value, timestamp) {
     try {
-      const ldapUsers = await fetchLdapUsers(["CN=Docenti", "CN=Sistemisti"]);
+      const ldapUsers = await fetchLdapUsers(["OU=Docenti", "OU=Admins"]);
 
       for (const user of ldapUsers) {
         let settings = await prisma.alert_setting.findUnique({
@@ -16,8 +16,8 @@ async function createNotifications(type, value, timestamp) {
           settings = {
             temp_limit_max: 30,
             temp_limit_min: 18,
-            hum_limit_max: 60,
-            hum_limit_min: 30,
+            hum_limit_max: 65,
+            hum_limit_min: 20,
             co2_limit_max: 1000,
           };
         }
@@ -64,7 +64,7 @@ async function createNotifications(type, value, timestamp) {
     } catch (error) {
       logger.error(`Error creating notifications: ${error.message}`);
     }
-  }
+}
 
 async function sendAlertEmail(email, message, description) {
   try {
@@ -92,6 +92,9 @@ async function sendAlertEmail(email, message, description) {
               </p>
               <p style="font-size: 14px; color: #555;">
               Please take appropriate action if necessary.
+              </p>
+              <p style="font-size: 14px; color: #555;">
+              For more information: <a href="https://watchtower.labosamt.ch/access">watchtower.labosamt.ch/access</a>
               </p>
               <hr style="border: none; border-top: 1px solid #ddd; margin: 20px 0;">
               <p style="font-size: 12px; color: #777;">

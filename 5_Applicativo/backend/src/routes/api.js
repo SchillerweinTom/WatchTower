@@ -107,7 +107,7 @@ api.post("/access", authenticateToken, async (req, res) => {
   try {
     const { name, motive, authorized, timestamp } = req.body;
 
-    const ldapUsers = await fetchLdapUsers(["CN=Docenti", "CN=Sistemisti"]);
+    const ldapUsers = await fetchLdapUsers(["OU=Docenti", "OU=Admins"]);
     
     if (timestamp && !isNaN(Date.parse(timestamp))) {
 

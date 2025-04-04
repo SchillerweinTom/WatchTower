@@ -9,3 +9,13 @@
 01-04-2025, 15:49:26 [INFO]: Login successful: sistemista1 (Role: sistemista)
 01-04-2025, 15:49:26 [INFO]: Login successful: sistemista1 (Role: sistemista)
 01-04-2025, 15:49:37 [INFO]: Login successful: alan.verdi (Role: allievo)
+04-04-2025, 08:32:00 [WARN]: Failed login attempt: rps681 (Invalid credentials)
+04-04-2025, 08:32:10 [WARN]: Failed login attempt: rps681 (Invalid credentials)
+04-04-2025, 08:32:15 [WARN]: Failed login attempt: rps681 (Invalid credentials)
+04-04-2025, 08:32:21 [WARN]: Failed login attempt: rps681 (Invalid credentials)
+04-04-2025, 08:33:42 [ERROR]: Login error for rps681: LDAP bind failed
+04-04-2025, 08:44:00 [ERROR]: Login error for rps681: LDAP bind failed
+04-04-2025, 08:55:33 [ERROR]: Login error for rps681: LDAP bind failed
+04-04-2025, 09:16:09 [INFO]: Login successful: rps681 (Role: allievo)
+04-04-2025, 09:16:26 [INFO]: Login successful: adm.schillerwein (Role: sistemista)
+04-04-2025, 09:30:18 [INFO]: Login successful: adm.schillerwein (Role: sistemista)
