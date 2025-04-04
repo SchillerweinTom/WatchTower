@@ -46,4 +46,4 @@ Il sistema è progettato per fornire un monitoraggio continuo e consentire l'imp
   - Node JS
 
 ### Utilizzo App Web
-Accedere a: https://watchtower.labosamt.ch/access
+Accedere a: https://watchtower.labosamt.ch
