@@ -46,4 +46,4 @@ Il sistema è progettato per fornire un monitoraggio continuo e consentire l'imp
   - Node JS
 
 ### Utilizzo App Web
-Accedere a: http://watchtower.caprover.samt.local/
+Accedere a: https://watchtower.labosamt.ch/access
