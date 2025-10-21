@@ -94,7 +94,7 @@ async function sendAlertEmail(email, message, description) {
               Please take appropriate action if necessary.
               </p>
               <p style="font-size: 14px; color: #555;">
-              For more information: <a href="https://watchtower.labosamt.ch/access">watchtower.labosamt.ch/access</a>
+              For more information: <a href="https://watchtower.labosamt.ch">watchtower.labosamt.ch</a>
               </p>
               <hr style="border: none; border-top: 1px solid #ddd; margin: 20px 0;">
               <p style="font-size: 12px; color: #777;">

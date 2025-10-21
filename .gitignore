@@ -23,3 +23,5 @@ errors.log
 .DS_Store
 
 docker-compose.yml
+
+credentials.txt
